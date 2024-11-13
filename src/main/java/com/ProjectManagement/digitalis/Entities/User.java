@@ -26,7 +26,7 @@ public class User {
     private Role role;
 
     @OneToMany(mappedBy = "user")
-    private List<St> listSt;
+    private List<SousTache> listSt;
 
     @ManyToOne
     @JoinColumn(name = "reunion")

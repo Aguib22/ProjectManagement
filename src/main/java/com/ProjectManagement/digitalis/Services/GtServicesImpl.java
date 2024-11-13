@@ -1,13 +1,15 @@
 package com.ProjectManagement.digitalis.Services;
 
-import com.ProjectManagement.digitalis.DAO.GtRepository;
-import com.ProjectManagement.digitalis.Entities.Gt;
+import com.ProjectManagement.digitalis.Entities.GrandeTache;
+import com.ProjectManagement.digitalis.Repositories.GtRepository;
+import com.ProjectManagement.digitalis.Exception.GtError;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class GtServicesImpl implements GtServices{
 
     @Autowired
@@ -16,22 +18,22 @@ public class GtServicesImpl implements GtServices{
 
 
     @Override
-    public Gt saveGt(Gt gt) {
+    public GrandeTache saveGt(GrandeTache gt) throws GtError {
         if(gt == null){
-            throw new RuntimeException ("La grande tache à enregistré est null");
+            throw new GtError ("La grande tache à enregistré est null");
         }
         return gtRepository.save(gt);
     }
 
     @Override
-    public Gt editGt(Long idGt, Gt gt) {
-        Optional<Gt> optionalGt = gtRepository.findById(idGt);
+    public GrandeTache editGt(Long idGt, GrandeTache gt) throws GtError{
+        Optional<GrandeTache> optionalGt = gtRepository.findById(idGt);
         if(optionalGt.isEmpty()){
-            throw new RuntimeException("La grande tache à modifier n'existe pas");
+            throw new GtError("La grande tache à modifier n'existe pas");
         }
-        Gt gt1 = optionalGt.get();
+        GrandeTache gt1 = optionalGt.get();
         gt1.setNumeroGt(gt.getNumeroGt());
-        gt1.setTacheGt(gt.getTacheGt());
+        gt1.setNomGt(gt.getNomGt());
         gt1.setChargesGt(gt.getChargesGt());
         gt1.setDateDeDebutGt(gt.getDateDeDebutGt());
         gt1.setDateDeFinGt(gt.getDateDeFinGt());
@@ -42,27 +44,27 @@ public class GtServicesImpl implements GtServices{
     }
 
     @Override
-    public Gt getGt(Long idGt) {
-        Optional<Gt> optionalGt = gtRepository.findById(idGt);
+    public GrandeTache getGt(Long idGt) throws GtError{
+        Optional<GrandeTache> optionalGt = gtRepository.findById(idGt);
         if(optionalGt.isEmpty()){
-            throw new RuntimeException("la grande tache rechercher n'existe pas");
+            throw new GtError("la grande tache rechercher n'existe pas");
         }
         return optionalGt.get();
     }
 
     @Override
-    public List<Gt> listGt() {
+    public List<GrandeTache> listGt() throws GtError{
         if(listGt().isEmpty()){
-            throw new RuntimeException("La liste des Grande tache est vide");
+            throw new GtError("La liste des Grande tache est vide");
         }
         return gtRepository.findAll();
     }
 
     @Override
-    public void deleteGt(Long idGt) {
-        Optional<Gt> optionalGt = gtRepository.findById(idGt);
+    public void deleteGt(Long idGt) throws GtError{
+        Optional<GrandeTache> optionalGt = gtRepository.findById(idGt);
         if(optionalGt.isEmpty()){
-            throw new RuntimeException("la grante tache à supprimer n'existe pas");
+            throw new GtError("la grante tache à supprimer n'existe pas");
         }
         gtRepository.deleteById(idGt);
 

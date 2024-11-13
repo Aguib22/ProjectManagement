@@ -1,18 +1,18 @@
 package com.ProjectManagement.digitalis.Services;
 
-import com.ProjectManagement.digitalis.Entities.St;
+import com.ProjectManagement.digitalis.Entities.SousTache;
 
 import java.util.List;
 
 public interface StServices {
 
-    St saveSt(St st);
+    SousTache saveSt(SousTache st);
 
-    St getSt(Long idSt);
+    SousTache getSt(Long idSt);
 
-    St editSt(Long idSt, St st);
+    SousTache editSt(Long idSt, SousTache st);
 
-    List<St> listSt();
+    List<SousTache> listSt();
 
     void deleteSt(Long idSt);
 

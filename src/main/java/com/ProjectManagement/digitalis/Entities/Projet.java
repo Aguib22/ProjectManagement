@@ -24,11 +24,11 @@ public class Projet {
     private Date dateDebutProjet;
     private Date dateFinProject;
 
-    /*@OneToMany(mappedBy = "Gt")
-    private List<Gt> listGt;*/
+    /*@OneToMany(mappedBy = "GrandeTache")
+    private List<GrandeTache> listGt;*/
 
     @OneToMany(mappedBy = "projet")
-    private List<Gt> listGt;
+    private List<GrandeTache> listGt;
 
 
 }

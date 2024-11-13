@@ -1,4 +1,4 @@
-package com.ProjectManagement.digitalis.DAO;
+package com.ProjectManagement.digitalis.Repositories;
 
 import com.ProjectManagement.digitalis.Entities.Reunion;
 import org.springframework.data.jpa.repository.JpaRepository;

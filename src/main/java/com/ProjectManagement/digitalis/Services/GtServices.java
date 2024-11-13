@@ -1,18 +1,19 @@
 package com.ProjectManagement.digitalis.Services;
 
-import com.ProjectManagement.digitalis.Entities.Gt;
+import com.ProjectManagement.digitalis.Entities.GrandeTache;
+import com.ProjectManagement.digitalis.Exception.GtError;
 
 import java.util.List;
 
 public interface GtServices {
 
-    Gt saveGt(Gt gt);
+    GrandeTache saveGt(GrandeTache gt) throws GtError;
 
-    Gt editGt(Long idGt, Gt gt);
+    GrandeTache editGt(Long idGt, GrandeTache gt)throws GtError;
 
-    Gt getGt(Long idGt);
+    GrandeTache getGt(Long idGt)throws GtError;
 
-    List<Gt> listGt();
+    List<GrandeTache> listGt()throws GtError;
 
-    void deleteGt(Long idGt);
+    void deleteGt(Long idGt)throws GtError;
 }
