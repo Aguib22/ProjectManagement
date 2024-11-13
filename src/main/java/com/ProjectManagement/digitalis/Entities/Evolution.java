@@ -12,16 +12,16 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Traitement {
+public class Evolution {
 
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTraitement;
     private String evolution;
 
-   /* @OneToMany(mappedBy = "St")
-    private List<St> listSt;*/
+   /* @OneToMany(mappedBy = "SousTache")
+    private List<SousTache> listSt;*/
 
-    @OneToMany(mappedBy = "traitement") // "traitement" est le nom de l'attribut dans la classe St
-    private List<St> listSt;
+    @OneToMany(mappedBy = "traitement") // "traitement" est le nom de l'attribut dans la classe SousTache
+    private List<SousTache> listSt;
 
 }

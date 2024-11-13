@@ -13,13 +13,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Gt {
+public class GrandeTache {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idGt;
     private int numeroGt;
-    private String tacheGt;
+    private String nomGt;
     private String chargesGt;
     private Date dateDeDebutGt;
     private Date dateDeFinGt;
@@ -30,11 +30,11 @@ public class Gt {
     @JoinColumn(name = "projet")
     private Projet projet;
 
-    /*@OneToMany(mappedBy = "St")
-    private List<St> listSt;*/
+    /*@OneToMany(mappedBy = "SousTache")
+    private List<SousTache> listSt;*/
 
-    @OneToMany(mappedBy = "gt") // "gt" est le nom de l'attribut dans la classe St
-    private List<St> listSt;
+    @OneToMany(mappedBy = "gt") // "gt" est le nom de l'attribut dans la classe SousTache
+    private List<SousTache> listSt;
 
 
 }
