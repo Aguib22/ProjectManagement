@@ -12,7 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class St {
+public class SousTache {
 
 
     @Id    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,10 +29,10 @@ public class St {
     private String remarquesGt;
 
     @ManyToOne  @JoinColumn(name = "idGt")
-    private Gt gt;
+    private GrandeTache gt;
 
     @ManyToOne @JoinColumn(name = "idTraitement")
-    private Traitement traitement;
+    private Evolution traitement;
 
     @ManyToOne @JoinColumn(name = "idUser")
     private User user;
