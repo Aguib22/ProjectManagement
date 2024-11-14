@@ -51,6 +51,7 @@ public class StServicesImpl implements StServices {
         if(stRepository.existsById(idSt)){
             stRepository.deleteById(idSt);
         }else {
+
             throw new RuntimeException("aucune sous tache corespondantes");
         }
 
