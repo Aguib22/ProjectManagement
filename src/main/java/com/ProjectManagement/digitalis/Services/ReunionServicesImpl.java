@@ -4,10 +4,12 @@ import com.ProjectManagement.digitalis.Entities.Reunion;
 import com.ProjectManagement.digitalis.Exception.ReunionError;
 import com.ProjectManagement.digitalis.Repositories.ReunionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ReunionServicesImpl implements ReunionServices{
 
 

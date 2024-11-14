@@ -5,10 +5,12 @@ import com.ProjectManagement.digitalis.Exception.GtError;
 import com.ProjectManagement.digitalis.Exception.ProjetError;
 import com.ProjectManagement.digitalis.Repositories.ProjetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ProjetServicesImpl implements ProjetServices{
 
     @Autowired

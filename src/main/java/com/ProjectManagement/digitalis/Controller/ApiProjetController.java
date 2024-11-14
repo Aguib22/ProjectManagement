@@ -37,7 +37,7 @@ public class ApiProjetController {
         projetServices.deleteProjet(idProjet);
     }
 
-    @PutMapping("/projet/delete/{idProjet")
+    @PutMapping("/projet/edit/{idProjet}")
     public Projet editProjet(@PathVariable Long idProjet, @RequestBody Projet projet) throws ProjetError{
         return projetServices.editProjet(idProjet, projet);
     }

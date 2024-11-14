@@ -1,5 +1,6 @@
 package com.ProjectManagement.digitalis.Services;
 
+import com.ProjectManagement.digitalis.Controller.Request.GrandeTacheRequest;
 import com.ProjectManagement.digitalis.Entities.GrandeTache;
 import com.ProjectManagement.digitalis.Repositories.GtRepository;
 import com.ProjectManagement.digitalis.Exception.GtError;
@@ -26,7 +27,7 @@ public class GtServicesImpl implements GtServices{
     }
 
     @Override
-    public GrandeTache editGt(Long idGt, GrandeTache gt) throws GtError{
+    public GrandeTache editGt(Long idGt, GrandeTacheRequest gt) throws GtError{
         Optional<GrandeTache> optionalGt = gtRepository.findById(idGt);
         if(optionalGt.isEmpty()){
             throw new GtError("La grande tache à modifier n'existe pas");
