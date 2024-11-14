@@ -28,12 +28,15 @@ public class SousTache {
     private Float surchargesGt;
     private String remarquesGt;
 
-    @ManyToOne  @JoinColumn(name = "idGt")
+    @ManyToOne
+    @JoinColumn(name = "idGt")
     private GrandeTache gt;
 
-    @ManyToOne @JoinColumn(name = "idTraitement")
+    @ManyToOne
+    @JoinColumn(name = "idTraitement")
     private Evolution traitement;
 
-    @ManyToOne @JoinColumn(name = "idUser")
+    @ManyToOne
+    @JoinColumn(name = "idUser")
     private User user;
 }
