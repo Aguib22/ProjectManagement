@@ -25,7 +25,7 @@ public class SousTache {
     private String evolutionSt;
     private Date dateDeFinReelleSt;
 
-    private String surchargesGt;
+    private Float surchargesGt;
     private String remarquesGt;
 
     @ManyToOne  @JoinColumn(name = "idGt")

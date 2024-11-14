@@ -22,7 +22,7 @@ public class Reunion {
 
     private String ordreDuJour;
     private String remarquesR;
-    private String clarufucationR;
+    private String clarifucationR;
 
     /*@OneToMany(mappedBy = "user")
     private List<User> listUser;*/

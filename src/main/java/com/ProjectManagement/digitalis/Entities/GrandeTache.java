@@ -20,7 +20,7 @@ public class GrandeTache {
     private Long idGt;
     private int numeroGt;
     private String nomGt;
-    private String chargesGt;
+    private Float chargesGt;
     private Date dateDeDebutGt;
     private Date dateDeFinGt;
     private String evolutionGt;

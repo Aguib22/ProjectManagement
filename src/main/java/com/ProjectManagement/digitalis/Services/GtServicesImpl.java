@@ -54,9 +54,7 @@ public class GtServicesImpl implements GtServices{
 
     @Override
     public List<GrandeTache> listGt() throws GtError{
-        if(listGt().isEmpty()){
-            throw new GtError("La liste des Grande tache est vide");
-        }
+
         return gtRepository.findAll();
     }
 
