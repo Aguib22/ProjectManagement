@@ -1,6 +1,7 @@
 package com.ProjectManagement.digitalis.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,7 +21,7 @@ public class GrandeTache {
     private Long idGt;
     private int numeroGt;
     private String nomGt;
-    private String chargesGt;
+    private Float chargesGt;
     private Date dateDeDebutGt;
     private Date dateDeFinGt;
     private String evolutionGt;
@@ -34,6 +35,7 @@ public class GrandeTache {
     private List<SousTache> listSt;*/
 
     @OneToMany(mappedBy = "gt") // "gt" est le nom de l'attribut dans la classe SousTache
+    @JsonIgnore
     private List<SousTache> listSt;
 
 

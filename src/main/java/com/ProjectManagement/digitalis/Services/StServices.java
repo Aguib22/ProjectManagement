@@ -1,5 +1,6 @@
 package com.ProjectManagement.digitalis.Services;
 
+import com.ProjectManagement.digitalis.Controller.Request.SousTacheRequest;
 import com.ProjectManagement.digitalis.Entities.SousTache;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public interface StServices {
 
     Optional<SousTache> getSt(Long idSt);
 
-    SousTache editSt(Long idSt, SousTache st);
+    SousTache editSt(Long idSt, SousTacheRequest st);
 
     List<SousTache> listSt();
 

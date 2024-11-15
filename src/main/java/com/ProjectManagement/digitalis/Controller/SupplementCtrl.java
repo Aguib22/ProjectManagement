@@ -50,14 +50,14 @@ public class SupplementCtrl {
     }
 
     // Endpoint pour lister tous les suppléments
-    @GetMapping
+    @GetMapping("/get/liste")
     public ResponseEntity<List<Supplement>> getAllSupplements() {
         List<Supplement> supplements = supplementService.listSupplement();
         return new ResponseEntity<>(supplements, HttpStatus.OK);
     }
 
     // Endpoint pour supprimer un supplément par ID
-    @DeleteMapping("/del/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteSupplement(@PathVariable Long id) {
         try {
             supplementService.deleteSupplement(id);

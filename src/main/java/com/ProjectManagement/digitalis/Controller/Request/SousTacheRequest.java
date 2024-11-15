@@ -1,23 +1,19 @@
-package com.ProjectManagement.digitalis.Entities;
+package com.ProjectManagement.digitalis.Controller.Request;
 
-
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+
+
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class SousTache {
+public class SousTacheRequest {
 
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idSt;
     private int numeroSt;
     private String tacheSt;
     private Float chargesSt;
@@ -29,15 +25,9 @@ public class SousTache {
     private Float surchargesGt;
     private String remarquesGt;
 
-    @ManyToOne
-    @JoinColumn(name = "idGt")
-    private GrandeTache gt;
+    private Long gt;
 
-    @ManyToOne
-    @JoinColumn(name = "idTraitement")
-    private Evolution traitement;
+    private Long evolution;
 
-    @ManyToOne
-    @JoinColumn(name = "idUser")
-    private User user;
+    private Long user;
 }

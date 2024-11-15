@@ -1,8 +1,14 @@
 package com.ProjectManagement.digitalis.Controller;
 
 
-import com.ProjectManagement.digitalis.Entities.SousTache;
-import com.ProjectManagement.digitalis.Services.StServicesImpl;
+import com.ProjectManagement.digitalis.Controller.Request.GrandeTacheRequest;
+import com.ProjectManagement.digitalis.Controller.Request.SousTacheRequest;
+import com.ProjectManagement.digitalis.Entities.*;
+import com.ProjectManagement.digitalis.Exception.GtError;
+import com.ProjectManagement.digitalis.Exception.ProjetError;
+import com.ProjectManagement.digitalis.Exception.UserError;
+import com.ProjectManagement.digitalis.Repositories.UserRepository;
+import com.ProjectManagement.digitalis.Services.*;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,14 +22,53 @@ import java.util.Optional;
 @AllArgsConstructor
 @CrossOrigin(origins = "*")
 @RequestMapping("api/sous-tache")
-public class SousTacheCtrl {
+public class  SousTacheCtrl {
     @Autowired
     private final StServicesImpl stServicesImpl;
+
+    @Autowired
+    private GtServices gtServices;
+    @Autowired
+    private EvolutionServices evolutionServices;
+    @Autowired
+    private UserServices userServices;
+    @Autowired
+    private StServices stServices;
+
+
 
     @PostMapping("/créer")
     public ResponseEntity<SousTache> createSousTache(@RequestBody SousTache sousTache) {
         SousTache createdSousTache = stServicesImpl.saveSt(sousTache);
         return new ResponseEntity<>(createdSousTache, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/save")
+    public SousTache sousTacheSave(@RequestBody SousTacheRequest st) throws GtError, UserError {
+
+        SousTache st1 = new SousTache();
+
+        st1.setNumeroSt(st.getNumeroSt());
+        st1.setTacheSt(st.getTacheSt());
+        st1.setChargesSt(st.getChargesSt());
+        st1.setDateDeDebutSt(st.getDateDeDebutSt());
+        st1.setDateDeFinSt(st.getDateDeFinSt());
+        st1.setDateDeFinReelleSt(st.getDateDeFinReelleSt());
+        st1.setEvolutionSt(st.getEvolutionSt());
+        st1.setSurchargesGt(st.getSurchargesGt());
+        st1.setRemarquesGt(st.getRemarquesGt());
+
+        GrandeTache grandeTache = gtServices.getGt(st.getGt());
+        st1.setGt(grandeTache);
+
+        Evolution evolution = evolutionServices.getTraitement(st.getEvolution()).get();
+        st1.setTraitement(evolution);
+
+        User user = userServices.getUser(st.getUser());
+        st1.setUser(user);
+
+
+        return stServices.saveSt(st1);
     }
 
     // Endpoint pour récupérer une sous-tâche par son ID
@@ -36,7 +81,7 @@ public class SousTacheCtrl {
 
     // Endpoint pour modifier une sous-tâche existante
     @PutMapping("/edit/{idSt}")
-    public ResponseEntity<SousTache> updateSousTache(@PathVariable Long idSt, @RequestBody SousTache sousTache) {
+    public ResponseEntity<SousTache> updateSousTache(@PathVariable Long idSt, @RequestBody SousTacheRequest sousTache) {
         try {
             SousTache updatedSousTache = stServicesImpl.editSt(idSt, sousTache);
             return new ResponseEntity<>(updatedSousTache, HttpStatus.OK);

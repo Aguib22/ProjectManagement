@@ -1,5 +1,6 @@
 package com.ProjectManagement.digitalis.Services;
 
+import com.ProjectManagement.digitalis.Controller.Request.GrandeTacheRequest;
 import com.ProjectManagement.digitalis.Entities.GrandeTache;
 import com.ProjectManagement.digitalis.Exception.GtError;
 
@@ -9,7 +10,7 @@ public interface GtServices {
 
     GrandeTache saveGt(GrandeTache gt) throws GtError;
 
-    GrandeTache editGt(Long idGt, GrandeTache gt)throws GtError;
+    GrandeTache editGt(Long idGt, GrandeTacheRequest gt)throws GtError;
 
     GrandeTache getGt(Long idGt)throws GtError;
 

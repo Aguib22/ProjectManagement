@@ -1,6 +1,7 @@
 package com.ProjectManagement.digitalis.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class Evolution {
     private List<SousTache> listSt;*/
 
     @OneToMany(mappedBy = "traitement") // "traitement" est le nom de l'attribut dans la classe SousTache
+    @JsonIgnore
     private List<SousTache> listSt;
 
 }

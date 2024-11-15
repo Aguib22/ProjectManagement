@@ -1,6 +1,9 @@
-package com.ProjectManagement.digitalis.Entities;
+package com.ProjectManagement.digitalis.Controller.Request;
 
 
+import com.ProjectManagement.digitalis.Entities.Reunion;
+import com.ProjectManagement.digitalis.Entities.Role;
+import com.ProjectManagement.digitalis.Entities.SousTache;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -15,38 +18,17 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class User {
+public class UserRequest {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUser;
-
-    @Column(unique = true, length = 32, nullable = false)
     private Long matriculeUser;
     private String prenomUser;
     private String nomUser;
     private int numeroUser;
-    @Column(unique = true, length = 100, nullable = false)
     private String mailUser;
-
-    @Column(nullable = false)
     private String password;
-    @CreationTimestamp
-    @Column(updatable = false)
     private LocalDateTime createdAt;
-
-    @UpdateTimestamp
     private LocalDateTime updatedAt;
+    private String role;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
-
-    @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    private List<SousTache> listSt;
-
-    @ManyToOne
-    @JoinColumn(name = "reunion")
-    private Reunion reunion;
+    private Long idReunion;
 }

@@ -1,8 +1,11 @@
 package com.ProjectManagement.digitalis.Services;
 
+import com.ProjectManagement.digitalis.Controller.Request.GrandeTacheRequest;
 import com.ProjectManagement.digitalis.Entities.GrandeTache;
+import com.ProjectManagement.digitalis.Entities.Projet;
 import com.ProjectManagement.digitalis.Repositories.GtRepository;
 import com.ProjectManagement.digitalis.Exception.GtError;
+import com.ProjectManagement.digitalis.Repositories.ProjetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +18,9 @@ public class GtServicesImpl implements GtServices{
     @Autowired
     private GtRepository gtRepository;
 
+    @Autowired
+    private ProjetRepository projetRepository;
+
 
 
     @Override
@@ -26,7 +32,7 @@ public class GtServicesImpl implements GtServices{
     }
 
     @Override
-    public GrandeTache editGt(Long idGt, GrandeTache gt) throws GtError{
+    public GrandeTache editGt(Long idGt, GrandeTacheRequest gt) throws GtError{
         Optional<GrandeTache> optionalGt = gtRepository.findById(idGt);
         if(optionalGt.isEmpty()){
             throw new GtError("La grande tache à modifier n'existe pas");
@@ -39,6 +45,9 @@ public class GtServicesImpl implements GtServices{
         gt1.setDateDeFinGt(gt.getDateDeFinGt());
         gt1.setDateDeFinReelleGt(gt.getDateDeFinReelleGt());
         gt1.setEvolutionGt(gt.getEvolutionGt());
+
+        Projet projet = projetRepository.findById(gt.getProjet()).get();
+        gt1.setProjet(projet);
 
         return gtRepository.save(gt1);
     }
@@ -54,9 +63,7 @@ public class GtServicesImpl implements GtServices{
 
     @Override
     public List<GrandeTache> listGt() throws GtError{
-        if(listGt().isEmpty()){
-            throw new GtError("La liste des Grande tache est vide");
-        }
+
         return gtRepository.findAll();
     }
 
