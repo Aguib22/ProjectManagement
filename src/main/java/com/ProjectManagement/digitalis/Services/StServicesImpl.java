@@ -1,10 +1,14 @@
 package com.ProjectManagement.digitalis.Services;
 
-import com.ProjectManagement.digitalis.Entities.SousTache;
-import com.ProjectManagement.digitalis.Repositories.StRepository;
+import com.ProjectManagement.digitalis.Controller.Request.SousTacheRequest;
+import com.ProjectManagement.digitalis.Entities.*;
+import com.ProjectManagement.digitalis.Exception.GtError;
+import com.ProjectManagement.digitalis.Repositories.*;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,7 +16,19 @@ import java.util.Optional;
 @AllArgsConstructor
 public class StServicesImpl implements StServices {
 
-    private final StRepository stRepository;
+    @Autowired
+    private StRepository stRepository;
+
+    @Autowired
+    private GtRepository gtRepository;
+
+    @Autowired
+    private EvolutionRepository evolutionRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+
     @Override
     public SousTache saveSt(SousTache st) {
         return stRepository.save(st);
@@ -24,21 +40,33 @@ public class StServicesImpl implements StServices {
     }
 
     @Override
-    public SousTache editSt(Long idSt, SousTache st) {
-        return stRepository.findById(idSt).map(
-                sousTache -> {
-                    sousTache.setGt(sousTache.getGt());
-                    sousTache.setNumeroSt(st.getNumeroSt());
-                    sousTache.setTacheSt(st.getTacheSt());
-                    sousTache.setDateDeDebutSt(st.getDateDeDebutSt());
-                    sousTache.setDateDeFinSt(st.getDateDeFinSt());
-                    sousTache.setDateDeFinReelleSt(st.getDateDeFinReelleSt());
-                    sousTache.setSurchargesGt(st.getSurchargesGt());
-                    sousTache.setRemarquesGt(st.getRemarquesGt());
+    public SousTache editSt(Long idSt, SousTacheRequest st) {
+        Optional<SousTache> optionalSt = stRepository.findById(idSt);
+        if(optionalSt.isEmpty()){
+            //throw new RuntimeException("La grande tache à modifier n'existe pas");
+        }
 
+        SousTache st1 = optionalSt.get();
+        st1.setNumeroSt(st.getNumeroSt());
+        st1.setTacheSt(st.getTacheSt());
+        st1.setChargesSt(st.getChargesSt());
+        st1.setDateDeDebutSt(st.getDateDeDebutSt());
+        st1.setDateDeFinSt(st.getDateDeFinSt());
+        st1.setDateDeFinReelleSt(st.getDateDeFinReelleSt());
+        st1.setEvolutionSt(st.getEvolutionSt());
+        st1.setSurchargesGt(st.getSurchargesGt());
+        st1.setRemarquesGt(st.getRemarquesGt());
 
-                    return stRepository.save(sousTache);
-                }).orElseThrow(()->new RuntimeException("Erreur de modification!") );
+        GrandeTache grandeTache = gtRepository.findById(st.getGt()).get();
+        st1.setGt(grandeTache);
+
+        Evolution evolution = evolutionRepository.findById(st.getEvolution()).get();
+        st1.setTraitement(evolution);
+
+        User user = userRepository.findById(st.getUser()).get();
+        st1.setUser(user);
+
+        return stRepository.save(st1);
     }
 
     @Override

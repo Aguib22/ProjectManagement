@@ -30,6 +30,12 @@ public class GlobalExceptionHandler {
         return ex.getMessage();
     }
 
+    @ExceptionHandler(UserError.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String onUserError(RuntimeException ex){
+        return ex.getMessage();
+    }
 
     @ExceptionHandler(RuntimeException.class)
     @ResponseBody
@@ -37,4 +43,6 @@ public class GlobalExceptionHandler {
     public String onRuntime(RuntimeException ex){
         return ex.getMessage();
     }
+
+
 }

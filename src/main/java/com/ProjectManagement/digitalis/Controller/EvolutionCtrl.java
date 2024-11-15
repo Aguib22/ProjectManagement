@@ -11,15 +11,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@RestController
 @RequestMapping("api/evolution")
 @AllArgsConstructor
 public class EvolutionCtrl {
 
     private final EvolutionServicesImpl evolutionServices;
 
+
+    @PostMapping("/save")
+    public Evolution saveEvolution(@RequestBody Evolution evolution){
+        return evolutionServices.saveTraitement(evolution);
+    }
+
     // Endpoint pour récupérer une évolution par ID
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity<Evolution> getEvolutionById(@PathVariable Long id) {
         Optional<Evolution> evolution = evolutionServices.getTraitement(id);
         return evolution.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
@@ -27,7 +33,7 @@ public class EvolutionCtrl {
     }
 
     // Endpoint pour mettre à jour une évolution par ID
-    @PutMapping("/{id}")
+    @PutMapping("/edit/{id}")
     public ResponseEntity<Evolution> updateEvolution(@PathVariable Long id, @RequestBody Evolution evolution) {
         try {
             Evolution updatedEvolution = evolutionServices.editTraitement(id, evolution);
@@ -38,14 +44,14 @@ public class EvolutionCtrl {
     }
 
     // Endpoint pour lister toutes les évolutions
-    @GetMapping
+    @GetMapping("/get/liste")
     public ResponseEntity<List<Evolution>> getAllEvolutions() {
         List<Evolution> evolutions = evolutionServices.listTraitement();
         return new ResponseEntity<>(evolutions, HttpStatus.OK);
     }
 
     // Endpoint pour supprimer une évolution par ID
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteEvolution(@PathVariable Long id) {
         try {
             evolutionServices.deleteTraitement(id);
