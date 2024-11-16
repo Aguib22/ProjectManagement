@@ -1,4 +1,4 @@
-package com.ProjectManagement.digitalis.Controller.Request;
+package com.ProjectManagement.digitalis.dto;
 
 import com.ProjectManagement.digitalis.Entities.Projet;
 import com.fasterxml.jackson.annotation.JsonFormat;

@@ -1,6 +1,6 @@
 package com.ProjectManagement.digitalis.Controller;
 
-import com.ProjectManagement.digitalis.Controller.Request.GrandeTacheRequest;
+import com.ProjectManagement.digitalis.dto.GrandeTacheRequest;
 import com.ProjectManagement.digitalis.Entities.GrandeTache;
 import com.ProjectManagement.digitalis.Entities.Projet;
 import com.ProjectManagement.digitalis.Exception.GtError;
@@ -8,10 +8,8 @@ import com.ProjectManagement.digitalis.Exception.ProjetError;
 import com.ProjectManagement.digitalis.Services.GtServices;
 import com.ProjectManagement.digitalis.Services.ProjetServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 

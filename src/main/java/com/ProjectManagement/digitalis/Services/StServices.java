@@ -1,6 +1,6 @@
 package com.ProjectManagement.digitalis.Services;
 
-import com.ProjectManagement.digitalis.Controller.Request.SousTacheRequest;
+import com.ProjectManagement.digitalis.dto.SousTacheRequest;
 import com.ProjectManagement.digitalis.Entities.SousTache;
 
 import java.util.List;
