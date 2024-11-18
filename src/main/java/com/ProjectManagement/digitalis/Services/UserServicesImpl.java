@@ -87,7 +87,9 @@ public class UserServicesImpl implements UserServices {
         user.setNumeroUser(userRequest.getNumeroUser());
         user.setMailUser(userRequest.getMailUser());
         user.setPassword(userRequest.getPassword());
-        user.setCreatedAt(user.getCreatedAt());
+
+        String hasPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hasPassword);
 
         user.setRole(Role.valueOf(userRequest.getRole()));
 
