@@ -3,6 +3,7 @@ package com.ProjectManagement.digitalis.Services;
 import com.ProjectManagement.digitalis.dto.SousTacheRequest;
 import com.ProjectManagement.digitalis.Entities.*;
 import com.ProjectManagement.digitalis.Repositories.*;
+import com.ProjectManagement.digitalis.dto.StUpdateRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,9 +28,33 @@ public class StServicesImpl implements StServices {
     private UserRepository userRepository;
 
 
+
+
     @Override
-    public SousTache saveSt(SousTache st) {
-        return stRepository.save(st);
+    public SousTache saveSousTache(SousTacheRequest sousTacheRequest) {
+        SousTache sousTache = new SousTache();
+
+        // Remplir les champs de la sous-tâche
+        sousTache.setNumeroSt(sousTacheRequest.getNumeroSt());
+        sousTache.setTacheSt(sousTacheRequest.getTacheSt());
+        sousTache.setChargesSt(sousTacheRequest.getChargesSt());
+        sousTache.setDateDeDebutSt(sousTacheRequest.getDateDeDebutSt());
+        sousTache.setDateDeFinSt(sousTacheRequest.getDateDeFinSt());
+
+
+        // Récupérer et associer les entités liées
+        GrandeTache grandeTache = gtRepository.findById(sousTacheRequest.getIdGt())
+                .orElseThrow(() -> new RuntimeException("Grande Tâche non trouvée"));
+        Evolution evolution = evolutionRepository.findById(sousTacheRequest.getIdEvolution())
+                .orElseThrow(() -> new RuntimeException("Évolution non trouvée"));
+        User user = userRepository.findById(sousTacheRequest.getIdUser())
+                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
+
+        sousTache.setGt(grandeTache);
+        sousTache.setTraitement(evolution);
+        sousTache.setUser(user);
+
+        return stRepository.save(sousTache);
     }
 
     @Override
@@ -38,34 +63,43 @@ public class StServicesImpl implements StServices {
     }
 
     @Override
-    public SousTache editSt(Long idSt, SousTacheRequest st) {
-        Optional<SousTache> optionalSt = stRepository.findById(idSt);
-        if(optionalSt.isEmpty()){
-            //throw new RuntimeException("La grande tache à modifier n'existe pas");
+    public SousTache editSt(Long idSt, StUpdateRequest st) {
+        SousTache sousTache = stRepository.findById(idSt)
+                .orElseThrow(() -> new RuntimeException("Sous-tâche non trouvée"));
+
+        // Mise à jour des champs de la sous-tâche
+        sousTache.setNumeroSt(st.getNumeroSt());
+        sousTache.setTacheSt(st.getTacheSt());
+        sousTache.setChargesSt(st.getChargesSt());
+        sousTache.setDateDeDebutSt(st.getDateDeDebutSt());
+        sousTache.setDateDeFinSt(st.getDateDeFinSt());
+        sousTache.setEvolutionSt(st.getEvolutionSt());
+        sousTache.setDateDeFinReelleSt(st.getDateDeFinReelleSt());
+        sousTache.setSurchargesGt(st.getSurchargesGt());
+        sousTache.setRemarquesGt(st.getRemarquesGt());
+
+        // Mise à jour des relations avec les entités liées
+        if (st.getIdGt() != null) {
+            GrandeTache grandeTache = gtRepository.findById(st.getIdGt())
+                    .orElseThrow(() -> new RuntimeException("Grande Tâche non trouvée"));
+            sousTache.setGt(grandeTache);
         }
 
-        SousTache st1 = optionalSt.get();
-        st1.setNumeroSt(st.getNumeroSt());
-        st1.setTacheSt(st.getTacheSt());
-        st1.setChargesSt(st.getChargesSt());
-        st1.setDateDeDebutSt(st.getDateDeDebutSt());
-        st1.setDateDeFinSt(st.getDateDeFinSt());
-        st1.setDateDeFinReelleSt(st.getDateDeFinReelleSt());
-        st1.setEvolutionSt(st.getEvolutionSt());
-        st1.setSurchargesGt(st.getSurchargesGt());
-        st1.setRemarquesGt(st.getRemarquesGt());
+        if (st.getIdEvolution() != null) {
+            Evolution evolution = evolutionRepository.findById(st.getIdEvolution())
+                    .orElseThrow(() -> new RuntimeException("Évolution non trouvée"));
+            sousTache.setTraitement(evolution);
+        }
 
-        GrandeTache grandeTache = gtRepository.findById(st.getIdGt()).get();
-        st1.setGt(grandeTache);
+        if (st.getIdUser() != null) {
+            User user = userRepository.findById(st.getIdUser())
+                    .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
+            sousTache.setUser(user);
+        }
 
-        Evolution evolution = evolutionRepository.findById(st.getIdTraitement()).get();
-        st1.setTraitement(evolution);
-
-        User user = userRepository.findById(st.getIdUser()).get();
-        st1.setUser(user);
-
-        return stRepository.save(st1);
+        return stRepository.save(sousTache);
     }
+
 
     @Override
     public List<SousTache> listSt() {
