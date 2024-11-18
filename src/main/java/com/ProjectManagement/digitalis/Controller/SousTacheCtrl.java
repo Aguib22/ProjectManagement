@@ -1,6 +1,9 @@
 package com.ProjectManagement.digitalis.Controller;
 
 
+import com.ProjectManagement.digitalis.Repositories.EvolutionRepository;
+import com.ProjectManagement.digitalis.Repositories.GtRepository;
+import com.ProjectManagement.digitalis.Repositories.UserRepository;
 import com.ProjectManagement.digitalis.dto.SousTacheRequest;
 import com.ProjectManagement.digitalis.Entities.*;
 import com.ProjectManagement.digitalis.Services.*;
@@ -21,6 +24,9 @@ public class  SousTacheCtrl {
     @Autowired
     private final StServicesImpl stServicesImpl;
 
+    private final GtRepository gtRepository;
+    private final UserRepository userRepository;
+    private final EvolutionRepository evolutionRepository;
     @Autowired
     private GtServices gtServices;
     @Autowired
@@ -33,10 +39,39 @@ public class  SousTacheCtrl {
 
 
     @PostMapping("/save")
-    public ResponseEntity<SousTache> createSousTache(@RequestBody SousTache sousTache) {
-        SousTache createdSousTache = stServicesImpl.saveSt(sousTache);
-        return new ResponseEntity<>(createdSousTache, HttpStatus.CREATED);
+    public ResponseEntity<?> createSousTache(@RequestBody SousTacheRequest sousTacheRequest) {
+        try {
+
+            SousTache sousTache = new SousTache();
+
+            sousTache.setNumeroSt(sousTacheRequest.getNumeroSt());
+            sousTache.setTacheSt(sousTacheRequest.getTacheSt());
+            sousTache.setChargesSt(sousTacheRequest.getChargesSt());
+            sousTache.setDateDeDebutSt(sousTacheRequest.getDateDeDebutSt());
+            sousTache.setDateDeFinSt(sousTacheRequest.getDateDeFinSt());
+
+
+            sousTache.setRemarquesGt(sousTacheRequest.getRemarquesGt());
+
+
+            sousTache.setGt(gtRepository.findById(sousTacheRequest.getIdGt())
+                    .orElseThrow(() -> new RuntimeException("GrandeTache introuvable")));
+            sousTache.setTraitement(evolutionRepository.findById(sousTacheRequest.getIdEvolution())
+                    .orElseThrow(() -> new RuntimeException("Evolution introuvable")));
+            sousTache.setUser(userRepository.findById(sousTacheRequest.getIdUser())
+                    .orElseThrow(() -> new RuntimeException("Utilisateur introuvable")));
+
+
+            SousTache savedSousTache = stServicesImpl.saveSt(sousTache);
+
+
+            return new ResponseEntity<>(savedSousTache, HttpStatus.CREATED);
+        } catch (RuntimeException e) {
+
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
+
 
     /*@PostMapping("/save")
     public SousTache sousTacheSave(@RequestBody SousTacheRequest st) throws GtError, UserError {

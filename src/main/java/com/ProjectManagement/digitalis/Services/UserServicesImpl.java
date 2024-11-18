@@ -1,8 +1,8 @@
 package com.ProjectManagement.digitalis.Services;
 
 import org.apache.commons.lang3.RandomStringUtils;
-import com.ProjectManagement.digitalis.Controller.Request.UserRequest;
-import com.ProjectManagement.digitalis.Entities.Reunion;
+
+
 import com.ProjectManagement.digitalis.Entities.Role;
 import com.ProjectManagement.digitalis.Entities.User;
 import com.ProjectManagement.digitalis.Exception.UserError;
@@ -73,7 +73,7 @@ public class UserServicesImpl implements UserServices {
         return userRepository.findByMailUser(loginRequest.getMailUser()).orElseThrow();
     }
 
-    public User editUser(Long idUser, UserRequest userRequest) throws UserError {
+    public User editUser(Long idUser, RegisterRequest userRequest) throws UserError {
         Optional<User> optionalUser = userRepository.findById(idUser);
         if (optionalUser.isEmpty()) {
             throw new UserError("L'utilisateur à modifier n'existe pas");
@@ -88,11 +88,11 @@ public class UserServicesImpl implements UserServices {
         user.setMailUser(userRequest.getMailUser());
         user.setPassword(userRequest.getPassword());
         user.setCreatedAt(user.getCreatedAt());
-        user.setUpdatedAt(userRequest.getUpdatedAt());
+
         user.setRole(Role.valueOf(userRequest.getRole()));
 
-        Reunion reunion = reunionRepository.findById(userRequest.getIdReunion()).get();
-        user.setReunion(reunion);
+
+
 
         return userRepository.save(user);
     }
