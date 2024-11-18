@@ -9,7 +9,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class StUpdateRequest {
 
-    private Long idSt; // Nécessaire pour identifier la sous-tâche à mettre à jour
+
     private int numeroSt;
     private String tacheSt;
     private Float chargesSt;
