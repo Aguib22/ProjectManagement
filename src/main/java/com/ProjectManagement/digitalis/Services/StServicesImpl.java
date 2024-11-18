@@ -55,13 +55,13 @@ public class StServicesImpl implements StServices {
         st1.setSurchargesGt(st.getSurchargesGt());
         st1.setRemarquesGt(st.getRemarquesGt());
 
-        GrandeTache grandeTache = gtRepository.findById(st.getGt()).get();
+        GrandeTache grandeTache = gtRepository.findById(st.getIdGt()).get();
         st1.setGt(grandeTache);
 
-        Evolution evolution = evolutionRepository.findById(st.getEvolution()).get();
+        Evolution evolution = evolutionRepository.findById(st.getIdTraitement()).get();
         st1.setTraitement(evolution);
 
-        User user = userRepository.findById(st.getUser()).get();
+        User user = userRepository.findById(st.getIdUser()).get();
         st1.setUser(user);
 
         return stRepository.save(st1);
