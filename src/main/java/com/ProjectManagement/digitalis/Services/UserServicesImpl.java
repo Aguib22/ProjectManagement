@@ -1,5 +1,6 @@
 package com.ProjectManagement.digitalis.Services;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import com.ProjectManagement.digitalis.Controller.Request.UserRequest;
 import com.ProjectManagement.digitalis.Entities.Reunion;
 import com.ProjectManagement.digitalis.Entities.Role;
@@ -49,7 +50,10 @@ public class UserServicesImpl implements UserServices {
         }
         User user = new User();
         BeanUtils.copyProperties(registerRequest,user);
-        String hasPassword = passwordEncoder.encode(registerRequest.getPassword());
+
+        String password = RandomStringUtils.randomAlphabetic(8);
+        registerRequest.setPassword(password);
+        String hasPassword = passwordEncoder.encode(password);
 
         user.setPassword(hasPassword);
         user.setRole(Role.valueOf(registerRequest.getRole()));

@@ -3,6 +3,7 @@ package com.ProjectManagement.digitalis.Controller;
 import com.ProjectManagement.digitalis.Controller.Request.UserRequest;
 import com.ProjectManagement.digitalis.Entities.User;
 import com.ProjectManagement.digitalis.Exception.UserError;
+import com.ProjectManagement.digitalis.Services.EmailService;
 import com.ProjectManagement.digitalis.Services.ReunionServices;
 import com.ProjectManagement.digitalis.Services.UserServices;
 import com.ProjectManagement.digitalis.Services.UserServicesImpl;
@@ -27,6 +28,7 @@ public class ApiUserController {
     @Autowired
     private UserServices userServices;
 
+    private final EmailService emailService;
     private final JwtUtilService jwtUtilService;
     private final UserServicesImpl userServiceImpl;
     @Autowired
@@ -57,6 +59,12 @@ public class ApiUserController {
         Boolean isUserCreate = userServiceImpl.registUser(registerRequest);
 
         if(isUserCreate){
+            emailService.sendMail(
+                    registerRequest.getMailUser(),
+                    "**Digitalis** creation de compte ",
+                    "Bonjour "+registerRequest.getNomUser()+" "+registerRequest.getPrenomUser()+
+                            " Votre compte de Digitalis ProjectManagement à bien été créer et voici vos identifiant de connexion \n"+
+                            registerRequest.getMailUser()+"\n" + registerRequest.getPassword());
             return new ResponseEntity(registerRequest, HttpStatus.CREATED);
         }else {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
