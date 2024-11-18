@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/gt")
 @CrossOrigin("*")
 public class ApiGtController {
 
@@ -23,7 +23,7 @@ public class ApiGtController {
     @Autowired
     private ProjetServices projetServices;
 
-    @PostMapping("/gt/save")
+    @PostMapping("/save")
     public GrandeTache grandeTacheSave(@RequestBody GrandeTacheRequest gt) throws GtError, ProjetError {
 
 
@@ -43,23 +43,23 @@ public class ApiGtController {
         return gtServices.saveGt(grandeTache);
     }
 
-    @GetMapping("/gt/get/{idGt}")
+    @GetMapping("/get/{idGt}")
     public GrandeTache getGt(@PathVariable Long idGt) throws GtError{
         return gtServices.getGt(idGt);
     }
 
-    @GetMapping("/gt/get/liste")
+    @GetMapping("/get/liste")
     public List<GrandeTache> listGt()throws GtError{
         return gtServices.listGt();
     }
 
-    @DeleteMapping("/gt/delete/{idGt}")
+    @DeleteMapping("/delete/{idGt}")
     public void deleteGt(@PathVariable Long idGt)throws GtError{
         gtServices.deleteGt(idGt);
     }
 
 
-    @PutMapping("/gt/edit/{idGt}")
+    @PutMapping("/edit/{idGt}")
     public GrandeTache editGt(@RequestBody GrandeTacheRequest grandeTache, @PathVariable Long idGt) throws GtError{
 
         return gtServices.editGt(idGt, grandeTache);

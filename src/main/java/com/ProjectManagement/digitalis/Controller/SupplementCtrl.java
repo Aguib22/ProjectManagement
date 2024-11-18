@@ -20,7 +20,7 @@ public class SupplementCtrl {
     @Autowired
     private SupplementServicesImpl supplementService;
 
-    @PostMapping("/create")
+    @PostMapping("/save")
     public ResponseEntity<Supplement> createSupplement(@RequestBody Supplement supplementRequest){
         Supplement supplement = supplementService.saveSupplement(supplementRequest);
 
