@@ -1,4 +1,4 @@
-package com.ProjectManagement.digitalis.Controller.Request;
+package com.ProjectManagement.digitalis.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.ProjectManagement.digitalis.Services;
 
-import com.ProjectManagement.digitalis.Controller.Request.GrandeTacheRequest;
+import com.ProjectManagement.digitalis.dto.GrandeTacheRequest;
 import com.ProjectManagement.digitalis.Entities.GrandeTache;
 import com.ProjectManagement.digitalis.Entities.Projet;
 import com.ProjectManagement.digitalis.Repositories.GtRepository;

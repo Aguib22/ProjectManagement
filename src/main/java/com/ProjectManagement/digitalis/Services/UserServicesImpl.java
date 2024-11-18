@@ -7,18 +7,21 @@ import com.ProjectManagement.digitalis.Entities.User;
 import com.ProjectManagement.digitalis.Exception.UserError;
 import com.ProjectManagement.digitalis.Repositories.ReunionRepository;
 import com.ProjectManagement.digitalis.Repositories.UserRepository;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import org.hibernate.annotations.UpdateTimestamp;
+import com.ProjectManagement.digitalis.dto.LoginRequest;
+import com.ProjectManagement.digitalis.dto.RegisterRequest;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UserServicesImpl implements UserServices {
 
     @Autowired
@@ -27,6 +30,10 @@ public class UserServicesImpl implements UserServices {
     @Autowired
     private ReunionRepository reunionRepository;
 
+    @Autowired
+    private final PasswordEncoder passwordEncoder;
+
+    private final AuthenticationManager authenticationManager;
     @Override
     public User saveUser(User user) throws UserError {
         if (user == null) {
@@ -36,6 +43,32 @@ public class UserServicesImpl implements UserServices {
     }
 
     @Override
+    public Boolean registUser(RegisterRequest registerRequest) {
+        if ( userRepository.existsByMailUser(registerRequest.getMailUser())){
+            return false;
+        }
+        User user = new User();
+        BeanUtils.copyProperties(registerRequest,user);
+        String hasPassword = passwordEncoder.encode(registerRequest.getPassword());
+
+        user.setPassword(hasPassword);
+        user.setRole(Role.valueOf(registerRequest.getRole()));
+
+        userRepository.save(user);
+
+        return true;
+    }
+
+    public User login(LoginRequest loginRequest){
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        loginRequest.getMailUser(),
+                        loginRequest.getPassword()
+                )
+        );
+        return userRepository.findByMailUser(loginRequest.getMailUser()).orElseThrow();
+    }
+
     public User editUser(Long idUser, UserRequest userRequest) throws UserError {
         Optional<User> optionalUser = userRepository.findById(idUser);
         if (optionalUser.isEmpty()) {

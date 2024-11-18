@@ -1,13 +1,8 @@
 package com.ProjectManagement.digitalis.Controller;
 
 
-import com.ProjectManagement.digitalis.Controller.Request.GrandeTacheRequest;
-import com.ProjectManagement.digitalis.Controller.Request.SousTacheRequest;
+import com.ProjectManagement.digitalis.dto.SousTacheRequest;
 import com.ProjectManagement.digitalis.Entities.*;
-import com.ProjectManagement.digitalis.Exception.GtError;
-import com.ProjectManagement.digitalis.Exception.ProjetError;
-import com.ProjectManagement.digitalis.Exception.UserError;
-import com.ProjectManagement.digitalis.Repositories.UserRepository;
 import com.ProjectManagement.digitalis.Services.*;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,13 +32,13 @@ public class  SousTacheCtrl {
 
 
 
-    @PostMapping("/créer")
+    @PostMapping("/save")
     public ResponseEntity<SousTache> createSousTache(@RequestBody SousTache sousTache) {
         SousTache createdSousTache = stServicesImpl.saveSt(sousTache);
         return new ResponseEntity<>(createdSousTache, HttpStatus.CREATED);
     }
 
-    @PostMapping("/save")
+    /*@PostMapping("/save")
     public SousTache sousTacheSave(@RequestBody SousTacheRequest st) throws GtError, UserError {
 
         SousTache st1 = new SousTache();
@@ -69,7 +64,7 @@ public class  SousTacheCtrl {
 
 
         return stServices.saveSt(st1);
-    }
+    }*/
 
     // Endpoint pour récupérer une sous-tâche par son ID
     @GetMapping("/get/{idSt}")
