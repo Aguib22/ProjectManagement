@@ -7,6 +7,7 @@ import com.ProjectManagement.digitalis.Repositories.UserRepository;
 import com.ProjectManagement.digitalis.dto.SousTacheRequest;
 import com.ProjectManagement.digitalis.Entities.*;
 import com.ProjectManagement.digitalis.Services.*;
+import com.ProjectManagement.digitalis.dto.StUpdateRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,37 +40,9 @@ public class  SousTacheCtrl {
 
 
     @PostMapping("/save")
-    public ResponseEntity<?> createSousTache(@RequestBody SousTacheRequest sousTacheRequest) {
-        try {
-
-            SousTache sousTache = new SousTache();
-
-            sousTache.setNumeroSt(sousTacheRequest.getNumeroSt());
-            sousTache.setTacheSt(sousTacheRequest.getTacheSt());
-            sousTache.setChargesSt(sousTacheRequest.getChargesSt());
-            sousTache.setDateDeDebutSt(sousTacheRequest.getDateDeDebutSt());
-            sousTache.setDateDeFinSt(sousTacheRequest.getDateDeFinSt());
-
-
-            sousTache.setRemarquesGt(sousTacheRequest.getRemarquesGt());
-
-
-            sousTache.setGt(gtRepository.findById(sousTacheRequest.getIdGt())
-                    .orElseThrow(() -> new RuntimeException("GrandeTache introuvable")));
-            sousTache.setTraitement(evolutionRepository.findById(sousTacheRequest.getIdEvolution())
-                    .orElseThrow(() -> new RuntimeException("Evolution introuvable")));
-            sousTache.setUser(userRepository.findById(sousTacheRequest.getIdUser())
-                    .orElseThrow(() -> new RuntimeException("Utilisateur introuvable")));
-
-
-            SousTache savedSousTache = stServicesImpl.saveSt(sousTache);
-
-
-            return new ResponseEntity<>(savedSousTache, HttpStatus.CREATED);
-        } catch (RuntimeException e) {
-
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<SousTache> saveSousTache(@RequestBody SousTacheRequest sousTacheRequest) {
+        SousTache sousTache = stServicesImpl.saveSousTache(sousTacheRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).body(sousTache);
     }
 
 
@@ -111,13 +84,12 @@ public class  SousTacheCtrl {
 
     // Endpoint pour modifier une sous-tâche existante
     @PutMapping("/edit/{idSt}")
-    public ResponseEntity<SousTache> updateSousTache(@PathVariable Long idSt, @RequestBody SousTacheRequest sousTache) {
-        try {
-            SousTache updatedSousTache = stServicesImpl.editSt(idSt, sousTache);
-            return new ResponseEntity<>(updatedSousTache, HttpStatus.OK);
-        } catch (RuntimeException e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<SousTache> updateSousTache(@PathVariable Long idSt, @RequestBody StUpdateRequest stUpdateRequest) {
+
+        SousTache sousTache = stServicesImpl.editSt(idSt,stUpdateRequest);
+        return ResponseEntity.ok(sousTache);
+
+
     }
 
     // Endpoint pour récupérer la liste de toutes les sous-tâches
