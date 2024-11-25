@@ -55,24 +55,24 @@ public class ApiUserController {
     }*/
 
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody RegisterRequest registerRequest){
+    public ResponseEntity<User> register(@RequestBody RegisterRequest registerRequest) {
         Boolean isUserCreate = userServiceImpl.registUser(registerRequest);
 
-        if(isUserCreate){
+        if (isUserCreate) {
             emailService.sendMail(
                     registerRequest.getMailUser(),
                     "**Digitalis** creation de compte ",
-                    "Bonjour "+registerRequest.getNomUser()+" "+registerRequest.getPrenomUser()+
-                            " Votre compte de Digitalis ProjectManagement à bien été créer et voici vos identifiants de connexion: \n Email: "+
-                            registerRequest.getMailUser()+"\n Password: " + registerRequest.getPassword());
+                    "Bonjour " + registerRequest.getNomUser() + " " + registerRequest.getPrenomUser() +
+                            " Votre compte de Digitalis ProjectManagement à bien été créer et voici vos identifiants de connexion: \n Email: " +
+                            registerRequest.getMailUser() + "\n Password: " + registerRequest.getPassword());
             return new ResponseEntity(registerRequest, HttpStatus.CREATED);
-        }else {
+        } else {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> userLogin(@RequestBody LoginRequest loginRequest){
+    public ResponseEntity<LoginResponse> userLogin(@RequestBody LoginRequest loginRequest) {
 
         User authentifedUser = userServiceImpl.login(loginRequest);
 
@@ -99,8 +99,9 @@ public class ApiUserController {
         userServices.deleteUser(idUser);
     }
 
-   /* @PutMapping("/edit/{idUser}")
+    @PutMapping("/edit/{idUser}")
     public User editUser(@RequestBody RegisterRequest registerRequest, @PathVariable Long idUser) throws UserError {
         return userServices.editUser(idUser, registerRequest);
-    }*/
+
+    }
 }

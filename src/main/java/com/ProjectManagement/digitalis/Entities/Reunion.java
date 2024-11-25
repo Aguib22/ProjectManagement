@@ -29,7 +29,7 @@ public class Reunion {
     private List<User> listUser;*/
 
     @OneToMany(mappedBy = "reunion")  // Relation inverse pour la liste des utilisateurs
-    @JsonIgnore
+
     private List<User> listUser;
 
 

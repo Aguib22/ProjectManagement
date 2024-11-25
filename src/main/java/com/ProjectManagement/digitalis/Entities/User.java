@@ -35,6 +35,11 @@ public class User implements UserDetails {
 
     @Column(nullable = false)
     private String password;
+
+
+    private String passwordResetToken;
+
+    private LocalDateTime expirePasswordResetToken;
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDateTime createdAt;
