@@ -93,14 +93,14 @@ public class  SousTacheCtrl {
     }
 
     // Endpoint pour récupérer la liste de toutes les sous-tâches
-    @GetMapping
+    @GetMapping("/get/liste")
     public ResponseEntity<List<SousTache>> getAllSousTaches() {
         List<SousTache> sousTaches = stServicesImpl.listSt();
         return new ResponseEntity<>(sousTaches, HttpStatus.OK);
     }
 
     // Endpoint pour supprimer une sous-tâche par son ID
-    @DeleteMapping("/del/{idSt}")
+    @DeleteMapping("/delete/{idSt}")
     public ResponseEntity<String> deleteSousTache(@PathVariable Long idSt) {
         try {
             stServicesImpl.deleteSt(idSt);

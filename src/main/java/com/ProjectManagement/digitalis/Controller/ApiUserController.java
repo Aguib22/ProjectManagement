@@ -34,26 +34,6 @@ public class ApiUserController {
     @Autowired
     private ReunionServices reunionServices;
 
-   /* @PostMapping("/save")
-    public User saveUser(@RequestBody UserRequest userRequest) throws UserError, ReunionError {
-
-        User user = new User();
-        user.setMatriculeUser(userRequest.getMatriculeUser());
-        user.setPrenomUser(userRequest.getPrenomUser());
-        user.setNomUser(userRequest.getNomUser());
-        user.setNumeroUser(userRequest.getNumeroUser());
-        user.setMailUser(userRequest.getMailUser());
-        user.setPassword(userRequest.getPassword());
-        user.setCreatedAt(user.getCreatedAt());
-        user.setUpdatedAt(userRequest.getUpdatedAt());
-        user.setRole(Role.valueOf(userRequest.getRole()));
-
-        Reunion reunion = reunionServices.getReunion(userRequest.getIdReunion());
-        user.setReunion(reunion);
-
-        return userServices.saveUser(user);
-    }*/
-
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody RegisterRequest registerRequest) {
         Boolean isUserCreate = userServiceImpl.registUser(registerRequest);

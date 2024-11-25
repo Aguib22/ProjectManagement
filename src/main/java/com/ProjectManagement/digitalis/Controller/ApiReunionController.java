@@ -10,34 +10,34 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/reunion")
 @CrossOrigin
 public class ApiReunionController {
 
     @Autowired
     private ReunionServices reunionServices;
 
-    @PostMapping("/reunion/save")
+    @PostMapping("/save")
     public Reunion saveReunion(@RequestBody Reunion reunion)throws ReunionError {
         return reunionServices.saveReunion(reunion);
     }
 
-    @GetMapping("/reunion/get/{idReunion}")
+    @GetMapping("/get/{idReunion}")
     public Reunion getReunion(@PathVariable Long idReunion) throws ReunionError{
         return reunionServices.getReunion(idReunion);
     }
 
-    @GetMapping("/reunion/get/liste")
+    @GetMapping("/get/liste")
     public List<Reunion> listReunion(){
         return reunionServices.listReunion();
     }
 
-    @DeleteMapping("/reunion/delete/{idReunion}")
+    @DeleteMapping("/delete/{idReunion}")
     public void deleteReunion(@PathVariable Long idReunion) throws ReunionError{
         reunionServices.deleteReunion(idReunion);
     }
 
-    @PutMapping("/reunion/edit/{idReunion}")
+    @PutMapping("/edit/{idReunion}")
     public Reunion editReunion(@PathVariable Long idReunion, @RequestBody Reunion reunion) throws ReunionError{
         return reunionServices.editReunion(idReunion, reunion);
     }

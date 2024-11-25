@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/projet")
 @CrossOrigin
 public class ApiProjetController {
 
@@ -17,27 +17,27 @@ public class ApiProjetController {
     private ProjetServices projetServices;
 
 
-    @PostMapping("/projet/save")
+    @PostMapping("/save")
     public Projet projetSave(@RequestBody Projet projet)throws ProjetError {
         return projetServices.saveProjet(projet);
     }
 
-    @GetMapping("/projet/get/{idProjet}")
+    @GetMapping("get/{idProjet}")
     public Projet getProjet(@PathVariable Long idProjet) throws ProjetError{
         return projetServices.getProjet(idProjet);
     }
 
-    @GetMapping("/projet/get/liste")
+    @GetMapping("get/liste")
     public List<Projet> listProjet(){
         return projetServices.listProjet();
     }
 
-    @DeleteMapping("/projet/delete/{idProjet}")
+    @DeleteMapping("delete/{idProjet}")
     public void deleteProjet(@PathVariable Long idProjet) throws ProjetError{
         projetServices.deleteProjet(idProjet);
     }
 
-    @PutMapping("/projet/edit/{idProjet}")
+    @PutMapping("edit/{idProjet}")
     public Projet editProjet(@PathVariable Long idProjet, @RequestBody Projet projet) throws ProjetError{
         return projetServices.editProjet(idProjet, projet);
     }

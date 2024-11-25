@@ -19,8 +19,6 @@ public class Evolution {
     private Long idTraitement;
     private String evolution;
 
-   /* @OneToMany(mappedBy = "SousTache")
-    private List<SousTache> listSt;*/
 
     @OneToMany(mappedBy = "traitement") // "traitement" est le nom de l'attribut dans la classe SousTache
     @JsonIgnore

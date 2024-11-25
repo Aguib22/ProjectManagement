@@ -14,22 +14,6 @@ import java.util.Date;
 @NoArgsConstructor
 public class SousTacheRequest {
 
-  /*  private int numeroSt;
-    private String tacheSt;
-    private Float chargesSt;
-    private Date dateDeDebutSt;
-    private Date dateDeFinSt;
-    private String evolutionSt;
-    private Date dateDeFinReelleSt;
-
-    private Float surchargesGt;
-    private String remarquesGt;
-
-    private Long gt;
-
-    private Long evolution;
-
-    private Long user;*/
 
     private int numeroSt;
     private String tacheSt;

@@ -25,8 +25,6 @@ public class Projet {
     private Date dateDebutProjet;
     private Date dateFinProject;
 
-    /*@OneToMany(mappedBy = "GrandeTache")
-    private List<GrandeTache> listGt;*/
 
     @OneToMany(mappedBy = "projet")
     @JsonIgnore

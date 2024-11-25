@@ -30,11 +30,13 @@ public class User implements UserDetails {
     private String prenomUser;
     private String nomUser;
     private int numeroUser;
+
     @Column(unique = true, length = 100, nullable = false)
     private String mailUser;
 
     @Column(nullable = false)
     private String password;
+
 
 
     private String passwordResetToken;
@@ -57,6 +59,10 @@ public class User implements UserDetails {
     @ManyToOne
     @JoinColumn(name = "reunion",nullable = true)
     private Reunion reunion;
+
+    @ManyToOne
+    @JoinColumn(name = "idUserService", nullable = false)
+    private UserService userService;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
