@@ -48,7 +48,7 @@ public class PasswordRestService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
         message.setSubject("Recupération de mot de passe");
-        message.setText("Cliquer sur ce lien ci-dessous pour modifier réccuperer votre mot de passe: \n" + urlReset);
+        message.setText("Cliquer sur ce lien ci-dessous pour modifier votre mot de passe: \n" + urlReset);
         javaMailSender.send(message);
     }
 
