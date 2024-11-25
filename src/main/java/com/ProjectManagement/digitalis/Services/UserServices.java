@@ -13,8 +13,6 @@ public interface UserServices {
 
     Boolean registUser(RegisterRequest registerRequest) ;
 
-
-
     User editUser(Long idUser, RegisterRequest userRequest) throws UserError;
 
     User getUser(Long idUser) throws UserError;
