@@ -42,7 +42,7 @@ public class UserviceCtrl {
     }
 
     @GetMapping("/get/all")
-    public ResponseEntity<List<UserService>>getAllService(){
+    public ResponseEntity<List<UserService>> getAllService(){
         List<UserService> allDirections = uService.getAllService();
 
         return new ResponseEntity<>(allDirections,HttpStatus.OK);

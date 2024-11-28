@@ -1,5 +1,6 @@
 package com.ProjectManagement.digitalis.dto;
 
+import com.ProjectManagement.digitalis.Entities.UserService;
 import lombok.Data;
 
 @Data
@@ -12,4 +13,5 @@ public class RegisterRequest {
     private String mailUser;
     private String password;
     private String role;
+    private UserService service;
 }
