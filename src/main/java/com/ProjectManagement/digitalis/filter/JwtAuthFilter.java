@@ -2,7 +2,7 @@ package com.ProjectManagement.digitalis.filter;
 
 /*import com.springAuth.services.jwt.UserServiceImpl;
 import com.springAuth.utils.JwtUtilService;*/
-import com.ProjectManagement.digitalis.Services.jwt.UserServiceImpl;
+import com.ProjectManagement.digitalis.service.jwt.UserServiceImpl;
 import com.ProjectManagement.digitalis.utils.JwtUtilService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

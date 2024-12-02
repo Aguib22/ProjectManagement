@@ -1,9 +1,6 @@
 package com.ProjectManagement.digitalis.dto;
 
-import com.ProjectManagement.digitalis.Entities.Projet;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
