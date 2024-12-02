@@ -3,7 +3,7 @@ package com.ProjectManagement.digitalis.controller;
 
 import com.ProjectManagement.digitalis.entitie.Reunion;
 import com.ProjectManagement.digitalis.exception.ReunionError;
-import com.ProjectManagement.digitalis.service.ReunionServices;
+import com.ProjectManagement.digitalis.service.serviceIntreface.ReunionServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +14,13 @@ import java.util.List;
 @CrossOrigin
 public class ApiReunionController {
 
-    @Autowired
-    private ReunionServices reunionServices;
+    private final ReunionServices reunionServices;
+    public ApiReunionController(ReunionServices reunionServices) {
+        this.reunionServices = reunionServices;
+    }
+
+
+
 
     @PostMapping("/save")
     public Reunion saveReunion(@RequestBody Reunion reunion)throws ReunionError {

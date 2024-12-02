@@ -8,6 +8,10 @@ import com.ProjectManagement.digitalis.dto.SousTacheRequest;
 import com.ProjectManagement.digitalis.entitie.*;
 import com.ProjectManagement.digitalis.service.*;
 import com.ProjectManagement.digitalis.dto.StUpdateRequest;
+import com.ProjectManagement.digitalis.service.serviceIntreface.EvolutionServices;
+import com.ProjectManagement.digitalis.service.serviceIntreface.GtServices;
+import com.ProjectManagement.digitalis.service.serviceIntreface.StServices;
+import com.ProjectManagement.digitalis.service.serviceIntreface.UserServices;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,25 +22,30 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@AllArgsConstructor
 @CrossOrigin(origins = "*")
 @RequestMapping("api/sous-tache")
 public class  SousTacheCtrl {
-    @Autowired
     private final StServicesImpl stServicesImpl;
-
     private final GtRepository gtRepository;
     private final UserRepository userRepository;
     private final EvolutionRepository evolutionRepository;
-    @Autowired
-    private GtServices gtServices;
-    @Autowired
-    private EvolutionServices evolutionServices;
-    @Autowired
-    private UserServices userServices;
-    @Autowired
-    private StServices stServices;
+    private final GtServices gtServices;
 
+    private final EvolutionServices evolutionServices;
+    private final UserServices userServices;
+
+    private final StServices stServices;
+
+    public SousTacheCtrl(StServicesImpl stServicesImpl, GtRepository gtRepository, UserRepository userRepository, EvolutionRepository evolutionRepository, GtServices gtServices, EvolutionServices evolutionServices, UserServices userServices, StServices stServices) {
+        this.stServicesImpl = stServicesImpl;
+        this.gtRepository = gtRepository;
+        this.userRepository = userRepository;
+        this.evolutionRepository = evolutionRepository;
+        this.gtServices = gtServices;
+        this.evolutionServices = evolutionServices;
+        this.userServices = userServices;
+        this.stServices = stServices;
+    }
 
 
     @PostMapping("/save")

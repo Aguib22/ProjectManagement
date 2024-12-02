@@ -14,10 +14,9 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/direction")
 public class DirectionCtrl {
-    @Autowired
+
     private final DirectionService directionService;
 
     @PostMapping("/save")
@@ -30,6 +29,9 @@ public class DirectionCtrl {
         }
     }
 
+    public DirectionCtrl(DirectionService directionService) {
+        this.directionService = directionService;
+    }
 
     @GetMapping("/get/{id}")
     public ResponseEntity<Direction> getDirection(@PathVariable Long id){

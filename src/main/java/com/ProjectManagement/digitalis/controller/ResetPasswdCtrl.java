@@ -1,16 +1,18 @@
 package com.ProjectManagement.digitalis.controller;
 
 import com.ProjectManagement.digitalis.service.PasswordRestService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/password-reset")
 public class ResetPasswdCtrl {
 
     private final PasswordRestService passwordRestService;
+
+    public ResetPasswdCtrl(PasswordRestService passwordRestService) {
+        this.passwordRestService = passwordRestService;
+    }
 
     @PostMapping("/request")
     public ResponseEntity<String> requestPasswdReset(@RequestParam String email){

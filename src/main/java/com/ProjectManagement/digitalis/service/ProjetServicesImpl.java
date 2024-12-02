@@ -3,17 +3,21 @@ package com.ProjectManagement.digitalis.service;
 import com.ProjectManagement.digitalis.entitie.Projet;
 import com.ProjectManagement.digitalis.exception.ProjetError;
 import com.ProjectManagement.digitalis.repositorie.ProjetRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.ProjectManagement.digitalis.service.serviceIntreface.ProjetServices;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ProjetServicesImpl implements ProjetServices{
+public class ProjetServicesImpl implements ProjetServices {
 
-    @Autowired
-    private ProjetRepository projetRepository;
+
+    private final ProjetRepository projetRepository;
+
+    public ProjetServicesImpl(ProjetRepository projetRepository) {
+        this.projetRepository = projetRepository;
+    }
 
     @Override
     public Projet saveProjet(Projet projet) throws ProjetError {

@@ -2,6 +2,7 @@ package com.ProjectManagement.digitalis.service;
 
 import com.ProjectManagement.digitalis.entitie.UserService;
 import com.ProjectManagement.digitalis.repositorie.UserServiceRepository;
+import com.ProjectManagement.digitalis.service.serviceIntreface.UserServices;
 import org.apache.commons.lang3.RandomStringUtils;
 
 
@@ -24,19 +25,24 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
+
 public class UserServicesImpl implements UserServices {
 
-    @Autowired
-    private UserRepository userRepository;
+
+    private final UserRepository userRepository;
     private final UserServiceRepository userServiceRepository;
-    @Autowired
     private final ReunionRepository reunionRepository;
-
-    @Autowired
     private final PasswordEncoder passwordEncoder;
-
     private final AuthenticationManager authenticationManager;
+
+    public UserServicesImpl(UserRepository userRepository, UserServiceRepository userServiceRepository, ReunionRepository reunionRepository, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager) {
+        this.userRepository = userRepository;
+        this.userServiceRepository = userServiceRepository;
+        this.reunionRepository = reunionRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.authenticationManager = authenticationManager;
+    }
+
     @Override
     public User saveUser(User user) throws UserError {
         if (user == null) {

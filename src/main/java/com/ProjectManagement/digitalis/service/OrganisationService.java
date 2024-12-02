@@ -8,10 +8,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+
 public class OrganisationService {
 
     private final OrganisationRepository organisationRepository;
+
+    public OrganisationService(OrganisationRepository organisationRepository) {
+        this.organisationRepository = organisationRepository;
+    }
 
     public Organisation saveOrganisation(Organisation organisation){
         return organisationRepository.save(organisation);

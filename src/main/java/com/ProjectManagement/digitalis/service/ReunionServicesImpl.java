@@ -3,6 +3,7 @@ package com.ProjectManagement.digitalis.service;
 import com.ProjectManagement.digitalis.entitie.Reunion;
 import com.ProjectManagement.digitalis.exception.ReunionError;
 import com.ProjectManagement.digitalis.repositorie.ReunionRepository;
+import com.ProjectManagement.digitalis.service.serviceIntreface.ReunionServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,11 +11,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ReunionServicesImpl implements ReunionServices{
+public class ReunionServicesImpl implements ReunionServices {
 
 
-    @Autowired
+
     private ReunionRepository reunionRepository;
+
+    public ReunionServicesImpl(ReunionRepository reunionRepository) {
+        this.reunionRepository = reunionRepository;
+    }
 
     @Override
     public Reunion saveReunion(Reunion reunion) throws ReunionError {

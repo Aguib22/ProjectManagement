@@ -4,6 +4,7 @@ import com.ProjectManagement.digitalis.dto.SousTacheRequest;
 import com.ProjectManagement.digitalis.entitie.*;
 import com.ProjectManagement.digitalis.repositorie.*;
 import com.ProjectManagement.digitalis.dto.StUpdateRequest;
+import com.ProjectManagement.digitalis.service.serviceIntreface.StServices;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,22 +13,20 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
 public class StServicesImpl implements StServices {
 
-    @Autowired
-    private StRepository stRepository;
 
-    @Autowired
-    private GtRepository gtRepository;
+    private final StRepository stRepository;
+    private final GtRepository gtRepository;
+    private final EvolutionRepository evolutionRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private EvolutionRepository evolutionRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
-
+    public StServicesImpl(StRepository stRepository, GtRepository gtRepository, EvolutionRepository evolutionRepository, UserRepository userRepository) {
+        this.stRepository = stRepository;
+        this.gtRepository = gtRepository;
+        this.evolutionRepository = evolutionRepository;
+        this.userRepository = userRepository;
+    }
 
 
     @Override

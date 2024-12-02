@@ -16,17 +16,20 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor
 public class PasswordRestService {
-    @Autowired
+
     private final UserRepository userRepository;
-
     private final JavaMailSender javaMailSender;
-    @Autowired
     private final PasswordEncoder passwordEncoder;
-
     @Value("${app.resetPasswordUrl}")
     private String urlResetPasswd;
+
+    public PasswordRestService(UserRepository userRepository, JavaMailSender javaMailSender, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.javaMailSender = javaMailSender;
+        this.passwordEncoder = passwordEncoder;
+
+    }
 
     public void sendPasswrodResetToken(String email){
         Optional<User> optionalUser = userRepository.findByMailUser(email);

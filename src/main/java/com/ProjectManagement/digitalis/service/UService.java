@@ -12,14 +12,18 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class UService {
 
 
-    @Autowired
-    private final UserServiceRepository userServiceRepository;
 
+    private final UserServiceRepository userServiceRepository;
     private final DirectionRepository directionRepository;
+
+    public UService(UserServiceRepository userServiceRepository, DirectionRepository directionRepository) {
+        this.userServiceRepository = userServiceRepository;
+        this.directionRepository = directionRepository;
+    }
+
     public UserService save(ServiceDto userServiceDto) {
         UserService userService = new UserService();
         userService.setNomUserService(userServiceDto.getNomUserService());

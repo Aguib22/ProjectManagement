@@ -2,7 +2,7 @@ package com.ProjectManagement.digitalis.controller;
 
 import com.ProjectManagement.digitalis.entitie.Projet;
 import com.ProjectManagement.digitalis.exception.ProjetError;
-import com.ProjectManagement.digitalis.service.ProjetServices;
+import com.ProjectManagement.digitalis.service.serviceIntreface.ProjetServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,8 +13,12 @@ import java.util.List;
 @CrossOrigin
 public class ApiProjetController {
 
-    @Autowired
-    private ProjetServices projetServices;
+
+    private final ProjetServices projetServices;
+
+    public ApiProjetController(ProjetServices projetServices) {
+        this.projetServices = projetServices;
+    }
 
 
     @PostMapping("/save")

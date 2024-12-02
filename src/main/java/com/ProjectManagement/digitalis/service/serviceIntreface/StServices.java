@@ -1,4 +1,4 @@
-package com.ProjectManagement.digitalis.service;
+package com.ProjectManagement.digitalis.service.serviceIntreface;
 
 import com.ProjectManagement.digitalis.dto.SousTacheRequest;
 import com.ProjectManagement.digitalis.entitie.SousTache;

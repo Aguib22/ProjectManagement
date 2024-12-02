@@ -12,13 +12,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class DirectionService {
 
-    @Autowired
-    private final DirectionRepository directionRepository;
 
+    private final DirectionRepository directionRepository;
     private final OrganisationRepository organisationRepository;
+
+    public DirectionService(DirectionRepository directionRepository, OrganisationRepository organisationRepository) {
+        this.directionRepository = directionRepository;
+        this.organisationRepository = organisationRepository;
+    }
 
     public Direction save(DirectionDto directionDto){
         Direction direction = new Direction();

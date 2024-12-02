@@ -5,8 +5,8 @@ import com.ProjectManagement.digitalis.entitie.GrandeTache;
 import com.ProjectManagement.digitalis.entitie.Projet;
 import com.ProjectManagement.digitalis.exception.GtError;
 import com.ProjectManagement.digitalis.exception.ProjetError;
-import com.ProjectManagement.digitalis.service.GtServices;
-import com.ProjectManagement.digitalis.service.ProjetServices;
+import com.ProjectManagement.digitalis.service.serviceIntreface.GtServices;
+import com.ProjectManagement.digitalis.service.serviceIntreface.ProjetServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,10 +18,14 @@ import java.util.List;
 @CrossOrigin("*")
 public class ApiGtController {
 
-    @Autowired
-    private GtServices gtServices;
-    @Autowired
-    private ProjetServices projetServices;
+
+    private final GtServices gtServices;
+    private final ProjetServices projetServices;
+
+    public ApiGtController(GtServices gtServices, ProjetServices projetServices) {
+        this.gtServices = gtServices;
+        this.projetServices = projetServices;
+    }
 
     @PostMapping("/save")
     public GrandeTache grandeTacheSave(@RequestBody GrandeTacheRequest gt) throws GtError, ProjetError {

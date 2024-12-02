@@ -2,6 +2,7 @@ package com.ProjectManagement.digitalis.service;
 
 import com.ProjectManagement.digitalis.entitie.Supplement;
 import com.ProjectManagement.digitalis.repositorie.SupplementRepository;
+import com.ProjectManagement.digitalis.service.serviceIntreface.SupplementServices;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,11 +11,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
 public class SupplementServicesImpl implements SupplementServices {
 
-    @Autowired
+
     private final SupplementRepository supplementRepository;
+
+    public SupplementServicesImpl(SupplementRepository supplementRepository) {
+        this.supplementRepository = supplementRepository;
+    }
 
     @Override
     public Supplement saveSupplement(Supplement supplement) {

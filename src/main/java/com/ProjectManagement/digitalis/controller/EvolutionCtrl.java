@@ -12,11 +12,14 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/evolution")
-@AllArgsConstructor
+
 public class EvolutionCtrl {
 
     private final EvolutionServicesImpl evolutionServices;
 
+    public EvolutionCtrl(EvolutionServicesImpl evolutionServices) {
+        this.evolutionServices = evolutionServices;
+    }
 
     @PostMapping("/save")
     public Evolution saveEvolution(@RequestBody Evolution evolution){

@@ -11,11 +11,14 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/organisation")
 public class OrganisationCtrl {
 
     private final OrganisationService organisationService;
+
+    public OrganisationCtrl(OrganisationService organisationService) {
+        this.organisationService = organisationService;
+    }
 
     @PostMapping("/save")
     public ResponseEntity<Organisation> saveOrganisation(@RequestBody Organisation organisation){

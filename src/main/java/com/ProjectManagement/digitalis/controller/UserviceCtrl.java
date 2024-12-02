@@ -14,13 +14,15 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequiredArgsConstructor
+
 @RequestMapping("/api/service")
 public class UserviceCtrl {
 
-
-    @Autowired
     private final UService uService;
+
+    public UserviceCtrl(UService uService) {
+        this.uService = uService;
+    }
 
     @PostMapping("/save")
     public ResponseEntity<UserService> saveDirection(@RequestBody ServiceDto service){

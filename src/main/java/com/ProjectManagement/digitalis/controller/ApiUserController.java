@@ -4,8 +4,8 @@ package com.ProjectManagement.digitalis.controller;
 import com.ProjectManagement.digitalis.entitie.User;
 import com.ProjectManagement.digitalis.exception.UserError;
 import com.ProjectManagement.digitalis.service.EmailService;
-import com.ProjectManagement.digitalis.service.ReunionServices;
-import com.ProjectManagement.digitalis.service.UserServices;
+import com.ProjectManagement.digitalis.service.serviceIntreface.ReunionServices;
+import com.ProjectManagement.digitalis.service.serviceIntreface.UserServices;
 import com.ProjectManagement.digitalis.service.UserServicesImpl;
 import com.ProjectManagement.digitalis.dto.LoginRequest;
 import com.ProjectManagement.digitalis.dto.LoginResponse;
@@ -20,19 +20,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
+
 @RequestMapping("/api/user")
 @CrossOrigin("*")
 public class ApiUserController {
 
-    @Autowired
-    private UserServices userServices;
+
+    private final UserServices userServices;
 
     private final EmailService emailService;
     private final JwtUtilService jwtUtilService;
     private final UserServicesImpl userServiceImpl;
-    @Autowired
-    private ReunionServices reunionServices;
+
+    private final ReunionServices reunionServices;
+
+    public ApiUserController(UserServices userServices, EmailService emailService, JwtUtilService jwtUtilService, UserServicesImpl userServiceImpl, ReunionServices reunionServices) {
+        this.userServices = userServices;
+        this.emailService = emailService;
+        this.jwtUtilService = jwtUtilService;
+        this.userServiceImpl = userServiceImpl;
+        this.reunionServices = reunionServices;
+    }
 
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody RegisterRequest registerRequest) {

@@ -14,10 +14,13 @@ import java.util.List;
 @RequestMapping("/api/supplement")
 @CrossOrigin("*")
 public class SupplementCtrl {
+    private final SupplementServicesImpl supplementService;
+
+    public SupplementCtrl(SupplementServicesImpl supplementService) {
+        this.supplementService = supplementService;
+    }
 
 
-    @Autowired
-    private SupplementServicesImpl supplementService;
 
     @PostMapping("/save")
     public ResponseEntity<Supplement> createSupplement(@RequestBody Supplement supplementRequest){

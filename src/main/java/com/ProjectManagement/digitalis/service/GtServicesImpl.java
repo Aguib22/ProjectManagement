@@ -6,6 +6,7 @@ import com.ProjectManagement.digitalis.entitie.Projet;
 import com.ProjectManagement.digitalis.repositorie.GtRepository;
 import com.ProjectManagement.digitalis.exception.GtError;
 import com.ProjectManagement.digitalis.repositorie.ProjetRepository;
+import com.ProjectManagement.digitalis.service.serviceIntreface.GtServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,14 +14,16 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class GtServicesImpl implements GtServices{
+public class GtServicesImpl implements GtServices {
 
-    @Autowired
+
     private GtRepository gtRepository;
-
-    @Autowired
     private ProjetRepository projetRepository;
 
+    public GtServicesImpl(GtRepository gtRepository, ProjetRepository projetRepository) {
+        this.gtRepository = gtRepository;
+        this.projetRepository = projetRepository;
+    }
 
 
     @Override

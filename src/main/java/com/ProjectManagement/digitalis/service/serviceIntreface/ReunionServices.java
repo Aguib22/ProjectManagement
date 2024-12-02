@@ -1,4 +1,4 @@
-package com.ProjectManagement.digitalis.service;
+package com.ProjectManagement.digitalis.service.serviceIntreface;
 
 import com.ProjectManagement.digitalis.entitie.Reunion;
 import com.ProjectManagement.digitalis.exception.ReunionError;

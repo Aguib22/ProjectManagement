@@ -3,6 +3,7 @@ package com.ProjectManagement.digitalis.service;
 
 import com.ProjectManagement.digitalis.entitie.Evolution;
 import com.ProjectManagement.digitalis.repositorie.EvolutionRepository;
+import com.ProjectManagement.digitalis.service.serviceIntreface.EvolutionServices;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,9 +12,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
-public class EvolutionServicesImpl implements  EvolutionServices{
-    @Autowired
+public class EvolutionServicesImpl implements EvolutionServices {
+    public EvolutionServicesImpl(EvolutionRepository evolutionServices) {
+        this.evolutionServices = evolutionServices;
+    }
+
     private final EvolutionRepository evolutionServices;
 
 
