@@ -31,7 +31,8 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception {
         return security.csrf(csrf->csrf.disable())
                 .authorizeHttpRequests(
-                        auth->auth.requestMatchers("/api/**")
+                        auth->auth.requestMatchers("/api/**","/ws/**")
+
                                 .permitAll()
                                 .anyRequest().authenticated()
                 ).sessionManagement(session->
@@ -48,13 +49,13 @@ public class WebSecurityConfig {
     @Bean
     public UrlBasedCorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:4200")); // Autoriser l'origine Angular
+        configuration.setAllowedOrigins(List.of("*")); // Autoriser l'origine Angular
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(List.of("*"));
+        configuration.setAllowedHeaders(List.of("Sec-WebSocket-Version", "Sec-WebSocket-Key", "Connection", "Upgrade", "Sec-WebSocket-Extensions", "*"));
         configuration.setAllowCredentials(true); // Activer les cookies et les informations d'authentification
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/api/**", configuration);
+        source.registerCorsConfiguration("/**", configuration);
         return source;
     }
 
