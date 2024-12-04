@@ -5,8 +5,6 @@ import com.ProjectManagement.digitalis.entitie.*;
 import com.ProjectManagement.digitalis.repositorie.*;
 import com.ProjectManagement.digitalis.dto.StUpdateRequest;
 import com.ProjectManagement.digitalis.service.serviceIntreface.StServices;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,12 +18,14 @@ public class StServicesImpl implements StServices {
     private final GtRepository gtRepository;
     private final EvolutionRepository evolutionRepository;
     private final UserRepository userRepository;
+    private final NotificationService notificationService;
 
-    public StServicesImpl(StRepository stRepository, GtRepository gtRepository, EvolutionRepository evolutionRepository, UserRepository userRepository) {
+    public StServicesImpl(StRepository stRepository, GtRepository gtRepository, EvolutionRepository evolutionRepository, UserRepository userRepository, NotificationService notificationService) {
         this.stRepository = stRepository;
         this.gtRepository = gtRepository;
         this.evolutionRepository = evolutionRepository;
         this.userRepository = userRepository;
+        this.notificationService = notificationService;
     }
 
 
@@ -53,7 +53,11 @@ public class StServicesImpl implements StServices {
         sousTache.setTraitement(evolution);
         sousTache.setUser(user);
 
-        return stRepository.save(sousTache);
+        SousTache sousTacheSaved = stRepository.save(sousTache);
+
+        String notificatoionMsg = "Une nouvelle tâche vous a été assignée : "+ sousTache.getTacheSt();
+        notificationService.createNotifcation(notificatoionMsg,user.getIdUser());
+        return sousTacheSaved;
     }
 
     @Override
