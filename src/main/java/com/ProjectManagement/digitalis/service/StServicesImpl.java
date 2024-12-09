@@ -5,14 +5,15 @@ import com.ProjectManagement.digitalis.entitie.*;
 import com.ProjectManagement.digitalis.repositorie.*;
 import com.ProjectManagement.digitalis.dto.StUpdateRequest;
 import com.ProjectManagement.digitalis.service.serviceIntreface.StServices;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class StServicesImpl implements StServices {
-
 
     private final StRepository stRepository;
     private final GtRepository gtRepository;
@@ -28,18 +29,16 @@ public class StServicesImpl implements StServices {
         this.notificationService = notificationService;
     }
 
-
     @Override
     public SousTache saveSousTache(SousTacheRequest sousTacheRequest) {
-        SousTache sousTache = new SousTache();
+        log.info("Enregistrement d'une nouvelle sous-tâche : {}", sousTacheRequest.getTacheSt());
 
-        // Remplir les champs de la sous-tâche
+        SousTache sousTache = new SousTache();
         sousTache.setNumeroSt(sousTacheRequest.getNumeroSt());
         sousTache.setTacheSt(sousTacheRequest.getTacheSt());
         sousTache.setChargesSt(sousTacheRequest.getChargesSt());
         sousTache.setDateDeDebutSt(sousTacheRequest.getDateDeDebutSt());
         sousTache.setDateDeFinSt(sousTacheRequest.getDateDeFinSt());
-
 
         // Récupérer et associer les entités liées
         GrandeTache grandeTache = gtRepository.findById(sousTacheRequest.getIdGt())
@@ -55,18 +54,23 @@ public class StServicesImpl implements StServices {
 
         SousTache sousTacheSaved = stRepository.save(sousTache);
 
-        String notificatoionMsg = "Une nouvelle tâche vous a été assignée : "+ sousTache.getTacheSt();
-        notificationService.createNotifcation(notificatoionMsg,user.getIdUser());
+        String notificationMsg = "Une nouvelle tâche vous a été assignée : " + sousTache.getTacheSt();
+        notificationService.createNotifcation(notificationMsg, user.getIdUser());
+
+        log.info("Sous-tâche enregistrée avec succès : {}", sousTache.getTacheSt());
         return sousTacheSaved;
     }
 
     @Override
     public Optional<SousTache> getSt(Long idSt) {
+        log.info("Récupération de la sous-tâche avec l'ID : {}", idSt);
         return stRepository.findById(idSt);
     }
 
     @Override
     public SousTache editSt(Long idSt, StUpdateRequest st) {
+        log.info("Mise à jour de la sous-tâche avec l'ID : {}", idSt);
+
         SousTache sousTache = stRepository.findById(idSt)
                 .orElseThrow(() -> new RuntimeException("Sous-tâche non trouvée"));
 
@@ -100,23 +104,28 @@ public class StServicesImpl implements StServices {
             sousTache.setUser(user);
         }
 
-        return stRepository.save(sousTache);
-    }
+        SousTache sousTacheUpdated = stRepository.save(sousTache);
 
+        log.info("Sous-tâche mise à jour avec succès : {}", sousTacheUpdated.getTacheSt());
+        return sousTacheUpdated;
+    }
 
     @Override
     public List<SousTache> listSt() {
+        log.info("Récupération de la liste de toutes les sous-tâches");
         return stRepository.findAll();
     }
 
     @Override
     public void deleteSt(Long idSt) {
-        if(stRepository.existsById(idSt)){
+        log.info("Suppression de la sous-tâche avec l'ID : {}", idSt);
+
+        if (stRepository.existsById(idSt)) {
             stRepository.deleteById(idSt);
-        }else {
-
-            throw new RuntimeException("aucune sous tache corespondantes");
+            log.info("Sous-tâche supprimée avec succès : {}", idSt);
+        } else {
+            log.error("Aucune sous-tâche trouvée pour l'ID : {}", idSt);
+            throw new RuntimeException("Aucune sous-tâche correspondante");
         }
-
     }
 }
