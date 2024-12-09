@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface UserServices {
 
-    User saveUser(User user) throws UserError;
+
 
     Boolean registUser(RegisterRequest registerRequest) ;
 
