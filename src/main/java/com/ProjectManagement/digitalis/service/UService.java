@@ -84,4 +84,11 @@ public class UService {
         userServiceRepository.delete(service);
         log.info("Service supprimé avec succès avec l'ID : {}", id);
     }
+
+    public List<UserService> getServicesByDirection(Long directionId) {
+        Direction direction = directionRepository.findById(directionId)
+                .orElseThrow(() -> new RuntimeException("Direction introuvable pour l'ID : " + directionId));
+        return userServiceRepository.findByDirection(direction);
+    }
+
 }

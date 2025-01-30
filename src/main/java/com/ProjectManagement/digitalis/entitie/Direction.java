@@ -1,5 +1,6 @@
 package com.ProjectManagement.digitalis.entitie;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,9 +22,11 @@ public class Direction {
 
     @ManyToOne
     @JoinColumn(name = "organisation", nullable = false)
+    @JsonBackReference
     private Organisation organisation;
 
     @OneToMany(mappedBy = "direction", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
     private List<UserService> userServices;
 
 }

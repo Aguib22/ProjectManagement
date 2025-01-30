@@ -49,9 +49,9 @@ public class WebSecurityConfig {
     @Bean
     public UrlBasedCorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("*")); // Autoriser l'origine Angular
+        configuration.setAllowedOrigins(List.of("http://localhost:4200")); // Autoriser l'origine Angular
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(List.of("Sec-WebSocket-Version", "Sec-WebSocket-Key", "Connection", "Upgrade", "Sec-WebSocket-Extensions", "*"));
+        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type", "X-Requested-With", "Accept", "Origin"));
         configuration.setAllowCredentials(true); // Activer les cookies et les informations d'authentification
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

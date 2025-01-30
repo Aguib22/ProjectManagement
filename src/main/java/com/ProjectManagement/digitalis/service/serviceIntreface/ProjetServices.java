@@ -1,5 +1,6 @@
 package com.ProjectManagement.digitalis.service.serviceIntreface;
 
+import com.ProjectManagement.digitalis.dto.ProjectDto;
 import com.ProjectManagement.digitalis.entitie.Projet;
 import com.ProjectManagement.digitalis.exception.ProjetError;
 
@@ -9,7 +10,7 @@ public interface ProjetServices {
 
     Projet saveProjet(Projet projet) throws ProjetError;
 
-    Projet editProjet(Long idProjet, Projet projet) throws ProjetError;
+    Projet editProjet(Long idProjet, ProjectDto projet) throws ProjetError;
 
     Projet getProjet(Long idProjet) throws ProjetError;
 

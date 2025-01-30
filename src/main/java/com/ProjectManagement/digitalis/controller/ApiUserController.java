@@ -1,6 +1,8 @@
 package com.ProjectManagement.digitalis.controller;
 
 
+import com.ProjectManagement.digitalis.dto.UserResponse;
+import com.ProjectManagement.digitalis.entitie.Role;
 import com.ProjectManagement.digitalis.entitie.User;
 import com.ProjectManagement.digitalis.exception.UserError;
 import com.ProjectManagement.digitalis.service.EmailService;
@@ -22,7 +24,6 @@ import java.util.List;
 @RestController
 
 @RequestMapping("/api/user")
-@CrossOrigin("*")
 public class ApiUserController {
 
 
@@ -42,7 +43,7 @@ public class ApiUserController {
         this.reunionServices = reunionServices;
     }
 
-    @PostMapping("/register")
+    @PostMapping("/sign-up")
     public ResponseEntity<User> register(@RequestBody RegisterRequest registerRequest) {
         Boolean isUserCreate = userServiceImpl.registUser(registerRequest);
 
@@ -66,8 +67,17 @@ public class ApiUserController {
 
         String token = jwtUtilService.generateToken(authentifedUser);
 
+        UserResponse userResponse = new UserResponse(
+                authentifedUser.getIdUser(),
+                authentifedUser.getPrenomUser(),
+                authentifedUser.getNomUser(),
+                authentifedUser.getMailUser()
+        );
+
         LoginResponse loginResponse = LoginResponse.builder().
-                token(token).expiresIn(jwtUtilService.getExpirationTime()).build();
+                token(token).expiresIn(jwtUtilService.getExpirationTime())
+                .user(userResponse)
+                .build();
 
         return ResponseEntity.ok(loginResponse);
     }
@@ -91,5 +101,14 @@ public class ApiUserController {
     public User editUser(@RequestBody RegisterRequest registerRequest, @PathVariable Long idUser) throws UserError {
         return userServices.editUser(idUser, registerRequest);
 
+    }
+
+    @GetMapping("/get-userByRole")
+    public ResponseEntity<List<User>> getUserByRole(@RequestParam Role role){
+        List<User> users = userServices.getUserByRole(role);
+        if(users.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(users);
     }
 }
