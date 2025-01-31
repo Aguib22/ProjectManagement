@@ -1,7 +1,10 @@
 package com.ProjectManagement.digitalis.service;
 
+import com.ProjectManagement.digitalis.dto.ProjectDto;
+import com.ProjectManagement.digitalis.entitie.Evolution;
 import com.ProjectManagement.digitalis.entitie.Projet;
 import com.ProjectManagement.digitalis.exception.ProjetError;
+import com.ProjectManagement.digitalis.repositorie.EvolutionRepository;
 import com.ProjectManagement.digitalis.repositorie.ProjetRepository;
 import com.ProjectManagement.digitalis.service.serviceIntreface.ProjetServices;
 import lombok.extern.slf4j.Slf4j;
@@ -16,8 +19,10 @@ public class ProjetServicesImpl implements ProjetServices {
 
     private final ProjetRepository projetRepository;
 
-    public ProjetServicesImpl(ProjetRepository projetRepository) {
+    private final EvolutionRepository evolutionRepository;
+    public ProjetServicesImpl(ProjetRepository projetRepository,EvolutionRepository evolutionRepository) {
         this.projetRepository = projetRepository;
+        this.evolutionRepository = evolutionRepository;
     }
 
     @Override
@@ -31,7 +36,7 @@ public class ProjetServicesImpl implements ProjetServices {
     }
 
     @Override
-    public Projet editProjet(Long idProjet, Projet projet) throws ProjetError {
+    public Projet editProjet(Long idProjet, ProjectDto projet) throws ProjetError {
         Optional<Projet> optionalProjet = projetRepository.findById(idProjet);
         if (optionalProjet.isEmpty()) {
             log.error("Le projet avec l'ID {} n'existe pas", idProjet);
@@ -43,7 +48,11 @@ public class ProjetServicesImpl implements ProjetServices {
         projet1.setNomProjet(projet.getNomProjet());
         projet1.setDateDebutProjet(projet.getDateDebutProjet());
         projet1.setDateFinProject(projet.getDateFinProject());
-        projet1.setListGt(projet.getListGt());
+
+        if(projet.getEvolution() != null){
+            projet1.setEvolution(projet.getEvolution());
+        }
+
 
         log.info("Modification du projet : {}", projet1.getNomProjet());
         return projetRepository.save(projet1);

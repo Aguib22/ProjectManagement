@@ -147,4 +147,9 @@ public class UserServicesImpl implements UserServices {
         userRepository.deleteById(idUser);
         logger.info("Utilisateur avec l'id {} supprimé avec succès", idUser);
     }
+
+    @Override
+    public List<User> getUserByRole(Role role){
+        return userRepository.findByRole(role);
+    }
 }

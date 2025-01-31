@@ -1,5 +1,6 @@
 package com.ProjectManagement.digitalis.controller;
 
+import com.ProjectManagement.digitalis.dto.ProjectDto;
 import com.ProjectManagement.digitalis.entitie.Projet;
 import com.ProjectManagement.digitalis.exception.ProjetError;
 import com.ProjectManagement.digitalis.service.serviceIntreface.ProjetServices;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/projet")
-@CrossOrigin
+
 public class ApiProjetController {
 
 
@@ -26,7 +27,7 @@ public class ApiProjetController {
         return projetServices.saveProjet(projet);
     }
 
-    @GetMapping("get/{idProjet}")
+    @GetMapping("/get/{idProjet}")
     public Projet getProjet(@PathVariable Long idProjet) throws ProjetError{
         return projetServices.getProjet(idProjet);
     }
@@ -41,8 +42,8 @@ public class ApiProjetController {
         projetServices.deleteProjet(idProjet);
     }
 
-    @PutMapping("edit/{idProjet}")
-    public Projet editProjet(@PathVariable Long idProjet, @RequestBody Projet projet) throws ProjetError{
+    @PutMapping("/edit/{idProjet}")
+    public Projet editProjet(@PathVariable Long idProjet, @RequestBody ProjectDto projet) throws ProjetError{
         return projetServices.editProjet(idProjet, projet);
     }
 

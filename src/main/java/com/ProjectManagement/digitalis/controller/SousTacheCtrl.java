@@ -119,4 +119,11 @@ public class  SousTacheCtrl {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/get-stByGt/{idGt}")
+    public ResponseEntity<List<SousTache>>getStByGrandeTache(@PathVariable Long idGt){
+        List<SousTache> sousTaches = stServicesImpl.getstByGt(idGt);
+
+        return ResponseEntity.ok(sousTaches);
+    }
 }

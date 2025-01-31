@@ -25,7 +25,7 @@ public class EvolutionServicesImpl implements EvolutionServices {
 
     @Override
     public Evolution saveTraitement(Evolution traitement) {
-        logger.info("Tentative d'enregistrement de l'évolution : {}", traitement);
+        logger.info("Tentative d'enregistrement de l'évolution : {}", traitement.getEvolution());
         Evolution savedEvolution = evolutionServices.save(traitement);
         logger.info("Évolution enregistrée avec succès : {}", savedEvolution);
         return savedEvolution;

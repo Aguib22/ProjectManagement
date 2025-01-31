@@ -1,13 +1,16 @@
 package com.ProjectManagement.digitalis.controller;
 
 import com.ProjectManagement.digitalis.dto.GrandeTacheRequest;
+import com.ProjectManagement.digitalis.entitie.Evolution;
 import com.ProjectManagement.digitalis.entitie.GrandeTache;
 import com.ProjectManagement.digitalis.entitie.Projet;
 import com.ProjectManagement.digitalis.exception.GtError;
 import com.ProjectManagement.digitalis.exception.ProjetError;
+import com.ProjectManagement.digitalis.service.serviceIntreface.EvolutionServices;
 import com.ProjectManagement.digitalis.service.serviceIntreface.GtServices;
 import com.ProjectManagement.digitalis.service.serviceIntreface.ProjetServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,16 +18,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/gt")
-@CrossOrigin("*")
 public class ApiGtController {
 
 
     private final GtServices gtServices;
     private final ProjetServices projetServices;
+    private final EvolutionServices evolutionServices;
 
-    public ApiGtController(GtServices gtServices, ProjetServices projetServices) {
+    public ApiGtController(GtServices gtServices, ProjetServices projetServices,EvolutionServices evolutionServices) {
         this.gtServices = gtServices;
         this.projetServices = projetServices;
+        this.evolutionServices = evolutionServices;
     }
 
     @PostMapping("/save")
@@ -32,16 +36,15 @@ public class ApiGtController {
 
 
         GrandeTache grandeTache = new GrandeTache();
-        grandeTache.setNumeroGt(gt.getNumeroGt());
         grandeTache.setNomGt(gt.getNomGt());
         grandeTache.setChargesGt(gt.getChargesGt());
-        grandeTache.setEvolutionGt(gt.getEvolutionGt());
         grandeTache.setDateDeDebutGt(gt.getDateDeDebutGt());
         grandeTache.setDateDeFinGt(gt.getDateDeFinGt());
         grandeTache.setDateDeFinReelleGt(gt.getDateDeFinReelleGt());
 
-        Projet projet = projetServices.getProjet(gt.getProjet());
-        grandeTache.setProjet(projet);
+
+
+        grandeTache.setProjet(gt.getProjet());
 
 
         return gtServices.saveGt(grandeTache);
@@ -69,7 +72,11 @@ public class ApiGtController {
         return gtServices.editGt(idGt, grandeTache);
     }
 
-
+    @GetMapping("get-projectId/{projectId}")
+   public ResponseEntity<List<GrandeTache>> getGtByProject(@PathVariable Long projectId){
+        List<GrandeTache> grandeTaches = gtServices.getGtByProjectId(projectId);
+        return  ResponseEntity.ok(grandeTaches);
+   }
 
 
 

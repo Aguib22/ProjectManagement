@@ -1,8 +1,10 @@
 package com.ProjectManagement.digitalis.service;
 
 import com.ProjectManagement.digitalis.dto.GrandeTacheRequest;
+import com.ProjectManagement.digitalis.entitie.Evolution;
 import com.ProjectManagement.digitalis.entitie.GrandeTache;
 import com.ProjectManagement.digitalis.entitie.Projet;
+import com.ProjectManagement.digitalis.repositorie.EvolutionRepository;
 import com.ProjectManagement.digitalis.repositorie.GtRepository;
 import com.ProjectManagement.digitalis.exception.GtError;
 import com.ProjectManagement.digitalis.repositorie.ProjetRepository;
@@ -21,10 +23,14 @@ public class GtServicesImpl implements GtServices {
 
     private final GtRepository gtRepository;
     private final ProjetRepository projetRepository;
+    private final EvolutionRepository evolutionRepository;
 
-    public GtServicesImpl(GtRepository gtRepository, ProjetRepository projetRepository) {
+    public GtServicesImpl(GtRepository gtRepository, ProjetRepository projetRepository,EvolutionRepository evolutionRepository) {
         this.gtRepository = gtRepository;
         this.projetRepository = projetRepository;
+        this.evolutionRepository = evolutionRepository;
+
+
     }
 
     @Override
@@ -33,9 +39,9 @@ public class GtServicesImpl implements GtServices {
             logger.error("Tentative d'enregistrement d'une grande tâche null");
             throw new GtError("La grande tache à enregistrer est null");
         }
-        logger.info("Enregistrement de la grande tâche : {}", gt);
+        logger.info("Enregistrement de la grande tâche : {}", gt.getNomGt());
         GrandeTache savedGt = gtRepository.save(gt);
-        logger.info("Grande tâche enregistrée avec succès : {}", savedGt);
+        logger.info("Grande tâche enregistrée avec succès : ");
         return savedGt;
     }
 
@@ -49,17 +55,21 @@ public class GtServicesImpl implements GtServices {
         }
 
         GrandeTache gt1 = optionalGt.get();
-        gt1.setNumeroGt(gt.getNumeroGt());
+
         gt1.setNomGt(gt.getNomGt());
         gt1.setChargesGt(gt.getChargesGt());
         gt1.setDateDeDebutGt(gt.getDateDeDebutGt());
         gt1.setDateDeFinGt(gt.getDateDeFinGt());
-        gt1.setDateDeFinReelleGt(gt.getDateDeFinReelleGt());
-        gt1.setEvolutionGt(gt.getEvolutionGt());
 
-        Projet projet = projetRepository.findById(gt.getProjet())
-                .orElseThrow(() -> new GtError("Le projet associé à cette grande tâche n'existe pas"));
-        gt1.setProjet(projet);
+        if(gt.getEvolution() != null){
+            gt1.setEvolution(gt.getEvolution());
+        }
+
+
+        if(gt.getProjet() != null){
+            gt1.setProjet(gt.getProjet());
+        }
+
 
         GrandeTache updatedGt = gtRepository.save(gt1);
         logger.info("Grande tâche modifiée avec succès : {}", updatedGt);
@@ -97,5 +107,14 @@ public class GtServicesImpl implements GtServices {
         }
         gtRepository.deleteById(idGt);
         logger.info("Grande tâche supprimée avec succès avec l'ID : {}", idGt);
+    }
+
+
+    @Override
+    public List<GrandeTache> getGtByProjectId(Long projectId){
+        Projet projet = projetRepository.findById(projectId)
+                .orElseThrow(() -> new RuntimeException(""));
+        return gtRepository.findByProjet(projet);
+
     }
 }

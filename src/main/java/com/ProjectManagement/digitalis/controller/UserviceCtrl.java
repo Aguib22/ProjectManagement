@@ -75,4 +75,10 @@ public class UserviceCtrl {
 
     }
 
+    @GetMapping("/get/by-direction/{directionId}")
+    public ResponseEntity<List<UserService>> getServicesByDirection(@PathVariable Long directionId) {
+        List<UserService> services = uService.getServicesByDirection(directionId);
+        return ResponseEntity.ok(services);
+    }
+
 }

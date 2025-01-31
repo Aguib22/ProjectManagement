@@ -21,7 +21,9 @@ public class StServicesImpl implements StServices {
     private final UserRepository userRepository;
     private final NotificationService notificationService;
 
-    public StServicesImpl(StRepository stRepository, GtRepository gtRepository, EvolutionRepository evolutionRepository, UserRepository userRepository, NotificationService notificationService) {
+
+    public StServicesImpl(StRepository stRepository, GtRepository gtRepository, EvolutionRepository evolutionRepository,
+                          UserRepository userRepository, NotificationService notificationService) {
         this.stRepository = stRepository;
         this.gtRepository = gtRepository;
         this.evolutionRepository = evolutionRepository;
@@ -43,13 +45,13 @@ public class StServicesImpl implements StServices {
         // Récupérer et associer les entités liées
         GrandeTache grandeTache = gtRepository.findById(sousTacheRequest.getIdGt())
                 .orElseThrow(() -> new RuntimeException("Grande Tâche non trouvée"));
-        Evolution evolution = evolutionRepository.findById(sousTacheRequest.getIdEvolution())
-                .orElseThrow(() -> new RuntimeException("Évolution non trouvée"));
+        /*Evolution evolution = evolutionRepository.findById(sousTacheRequest.getIdEvolution())
+                .orElseThrow(() -> new RuntimeException("Évolution non trouvée"));*/
         User user = userRepository.findById(sousTacheRequest.getIdUser())
                 .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
 
         sousTache.setGt(grandeTache);
-        sousTache.setTraitement(evolution);
+
         sousTache.setUser(user);
 
         SousTache sousTacheSaved = stRepository.save(sousTache);
@@ -75,16 +77,19 @@ public class StServicesImpl implements StServices {
                 .orElseThrow(() -> new RuntimeException("Sous-tâche non trouvée"));
 
         // Mise à jour des champs de la sous-tâche
-        sousTache.setNumeroSt(st.getNumeroSt());
+
         sousTache.setTacheSt(st.getTacheSt());
         sousTache.setChargesSt(st.getChargesSt());
         sousTache.setDateDeDebutSt(st.getDateDeDebutSt());
         sousTache.setDateDeFinSt(st.getDateDeFinSt());
-        sousTache.setEvolutionSt(st.getEvolutionSt());
         sousTache.setDateDeFinReelleSt(st.getDateDeFinReelleSt());
-        sousTache.setSurchargesGt(st.getSurchargesGt());
+
         sousTache.setRemarquesGt(st.getRemarquesGt());
 
+        if(st.getEvolution() !=null){
+
+            sousTache.setEvolution(st.getEvolution());
+        }
         // Mise à jour des relations avec les entités liées
         if (st.getIdGt() != null) {
             GrandeTache grandeTache = gtRepository.findById(st.getIdGt())
@@ -92,11 +97,7 @@ public class StServicesImpl implements StServices {
             sousTache.setGt(grandeTache);
         }
 
-        if (st.getIdEvolution() != null) {
-            Evolution evolution = evolutionRepository.findById(st.getIdEvolution())
-                    .orElseThrow(() -> new RuntimeException("Évolution non trouvée"));
-            sousTache.setTraitement(evolution);
-        }
+
 
         if (st.getIdUser() != null) {
             User user = userRepository.findById(st.getIdUser())
@@ -106,7 +107,7 @@ public class StServicesImpl implements StServices {
 
         SousTache sousTacheUpdated = stRepository.save(sousTache);
 
-        log.info("Sous-tâche mise à jour avec succès : {}", sousTacheUpdated.getTacheSt());
+        log.info("Sous-tâche mise à jour avec succès : {}", sousTacheUpdated.getEvolution());
         return sousTacheUpdated;
     }
 
@@ -127,5 +128,11 @@ public class StServicesImpl implements StServices {
             log.error("Aucune sous-tâche trouvée pour l'ID : {}", idSt);
             throw new RuntimeException("Aucune sous-tâche correspondante");
         }
+    }
+
+    public List<SousTache> getstByGt(Long gtId){
+        GrandeTache grandeTache = gtRepository.findById(gtId)
+                .orElseThrow();
+        return stRepository.findByGt(grandeTache);
     }
 }

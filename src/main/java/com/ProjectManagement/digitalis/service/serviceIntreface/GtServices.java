@@ -12,9 +12,11 @@ public interface GtServices {
 
     GrandeTache editGt(Long idGt, GrandeTacheRequest gt)throws GtError;
 
+
     GrandeTache getGt(Long idGt)throws GtError;
 
     List<GrandeTache> listGt()throws GtError;
 
     void deleteGt(Long idGt)throws GtError;
+    List<GrandeTache> getGtByProjectId(Long projectId);
 }
