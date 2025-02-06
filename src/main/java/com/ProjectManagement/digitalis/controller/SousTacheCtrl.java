@@ -12,11 +12,8 @@ import com.ProjectManagement.digitalis.service.serviceIntreface.EvolutionService
 import com.ProjectManagement.digitalis.service.serviceIntreface.GtServices;
 import com.ProjectManagement.digitalis.service.serviceIntreface.StServices;
 import com.ProjectManagement.digitalis.service.serviceIntreface.UserServices;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,9 +32,11 @@ public class  SousTacheCtrl {
     private final EvolutionServices evolutionServices;
     private final UserServices userServices;
 
+    private final TempsTravailService tempsTravailService;
+
     private final StServices stServices;
 
-    public SousTacheCtrl(StServicesImpl stServicesImpl, GtRepository gtRepository, UserRepository userRepository, EvolutionRepository evolutionRepository, GtServices gtServices, EvolutionServices evolutionServices, UserServices userServices, StServices stServices) {
+    public SousTacheCtrl(StServicesImpl stServicesImpl, GtRepository gtRepository, UserRepository userRepository, EvolutionRepository evolutionRepository, GtServices gtServices, EvolutionServices evolutionServices, UserServices userServices, TempsTravailService tempsTravailService, StServices stServices) {
         this.stServicesImpl = stServicesImpl;
         this.gtRepository = gtRepository;
         this.userRepository = userRepository;
@@ -45,6 +44,7 @@ public class  SousTacheCtrl {
         this.gtServices = gtServices;
         this.evolutionServices = evolutionServices;
         this.userServices = userServices;
+        this.tempsTravailService = tempsTravailService;
         this.stServices = stServices;
     }
 
@@ -122,8 +122,19 @@ public class  SousTacheCtrl {
 
     @GetMapping("/get-stByGt/{idGt}")
     public ResponseEntity<List<SousTache>>getStByGrandeTache(@PathVariable Long idGt){
-        List<SousTache> sousTaches = stServicesImpl.getstByGt(idGt);
+        List<SousTache> sousTaches = gtServices.getstByGt(idGt);
 
         return ResponseEntity.ok(sousTaches);
+    }
+
+    @PostMapping("/worktimes/{idSt}")
+    public ResponseEntity<TempsTravail> addTempsTravail(@PathVariable Long idSt,@RequestBody TempsTravail tempsTravail){
+        try {
+            tempsTravailService.addTempsTravail(idSt,tempsTravail);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (RuntimeException e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 }

@@ -9,8 +9,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,22 +27,27 @@ public class Projet {
     private Long idProjet;
 
     private String nomProjet;
+    @Column(length = 1000)
     private String descProjet;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "UTC")
     private Date dateDebutProjet;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "UTC")
     private Date dateFinProject;
+
+    @UpdateTimestamp
+    @Column(nullable = false)
+    private LocalDateTime updatedAt;
 
     @ManyToOne
     @JoinColumn(name = "evolution")
     @JsonBackReference
     private Evolution evolution;
 
-    @OneToMany(mappedBy = "projet")
+    @OneToMany(mappedBy = "projet",cascade = CascadeType.ALL,orphanRemoval = true)
     @JsonIgnore
-    private List<GrandeTache> listGt;
+    private List<GrandeTache> listGt ;
 
 
     @PrePersist

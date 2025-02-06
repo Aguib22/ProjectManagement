@@ -8,8 +8,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,18 +26,21 @@ public class GrandeTache {
     private Long idGt;
     private String nomGt;
     private Float chargesGt;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "UTC")
     private Date dateDeDebutGt;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "UTC")
     private Date dateDeFinGt;
     //private String evolutionGt;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "UTC")
     private Date dateDeFinReelleGt;
 
     @ManyToOne
     @JoinColumn(name = "evolution")
     private Evolution evolution;
 
+    @UpdateTimestamp
+    @Column(nullable = false)
+    private LocalDateTime updatedAt;
     @ManyToOne
     @JoinColumn(name = "projet")
     private Projet projet;
@@ -56,6 +61,19 @@ public class GrandeTache {
             this.evolution.setEvolution("initiale"); // Nom par défaut
         }
     }
+
+    public void calculerChargesTotales() {
+        if (listSt == null && listSt.isEmpty()) {
+            listSt = new ArrayList<>();
+            this.chargesGt = 0f;
+        } else {
+
+            this.chargesGt = listSt.stream()
+                    .map(SousTache::getChargesSt) // Assure-toi que ce getter existe et retourne la charge en heures
+                    .reduce(0f, Float::sum);
+        }
+    }
+
 
     public String toString(){
         return "tache:"+nomGt +"charge: "+chargesGt;

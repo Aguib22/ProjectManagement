@@ -1,20 +1,20 @@
 package com.ProjectManagement.digitalis.service;
 
 import com.ProjectManagement.digitalis.dto.GrandeTacheRequest;
-import com.ProjectManagement.digitalis.entitie.Evolution;
 import com.ProjectManagement.digitalis.entitie.GrandeTache;
 import com.ProjectManagement.digitalis.entitie.Projet;
+import com.ProjectManagement.digitalis.entitie.SousTache;
 import com.ProjectManagement.digitalis.repositorie.EvolutionRepository;
 import com.ProjectManagement.digitalis.repositorie.GtRepository;
 import com.ProjectManagement.digitalis.exception.GtError;
 import com.ProjectManagement.digitalis.repositorie.ProjetRepository;
+import com.ProjectManagement.digitalis.repositorie.StRepository;
 import com.ProjectManagement.digitalis.service.serviceIntreface.GtServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class GtServicesImpl implements GtServices {
@@ -24,13 +24,17 @@ public class GtServicesImpl implements GtServices {
     private final GtRepository gtRepository;
     private final ProjetRepository projetRepository;
     private final EvolutionRepository evolutionRepository;
+    private final ProjetServicesImpl projetServices;
+    private final StRepository stRepository;
 
-    public GtServicesImpl(GtRepository gtRepository, ProjetRepository projetRepository,EvolutionRepository evolutionRepository) {
+    public GtServicesImpl(GtRepository gtRepository, ProjetRepository projetRepository, EvolutionRepository evolutionRepository, ProjetServicesImpl projetServices, StRepository stRepository) {
         this.gtRepository = gtRepository;
         this.projetRepository = projetRepository;
         this.evolutionRepository = evolutionRepository;
 
 
+        this.projetServices = projetServices;
+        this.stRepository = stRepository;
     }
 
     @Override
@@ -40,8 +44,12 @@ public class GtServicesImpl implements GtServices {
             throw new GtError("La grande tache à enregistrer est null");
         }
         logger.info("Enregistrement de la grande tâche : {}", gt.getNomGt());
+        Projet projet = gt.getProjet();
         GrandeTache savedGt = gtRepository.save(gt);
+        projetServices.updateProjetDates(projet);
         logger.info("Grande tâche enregistrée avec succès : ");
+
+        //System.out.println("liste Gt: "+ savedGt.getProjet().getListGt());
         return savedGt;
     }
 
@@ -68,10 +76,15 @@ public class GtServicesImpl implements GtServices {
 
         if(gt.getProjet() != null){
             gt1.setProjet(gt.getProjet());
+
         }
 
 
         GrandeTache updatedGt = gtRepository.save(gt1);
+
+
+        projetServices.updateProjetDates(updatedGt.getProjet());
+        //System.out.println("liste Gt: "+ updatedGt.getProjet().getListGt());
         logger.info("Grande tâche modifiée avec succès : {}", updatedGt);
         return updatedGt;
     }
@@ -106,15 +119,50 @@ public class GtServicesImpl implements GtServices {
             throw new GtError("La grande tâche à supprimer n'existe pas");
         }
         gtRepository.deleteById(idGt);
+        projetServices.updateProjetDates(optionalGt.get().getProjet());
         logger.info("Grande tâche supprimée avec succès avec l'ID : {}", idGt);
+    }
+
+    @Override
+    public List<SousTache> getstByGt(Long gtId){
+        GrandeTache grandeTache = gtRepository.findById(gtId)
+                .orElseThrow();
+        return stRepository.findByGt(grandeTache);
     }
 
 
     @Override
-    public List<GrandeTache> getGtByProjectId(Long projectId){
-        Projet projet = projetRepository.findById(projectId)
-                .orElseThrow(() -> new RuntimeException(""));
-        return gtRepository.findByProjet(projet);
+    public void updateGrandeTacheDates(GrandeTache grandeTache) {
+        List<SousTache> lstSt = this.getstByGt(grandeTache.getIdGt());
+        if (grandeTache.getListSt() == null) {
+            grandeTache.setListSt(new ArrayList<>());
+        } else {
+            grandeTache.getListSt().clear();
+        }
+        grandeTache.getListSt().addAll(lstSt);
 
+        // Trouver la date de début la plus récente
+        Date dateDebutMin = lstSt.stream()
+                .map(SousTache::getDateDeDebutSt)
+                .filter(Objects::nonNull)
+                .min(Date::compareTo)
+                .orElse(null);
+
+        // Trouver la date de fin la plus ancienne
+        Date dateFinMax = lstSt.stream()
+                .map(SousTache::getDateDeFinSt)
+                .filter(Objects::nonNull)
+                .max(Date::compareTo)
+                .orElse(null);
+
+        // Mise à jour des dates de la grande tâche
+        grandeTache.setDateDeDebutGt(dateDebutMin);
+        grandeTache.setDateDeFinGt(dateFinMax);
+
+        // Sauvegarder la mise à jour
+        gtRepository.save(grandeTache);
+
+        logger.info("Dates de la grande tâche mises à jour : Début = {}, Fin = {}", dateDebutMin, dateFinMax);
     }
+
 }
