@@ -1,16 +1,19 @@
 package com.ProjectManagement.digitalis.service;
 
 import com.ProjectManagement.digitalis.dto.ProjectDto;
-import com.ProjectManagement.digitalis.entitie.Evolution;
+import com.ProjectManagement.digitalis.entitie.GrandeTache;
 import com.ProjectManagement.digitalis.entitie.Projet;
 import com.ProjectManagement.digitalis.exception.ProjetError;
 import com.ProjectManagement.digitalis.repositorie.EvolutionRepository;
+import com.ProjectManagement.digitalis.repositorie.GtRepository;
 import com.ProjectManagement.digitalis.repositorie.ProjetRepository;
 import com.ProjectManagement.digitalis.service.serviceIntreface.ProjetServices;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Slf4j
@@ -18,10 +21,13 @@ import java.util.Optional;
 public class ProjetServicesImpl implements ProjetServices {
 
     private final ProjetRepository projetRepository;
+    private final GtRepository gtRepository;
 
     private final EvolutionRepository evolutionRepository;
-    public ProjetServicesImpl(ProjetRepository projetRepository,EvolutionRepository evolutionRepository) {
+    public ProjetServicesImpl(ProjetRepository projetRepository, GtRepository gtRepository, EvolutionRepository evolutionRepository) {
         this.projetRepository = projetRepository;
+        this.gtRepository = gtRepository;
+
         this.evolutionRepository = evolutionRepository;
     }
 
@@ -85,4 +91,40 @@ public class ProjetServicesImpl implements ProjetServices {
         log.info("Suppression du projet avec l'ID : {}", idProjet);
         projetRepository.deleteById(idProjet);
     }
+
+    @Override
+    public void updateProjetDates(Projet projet) {
+        List<GrandeTache> listGt = this.getGtByProjectId(projet.getIdProjet());
+        projet.setListGt(listGt);
+
+        if (listGt == null && listGt.isEmpty()) {
+            return;
+        }
+
+        Date dateDebutMin = projet.getListGt().stream()
+                .map(GrandeTache::getDateDeDebutGt)
+                .filter(Objects::nonNull)
+                .min(Date::compareTo)
+                .orElse(null);
+
+        Date dateFinMax = projet.getListGt().stream()
+                .map(GrandeTache::getDateDeFinGt)
+                .filter(Objects::nonNull)
+                .max(Date::compareTo)
+                .orElse(null);
+
+        projet.setDateDebutProjet(dateDebutMin);
+        projet.setDateFinProject(dateFinMax);
+
+        projetRepository.save(projet);  // Sauvegarde les nouvelles dates
+    }
+
+    @Override
+    public List<GrandeTache> getGtByProjectId(Long projectId){
+        Projet projet = projetRepository.findById(projectId)
+                .orElseThrow(() -> new RuntimeException(""));
+        return gtRepository.findByProjet(projet);
+
+    }
+
 }

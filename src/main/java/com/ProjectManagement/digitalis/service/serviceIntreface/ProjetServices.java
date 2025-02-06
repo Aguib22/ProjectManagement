@@ -1,6 +1,7 @@
 package com.ProjectManagement.digitalis.service.serviceIntreface;
 
 import com.ProjectManagement.digitalis.dto.ProjectDto;
+import com.ProjectManagement.digitalis.entitie.GrandeTache;
 import com.ProjectManagement.digitalis.entitie.Projet;
 import com.ProjectManagement.digitalis.exception.ProjetError;
 
@@ -17,4 +18,8 @@ public interface ProjetServices {
     List<Projet> listProjet() ;
 
     void deleteProjet(Long idProjet) throws ProjetError;
+
+    void updateProjetDates(Projet projet);
+
+    List<GrandeTache> getGtByProjectId(Long projectId);
 }

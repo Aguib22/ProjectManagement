@@ -1,13 +1,13 @@
 package com.ProjectManagement.digitalis.dto;
 
+import com.ProjectManagement.digitalis.entitie.GrandeTache;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.Date;
-
-
+import java.util.List;
 
 
 @Data
@@ -29,5 +29,9 @@ public class SousTacheRequest {
 
     private Long idGt;
     private Long idEvolution;
-    private Long idUser;
+    private Long Dev;
+
+    private Long Testeur;
+
+
 }

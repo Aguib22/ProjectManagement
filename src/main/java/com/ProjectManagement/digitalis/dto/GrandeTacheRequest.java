@@ -23,21 +23,15 @@ public class GrandeTacheRequest {
     private String nomGt;
     private Float chargesGt;
 
-    @JsonFormat(pattern = "dd-MM-yyyy")
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+
     private Date dateDeDebutGt;
 
-    @JsonFormat(pattern = "dd-MM-yyyy")
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+
     private Date dateDeFinGt;
 
     private Evolution evolution;
 
-    @JsonFormat(pattern = "dd-MM-yyyy")
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+
     private Date dateDeFinReelleGt;
 
     private Projet projet;

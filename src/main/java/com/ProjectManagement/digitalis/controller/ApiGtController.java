@@ -74,7 +74,7 @@ public class ApiGtController {
 
     @GetMapping("get-projectId/{projectId}")
    public ResponseEntity<List<GrandeTache>> getGtByProject(@PathVariable Long projectId){
-        List<GrandeTache> grandeTaches = gtServices.getGtByProjectId(projectId);
+        List<GrandeTache> grandeTaches = projetServices.getGtByProjectId(projectId);
         return  ResponseEntity.ok(grandeTaches);
    }
 

@@ -52,9 +52,13 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "dev")
     @JsonIgnore
-    private List<SousTache> listSt;
+    private List<SousTache> listSt_dev;
+
+    @OneToMany(mappedBy = "testeur")
+    @JsonIgnore
+    private List<SousTache> listSt_testeur;
 
     @ManyToOne
     @JoinColumn(name = "reunion",nullable = true)
