@@ -122,19 +122,35 @@ public class  SousTacheCtrl {
 
     @GetMapping("/get-stByGt/{idGt}")
     public ResponseEntity<List<SousTache>>getStByGrandeTache(@PathVariable Long idGt){
-        List<SousTache> sousTaches = gtServices.getstByGt(idGt);
+        try {
+            List<SousTache> sousTaches = gtServices.getstByGt(idGt);
+            return ResponseEntity.ok(sousTaches);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
 
-        return ResponseEntity.ok(sousTaches);
+
     }
 
     @PostMapping("/worktimes/{idSt}")
-    public ResponseEntity<TempsTravail> addTempsTravail(@PathVariable Long idSt,@RequestBody TempsTravail tempsTravail){
+    public ResponseEntity<List<TempsTravail>> addTempsTravail(@PathVariable Long idSt,@RequestBody TempsTravail tempsTravail){
         try {
             tempsTravailService.addTempsTravail(idSt,tempsTravail);
-            return new ResponseEntity<>(HttpStatus.OK);
+            List<TempsTravail> lstTmpWorkedBySt = tempsTravailService.getTmpWordked(idSt);
+            return ResponseEntity.ok(lstTmpWorkedBySt);
         }catch (RuntimeException e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
+    }
+
+    @GetMapping("worktimes/get/{idSt}")
+    public ResponseEntity<List<TempsTravail>> getTempsTravail(@PathVariable Long idSt){
+        try {
+            List<TempsTravail> lstTmpWorkedBySt = tempsTravailService.getTmpWordked(idSt);
+            return ResponseEntity.ok(lstTmpWorkedBySt);
+        }catch (Exception e){
+            return  new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

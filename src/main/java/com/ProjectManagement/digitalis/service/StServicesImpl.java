@@ -46,7 +46,7 @@ public class StServicesImpl implements StServices {
         sousTache.setChargesSt(sousTacheRequest.getChargesSt());
         sousTache.setDateDeDebutSt(sousTacheRequest.getDateDeDebutSt());
         sousTache.setDateDeFinSt(sousTacheRequest.getDateDeFinSt());
-
+        sousTache.setRemarquesGt(sousTacheRequest.getRemarquesGt());
         // Récupérer et associer les entités liées
         GrandeTache grandeTache = gtRepository.findById(sousTacheRequest.getIdGt())
                 .orElseThrow(() -> new RuntimeException("Grande Tâche non trouvée"));

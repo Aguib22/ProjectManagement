@@ -11,10 +11,7 @@ import com.ProjectManagement.digitalis.service.serviceIntreface.ProjetServices;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -98,8 +95,9 @@ public class ProjetServicesImpl implements ProjetServices {
         projet.setListGt(listGt);
 
         if (listGt == null && listGt.isEmpty()) {
-            return;
+            projet.setListGt(new ArrayList<>());
         }
+
 
         Date dateDebutMin = projet.getListGt().stream()
                 .map(GrandeTache::getDateDeDebutGt)

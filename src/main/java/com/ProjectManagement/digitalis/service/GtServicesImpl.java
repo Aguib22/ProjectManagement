@@ -118,8 +118,19 @@ public class GtServicesImpl implements GtServices {
             logger.error("La grande tâche avec l'ID {} n'existe pas", idGt);
             throw new GtError("La grande tâche à supprimer n'existe pas");
         }
+        GrandeTache gt = optionalGt.get();
+
+        List<SousTache> stByGt = getstByGt(idGt);
+        stByGt.forEach(sousTache -> stRepository.deleteById(sousTache.getIdSt()));
+
+        logger.info("Avant suppression : Liste des GrandeTaches du projet : {}", optionalGt.get().getProjet().getListGt());
+
         gtRepository.deleteById(idGt);
-        projetServices.updateProjetDates(optionalGt.get().getProjet());
+   /*     Projet projet = gt.getProjet();
+        projet.getListGt().remove(gt);
+        projetRepository.save(projet);*/
+        logger.info("après suppression : Liste des GrandeTaches du projet : {}", optionalGt.get().getProjet().getListGt());
+        projetServices.updateProjetDates(gt.getProjet());
         logger.info("Grande tâche supprimée avec succès avec l'ID : {}", idGt);
     }
 

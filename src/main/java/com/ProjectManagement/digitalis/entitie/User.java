@@ -60,6 +60,10 @@ public class User implements UserDetails {
     @JsonIgnore
     private List<SousTache> listSt_testeur;
 
+    @OneToMany(mappedBy = "testeur")
+    @JsonIgnore
+    private List<Bug> bugs;
+
     @ManyToOne
     @JoinColumn(name = "reunion",nullable = true)
     private Reunion reunion;

@@ -69,14 +69,14 @@ public class GrandeTache {
         } else {
 
             this.chargesGt = listSt.stream()
-                    .map(SousTache::getChargesSt) // Assure-toi que ce getter existe et retourne la charge en heures
+                    .map(SousTache::getChargesSt)
                     .reduce(0f, Float::sum);
         }
     }
 
 
     public String toString(){
-        return "tache:"+nomGt +"charge: "+chargesGt;
+        return "tache:"+nomGt +" | charge: "+chargesGt;
     }
 
 }

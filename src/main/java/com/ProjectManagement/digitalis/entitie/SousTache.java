@@ -18,6 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table
+
 public class SousTache {
 
 
@@ -63,6 +64,9 @@ public class SousTache {
     @JsonIgnore
     private List<TempsTravail> tempsTravaux = new ArrayList<>();
 
+    @OneToMany(mappedBy = "sousTache",cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Bug> bugs;
     @PrePersist
     public void prePersist() {
         if (this.evolution == null) {
