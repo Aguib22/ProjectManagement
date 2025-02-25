@@ -31,6 +31,10 @@ public class SousTache {
 
     private Float chargesStHeures;
 
+    private Float surcharge;
+    @Column(length = 255)
+    private String observation;
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "UTC")
     private Date dateDeDebutSt;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "UTC")

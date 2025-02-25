@@ -10,9 +10,8 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
+@Table
 public class Evolution {
 
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +28,8 @@ public class Evolution {
     @OneToMany(mappedBy = "evolution") // "traitement" est le nom de l'attribut dans la classe SousTache
     @JsonIgnore
     private List<SousTache> listSt;
+
+
 
     public String toString(){
         return "Status: "+evolution;

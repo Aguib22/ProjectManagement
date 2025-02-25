@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -40,9 +41,10 @@ public class Projet {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
+    private String cheminRepertoire;
     @ManyToOne
     @JoinColumn(name = "evolution")
-    @JsonBackReference
+
     private Evolution evolution;
 
     @OneToMany(mappedBy = "projet",cascade = CascadeType.ALL,orphanRemoval = true)

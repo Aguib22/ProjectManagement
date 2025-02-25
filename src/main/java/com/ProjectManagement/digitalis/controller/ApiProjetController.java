@@ -5,8 +5,15 @@ import com.ProjectManagement.digitalis.entitie.Projet;
 import com.ProjectManagement.digitalis.exception.ProjetError;
 import com.ProjectManagement.digitalis.service.serviceIntreface.ProjetServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -22,9 +29,30 @@ public class ApiProjetController {
     }
 
 
-    @PostMapping("/save")
-    public Projet projetSave(@RequestBody Projet projet)throws ProjetError {
-        return projetServices.saveProjet(projet);
+    @PostMapping(value = "/save",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> createProjet(
+            @RequestParam("nomProjet") String nomProjet,
+            @RequestParam   ("descProjet") String descProjet,
+            @RequestParam("dateDebutProjet") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dateDebutProjet,
+            @RequestParam("dateFinProject") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dateFinProject,
+            @RequestParam("file") MultipartFile fichierSpec,
+            @RequestParam("fileName") String fileName) {
+
+        try {
+            // Création de l'objet Projet
+            Projet projet = new Projet();
+            projet.setNomProjet(nomProjet);
+            projet.setDescProjet(descProjet);
+            projet.setDateDebutProjet(dateDebutProjet);
+            projet.setDateFinProject(dateFinProject);
+
+            // Enregistrer le projet et le fichier
+            Projet savedProjet = projetServices.saveProjet(projet, fichierSpec,fileName);
+
+            return ResponseEntity.status(HttpStatus.CREATED).body(savedProjet);
+        } catch (ProjetError | IOException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @GetMapping("/get/{idProjet}")
@@ -33,8 +61,9 @@ public class ApiProjetController {
     }
 
     @GetMapping("get/liste")
-    public List<Projet> listProjet(){
-        return projetServices.listProjet();
+    public List<Projet> listProjet(@RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date startDate,
+                                   @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date endDate){
+        return projetServices.listProjet(startDate,endDate);
     }
 
     @DeleteMapping("delete/{idProjet}")

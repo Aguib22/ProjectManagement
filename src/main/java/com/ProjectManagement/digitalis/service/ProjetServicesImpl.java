@@ -1,16 +1,25 @@
 package com.ProjectManagement.digitalis.service;
 
+import com.ProjectManagement.digitalis.dto.FichierDto;
 import com.ProjectManagement.digitalis.dto.ProjectDto;
+import com.ProjectManagement.digitalis.dto.RepertoireDto;
+import com.ProjectManagement.digitalis.entitie.Fichier;
 import com.ProjectManagement.digitalis.entitie.GrandeTache;
 import com.ProjectManagement.digitalis.entitie.Projet;
+import com.ProjectManagement.digitalis.entitie.Repertoir;
 import com.ProjectManagement.digitalis.exception.ProjetError;
 import com.ProjectManagement.digitalis.repositorie.EvolutionRepository;
 import com.ProjectManagement.digitalis.repositorie.GtRepository;
 import com.ProjectManagement.digitalis.repositorie.ProjetRepository;
 import com.ProjectManagement.digitalis.service.serviceIntreface.ProjetServices;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.*;
 
 @Slf4j
@@ -19,23 +28,45 @@ public class ProjetServicesImpl implements ProjetServices {
 
     private final ProjetRepository projetRepository;
     private final GtRepository gtRepository;
+    private final RepertoirService repertoirService;
 
+    private final FichierService fichierService;
     private final EvolutionRepository evolutionRepository;
-    public ProjetServicesImpl(ProjetRepository projetRepository, GtRepository gtRepository, EvolutionRepository evolutionRepository) {
+    public ProjetServicesImpl(ProjetRepository projetRepository, GtRepository gtRepository, RepertoirService repertoirService, FichierService fichierService, EvolutionRepository evolutionRepository) {
         this.projetRepository = projetRepository;
         this.gtRepository = gtRepository;
+        this.repertoirService = repertoirService;
+        this.fichierService = fichierService;
 
         this.evolutionRepository = evolutionRepository;
     }
 
     @Override
-    public Projet saveProjet(Projet projet) throws ProjetError {
-        if (projet == null) {
-            log.error("Tentative d'enregistrer un projet null");
-            throw new ProjetError("Le Projet à enregistré est null");
+    @Transactional
+    public Projet saveProjet(Projet projet, MultipartFile fichierSpec,String fileName) throws ProjetError, IOException {
+        if (projet == null || fichierSpec == null || fichierSpec.isEmpty()) {
+            log.error("Projet ou fichier de spécification invalide");
+            throw new ProjetError("Le projet ou le fichier de spécification est manquant !");
         }
         log.info("Enregistrement du projet : {}", projet.getNomProjet());
-        return projetRepository.save(projet);
+        Projet projetSaved = projetRepository.save(projet);
+
+        RepertoireDto repertoireDto = new RepertoireDto();
+        repertoireDto.setNom(projet.getNomProjet());
+        repertoireDto.setDescription("Repertoire du projet "+projet.getNomProjet());
+        Repertoir repertoir = repertoirService.creerRepertoire(repertoireDto);
+
+        FichierDto fichierDto = new FichierDto();
+        fichierDto.setNom(fileName);
+        fichierDto.setDescription("Spécification fonctionnelles générale du projet "+projet.getNomProjet());
+        fichierDto.setRepertoireId(repertoir.getId());
+        System.out.println(fichierDto.getNom());
+        fichierDto.setFicher(fichierSpec);
+
+        Fichier fichier = fichierService.ajouterFichier(fichierDto);
+        projetSaved.setCheminRepertoire(repertoir.getCheminStockage());
+        System.out.println(repertoir.getCheminStockage());
+        return projetRepository.save(projetSaved);
     }
 
     @Override
@@ -73,9 +104,18 @@ public class ProjetServicesImpl implements ProjetServices {
     }
 
     @Override
-    public List<Projet> listProjet() {
-        log.info("Récupération de la liste de tous les projets");
-        return projetRepository.findAll();
+    public List<Projet> listProjet(Date startDate, Date endDate) {
+        List<Projet> projets;
+        if (startDate != null && endDate != null) {
+            // Filtrer les sous-tâches par intervalle de temps
+            projets = projetRepository.findByDateDebutProjetBetween(startDate, endDate);
+
+        } else {
+            // Récupérer toutes les sous-tâches si aucune date n'est spécifiée
+            projets = projetRepository.findAll();
+        }
+        System.out.println("nbr :"+projets.size());
+        return projets;
     }
 
     @Override
