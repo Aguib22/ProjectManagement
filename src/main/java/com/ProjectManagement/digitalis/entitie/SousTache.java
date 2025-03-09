@@ -71,10 +71,12 @@ public class SousTache {
     private Long ponderation = 1L;
     @OneToMany(mappedBy = "sousTache", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<TempsTravail> tempsTravaux = new ArrayList<>();
 
     @OneToMany(mappedBy = "sousTache",cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Bug> bugs;
     boolean dragable = true;
     @PrePersist

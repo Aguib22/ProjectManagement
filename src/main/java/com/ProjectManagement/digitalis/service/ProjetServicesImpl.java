@@ -4,6 +4,7 @@ import com.ProjectManagement.digitalis.dto.FichierDto;
 import com.ProjectManagement.digitalis.dto.ProjectDto;
 import com.ProjectManagement.digitalis.dto.RepertoireDto;
 import com.ProjectManagement.digitalis.entitie.*;
+import com.ProjectManagement.digitalis.exception.GtError;
 import com.ProjectManagement.digitalis.exception.ProjetError;
 import com.ProjectManagement.digitalis.repositorie.EvolutionRepository;
 import com.ProjectManagement.digitalis.repositorie.GtRepository;
@@ -69,26 +70,26 @@ public class ProjetServicesImpl implements ProjetServices {
 
     @Override
     @Transactional
-    public Projet editProjet(Long idProjet, ProjectDto projet) throws ProjetError {
-        Optional<Projet> optionalProjet = projetRepository.findById(idProjet);
-        if (optionalProjet.isEmpty()) {
+    public void editProjet(Long idProjet, ProjectDto projectDto) throws ProjetError {
+        Projet projet = projetRepository.findById(idProjet).orElseThrow(() -> new ProjetError("Le projet à modifier n'existe pas"));
+        /*if (optionalProjet.isEmpty()) {
             log.error("Le projet avec l'ID {} n'existe pas", idProjet);
             throw new ProjetError("Le projet à modifier n'existe pas");
         }
 
-        Projet projet1 = optionalProjet.get();
-        projet1.setDescProjet(projet.getDescProjet());
-        projet1.setNomProjet(projet.getNomProjet());
-        projet1.setDateDebutProjet(projet.getDateDebutProjet());
-        projet1.setDateFinProject(projet.getDateFinProject());
+        Projet projet1 = optionalProjet.get();*/
+        projet.setDescProjet(projectDto.getDescProjet());
+        projet.setNomProjet(projectDto.getNomProjet());
+        projet.setDateDebutProjet(projectDto.getDateDebutProjet());
+        projet.setDateFinProject(projectDto.getDateFinProject());
 
-        if(projet.getEvolution() != null){
-            projet1.setEvolution(projet.getEvolution());
+        if(projectDto.getEvolution() != null){
+            projet.setEvolution(projectDto.getEvolution());
         }
 
-
+/*
         log.info("Modification du projet : {}", projet1.getNomProjet());
-        return entityManager.merge(projet1);
+        return entityManager.merge(projet1);*/
     }
 
     @Override
@@ -130,8 +131,20 @@ public class ProjetServicesImpl implements ProjetServices {
 
     @Override
     @Transactional
-    public void updateProjetDates(Projet projet) {
-        List<GrandeTache> listGt = this.getGtByProjectId(projet.getIdProjet());
+    public void updateProjetDates(Projet projet) throws GtError {
+        Date min = projet.getListGt()
+                .stream()
+                .min(Comparator.comparing(GrandeTache::getDateDeDebutGt))
+                .map(GrandeTache::getDateDeDebutGt)
+                .orElseThrow(() -> new GtError("Min date doesn't exist"));
+
+        Date max = projet.getListGt()
+                .stream()
+                .max(Comparator.comparing(GrandeTache::getDateDeFinGt))
+                .map(GrandeTache::getDateDeFinGt)
+                .orElseThrow(() -> new GtError("Max date doesn't exist"));
+        projetRepository.updateStartAndEndDates(projet.getIdProjet(), min, max);
+        /*List<GrandeTache> listGt = this.getGtByProjectId(projet.getIdProjet());
         projet.setListGt(listGt);
 
         if (listGt == null && listGt.isEmpty()) {
@@ -154,7 +167,7 @@ public class ProjetServicesImpl implements ProjetServices {
         projet.setDateDebutProjet(dateDebutMin);
         projet.setDateFinProject(dateFinMax);
 
-        entityManager.merge(projet);  // Sauvegarde les nouvelles dates
+        entityManager.merge(projet);*/  // Sauvegarde les nouvelles dates
     }
 
     @Override

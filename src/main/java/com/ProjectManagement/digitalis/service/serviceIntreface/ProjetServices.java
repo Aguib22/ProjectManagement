@@ -4,6 +4,7 @@ import com.ProjectManagement.digitalis.dto.ProjectDto;
 import com.ProjectManagement.digitalis.entitie.GrandeTache;
 import com.ProjectManagement.digitalis.entitie.Projet;
 import com.ProjectManagement.digitalis.entitie.User;
+import com.ProjectManagement.digitalis.exception.GtError;
 import com.ProjectManagement.digitalis.exception.ProjetError;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,7 +16,7 @@ public interface ProjetServices {
 
     Projet saveProjet(Projet projet, MultipartFile file,String fileName) throws ProjetError, IOException;
 
-    Projet editProjet(Long idProjet, ProjectDto projet) throws ProjetError;
+    void editProjet(Long idProjet, ProjectDto projet) throws ProjetError;
 
     Projet getProjet(Long idProjet) throws ProjetError;
 
@@ -23,7 +24,7 @@ public interface ProjetServices {
 
     void deleteProjet(Long idProjet) throws ProjetError;
 
-    void updateProjetDates(Projet projet);
+    void updateProjetDates(Projet projet) throws GtError;
 
     List<GrandeTache> getGtByProjectId(Long projectId);
 
