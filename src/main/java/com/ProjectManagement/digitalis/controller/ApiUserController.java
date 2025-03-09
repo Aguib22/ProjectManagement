@@ -71,7 +71,8 @@ public class ApiUserController {
                 authentifedUser.getIdUser(),
                 authentifedUser.getPrenomUser(),
                 authentifedUser.getNomUser(),
-                authentifedUser.getMailUser()
+                authentifedUser.getMailUser(),
+                authentifedUser.getRole()
         );
 
         LoginResponse loginResponse = LoginResponse.builder().

@@ -1,0 +1,334 @@
+2025-03-03 08:16:43 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - Starting DigitalisApplication using Java 17.0.6 with PID 16648 (C:\Users\LIVE-TECH\Desktop\ProjectManagment\digitalis\target\classes started by LIVE-TECH in C:\Users\LIVE-TECH\Desktop\ProjectManagment\digitalis)
+2025-03-03 08:16:43 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - No active profile set, falling back to 1 default profile: "default"
+2025-03-03 08:16:58 [main] INFO  [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-03 08:17:00 [main] INFO  [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Finished Spring Data repository scanning in 1305 ms. Found 15 JPA repository interfaces.
+2025-03-03 08:17:15 [main] INFO  [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat initialized with port 8091 (http)
+2025-03-03 08:17:16 [main] INFO  [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Initializing ProtocolHandler ["http-nio-8091"]
+2025-03-03 08:17:16 [main] INFO  [36mo.a.catalina.core.StandardService[0;39m - Starting service [Tomcat]
+2025-03-03 08:17:16 [main] INFO  [36mo.a.catalina.core.StandardEngine[0;39m - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-03-03 08:17:30 [main] INFO  [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring embedded WebApplicationContext
+2025-03-03 08:17:30 [main] INFO  [36mo.s.b.w.s.c.ServletWebServerApplicationContext[0;39m - Root WebApplicationContext: initialization completed in 46450 ms
+2025-03-03 08:17:31 [main] WARN  [36mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-03 08:17:36 [main] INFO  [36mo.h.jpa.internal.util.LogHelper[0;39m - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-03 08:17:40 [main] INFO  [36morg.hibernate.Version[0;39m - HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-03-03 08:17:48 [main] INFO  [36mo.h.c.i.RegionFactoryInitiator[0;39m - HHH000026: Second-level cache disabled
+2025-03-03 08:17:57 [main] INFO  [36mo.s.o.j.p.SpringPersistenceUnitInfo[0;39m - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-03 08:17:58 [main] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Starting...
+2025-03-03 08:18:05 [main] INFO  [36mcom.zaxxer.hikari.pool.HikariPool[0;39m - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@40538370
+2025-03-03 08:18:05 [main] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Start completed.
+2025-03-03 08:18:07 [main] WARN  [36morg.hibernate.dialect.Dialect[0;39m - HHH000511: The 5.7.24 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-03-03 08:18:07 [main] WARN  [36morg.hibernate.orm.deprecation[0;39m - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-03 08:18:57 [main] INFO  [36mo.h.e.t.j.p.i.JtaPlatformInitiator[0;39m - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-03 08:19:02 [main] WARN  [36mo.h.t.s.i.ExceptionHandlerLoggedImpl[0;39m - GenerationTarget encountered exception accepting command : Error executing DDL "alter table repertoir add constraint FK50p1s71ba7b3jj1nume9dpxw3 foreign key (parent_id) references repertoir (id)" via JDBC [Cannot add or update a child row: a foreign key constraint fails (`db_projectmanagement`.`#sql-20e4_1ef`, CONSTRAINT `FK50p1s71ba7b3jj1nume9dpxw3` FOREIGN KEY (`parent_id`) REFERENCES `repertoir` (`id`))]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table repertoir add constraint FK50p1s71ba7b3jj1nume9dpxw3 foreign key (parent_id) references repertoir (id)" via JDBC [Cannot add or update a child row: a foreign key constraint fails (`db_projectmanagement`.`#sql-20e4_1ef`, CONSTRAINT `FK50p1s71ba7b3jj1nume9dpxw3` FOREIGN KEY (`parent_id`) REFERENCES `repertoir` (`id`))]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:583)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:523)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applyForeignKeys(AbstractSchemaMigrator.java:455)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:276)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:119)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:225)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1323)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1284)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:486)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:341)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:334)
+	at org.springframework.orm.jpa.EntityManagerFactoryUtils.findEntityManagerFactory(EntityManagerFactoryUtils.java:120)
+	at org.springframework.orm.jpa.EntityManagerFactoryAccessor.setBeanFactory(EntityManagerFactoryAccessor.java:153)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeAwareMethods(AbstractAutowireCapableBeanFactory.java:1827)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1794)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:542)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1689)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeanCollection(DefaultListableBeanFactory.java:1543)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1511)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1392)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:888)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:849)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1439)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:409)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:211)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:174)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:169)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:154)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:87)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:266)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:240)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4412)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:772)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:203)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:415)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:870)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:437)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:516)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:222)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:188)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:619)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.ProjectManagement.digitalis.DigitalisApplication.main(DigitalisApplication.java:12)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`db_projectmanagement`.`#sql-20e4_1ef`, CONSTRAINT `FK50p1s71ba7b3jj1nume9dpxw3` FOREIGN KEY (`parent_id`) REFERENCES `repertoir` (`id`))
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 142 common frames omitted
+2025-03-03 08:19:02 [main] INFO  [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-03 08:19:31 [main] INFO  [36mo.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer[0;39m - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-03-03 08:19:31 [main] WARN  [36mo.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer[0;39m - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2025-03-03 08:19:50 [main] INFO  [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Starting ProtocolHandler ["http-nio-8091"]
+2025-03-03 08:19:54 [main] INFO  [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat started on port 8091 (http) with context path '/'
+2025-03-03 08:19:54 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Starting...
+2025-03-03 08:19:54 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@47db5b8f]]
+2025-03-03 08:19:54 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Started.
+2025-03-03 08:19:54 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - Started DigitalisApplication in 198.069 seconds (process running for 215.322)
+2025-03-03 08:20:50 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2025-03-03 08:32:37 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Stopping...
+2025-03-03 08:32:37 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@47db5b8f]]
+2025-03-03 08:32:37 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Stopped.
+2025-03-03 08:32:39 [SpringApplicationShutdownHook] INFO  [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-03 08:32:39 [SpringApplicationShutdownHook] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown initiated...
+2025-03-03 08:32:39 [SpringApplicationShutdownHook] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown completed.
+2025-03-03 08:33:09 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - Starting DigitalisApplication using Java 17.0.6 with PID 11476 (C:\Users\LIVE-TECH\Desktop\ProjectManagment\digitalis\target\classes started by LIVE-TECH in C:\Users\LIVE-TECH\Desktop\ProjectManagment\digitalis)
+2025-03-03 08:33:09 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - No active profile set, falling back to 1 default profile: "default"
+2025-03-03 08:33:20 [main] INFO  [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-03 08:33:21 [main] INFO  [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Finished Spring Data repository scanning in 379 ms. Found 15 JPA repository interfaces.
+2025-03-03 08:33:25 [main] INFO  [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat initialized with port 8091 (http)
+2025-03-03 08:33:25 [main] INFO  [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Initializing ProtocolHandler ["http-nio-8091"]
+2025-03-03 08:33:25 [main] INFO  [36mo.a.catalina.core.StandardService[0;39m - Starting service [Tomcat]
+2025-03-03 08:33:25 [main] INFO  [36mo.a.catalina.core.StandardEngine[0;39m - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-03-03 08:33:26 [main] INFO  [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring embedded WebApplicationContext
+2025-03-03 08:33:26 [main] INFO  [36mo.s.b.w.s.c.ServletWebServerApplicationContext[0;39m - Root WebApplicationContext: initialization completed in 16552 ms
+2025-03-03 08:33:26 [main] WARN  [36mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-03 08:33:27 [main] INFO  [36mo.h.jpa.internal.util.LogHelper[0;39m - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-03 08:33:28 [main] INFO  [36morg.hibernate.Version[0;39m - HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-03-03 08:33:29 [main] INFO  [36mo.h.c.i.RegionFactoryInitiator[0;39m - HHH000026: Second-level cache disabled
+2025-03-03 08:33:31 [main] INFO  [36mo.s.o.j.p.SpringPersistenceUnitInfo[0;39m - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-03 08:33:31 [main] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Starting...
+2025-03-03 08:33:32 [main] INFO  [36mcom.zaxxer.hikari.pool.HikariPool[0;39m - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@37cf91d8
+2025-03-03 08:33:32 [main] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Start completed.
+2025-03-03 08:33:32 [main] WARN  [36morg.hibernate.dialect.Dialect[0;39m - HHH000511: The 5.7.24 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-03-03 08:33:32 [main] WARN  [36morg.hibernate.orm.deprecation[0;39m - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-03 08:33:37 [main] INFO  [36mo.h.e.t.j.p.i.JtaPlatformInitiator[0;39m - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-03 08:33:41 [main] INFO  [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-03 08:33:45 [main] INFO  [36mo.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer[0;39m - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-03-03 08:33:45 [main] WARN  [36mo.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer[0;39m - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2025-03-03 08:33:47 [main] INFO  [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Starting ProtocolHandler ["http-nio-8091"]
+2025-03-03 08:33:47 [main] INFO  [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat started on port 8091 (http) with context path '/'
+2025-03-03 08:33:47 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Starting...
+2025-03-03 08:33:47 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@52b4da7c]]
+2025-03-03 08:33:47 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Started.
+2025-03-03 08:33:47 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - Started DigitalisApplication in 39.12 seconds (process running for 43.204)
+2025-03-03 08:34:13 [http-nio-8091-exec-1] INFO  [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-03 08:34:13 [http-nio-8091-exec-1] INFO  [36mo.s.web.servlet.DispatcherServlet[0;39m - Initializing Servlet 'dispatcherServlet'
+2025-03-03 08:34:13 [http-nio-8091-exec-1] INFO  [36mo.s.web.servlet.DispatcherServlet[0;39m - Completed initialization in 2 ms
+2025-03-03 08:34:47 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2025-03-03 08:39:03 [http-nio-8091-exec-4] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 08:39:03 [http-nio-8091-exec-7] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : FUGAS
+2025-03-03 08:39:08 [http-nio-8091-exec-8] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération du projet : FUGAS
+2025-03-03 08:39:45 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Enregistrement de la grande tâche : Contrôle financier
+2025-03-03 08:39:46 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche enregistrée avec succès : 
+2025-03-03 08:40:05 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 26
+2025-03-03 08:40:05 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:Contrôle financier | charge: 2.0
+2025-03-03 08:42:00 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.StServicesImpl[0;39m - Enregistrement d'une nouvelle sous-tâche : gestion des finances
+2025-03-03 08:42:01 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Dates de la grande tâche mises à jour : Début = Tue Mar 04 00:00:00 UTC 2025, Fin = Thu Mar 06 00:00:00 UTC 2025
+2025-03-03 08:42:01 [http-nio-8091-exec-4] INFO  [36mc.P.d.service.NotificationService[0;39m - Création d'une notification pour l'utilisateur avec l'ID : 8
+2025-03-03 08:42:01 [http-nio-8091-exec-4] INFO  [36mc.P.d.service.NotificationService[0;39m - Notification créée et enregistrée pour l'utilisateur : 8
+2025-03-03 08:42:01 [http-nio-8091-exec-4] INFO  [36mc.P.d.service.NotificationService[0;39m - Notification envoyée à l'utilisateur avec l'ID : 8
+2025-03-03 08:42:02 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.StServicesImpl[0;39m - Sous-tâche enregistrée avec succès : gestion des finances
+2025-03-03 08:42:42 [http-nio-8091-exec-9] INFO  [36mc.P.digitalis.service.StServicesImpl[0;39m - Enregistrement d'une nouvelle sous-tâche : payement facturation
+2025-03-03 08:42:43 [http-nio-8091-exec-9] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Dates de la grande tâche mises à jour : Début = 2025-03-04 00:00:00.0, Fin = Fri Mar 07 00:00:00 UTC 2025
+2025-03-03 08:42:43 [http-nio-8091-exec-9] INFO  [36mc.P.d.service.NotificationService[0;39m - Création d'une notification pour l'utilisateur avec l'ID : 9
+2025-03-03 08:42:43 [http-nio-8091-exec-9] INFO  [36mc.P.d.service.NotificationService[0;39m - Notification créée et enregistrée pour l'utilisateur : 9
+2025-03-03 08:42:43 [http-nio-8091-exec-9] INFO  [36mc.P.d.service.NotificationService[0;39m - Notification envoyée à l'utilisateur avec l'ID : 9
+2025-03-03 08:42:43 [http-nio-8091-exec-9] INFO  [36mc.P.digitalis.service.StServicesImpl[0;39m - Sous-tâche enregistrée avec succès : payement facturation
+2025-03-03 08:42:57 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 26
+2025-03-03 08:42:57 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:Contrôle financier | charge: 5.0
+2025-03-03 08:43:04 [http-nio-8091-exec-1] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : FUGAS
+2025-03-03 08:43:04 [http-nio-8091-exec-3] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 08:43:07 [http-nio-8091-exec-7] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération du projet : UAGCP
+2025-03-03 08:43:39 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Enregistrement de la grande tâche : Envoie et reception des mail
+2025-03-03 08:43:39 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche enregistrée avec succès : 
+2025-03-03 08:44:36 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.StServicesImpl[0;39m - Enregistrement d'une nouvelle sous-tâche : Envoie de mail automatique
+2025-03-03 08:44:36 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Dates de la grande tâche mises à jour : Début = Sun Mar 09 00:00:00 UTC 2025, Fin = Tue Mar 11 00:00:00 UTC 2025
+2025-03-03 08:44:36 [http-nio-8091-exec-10] INFO  [36mc.P.d.service.NotificationService[0;39m - Création d'une notification pour l'utilisateur avec l'ID : 8
+2025-03-03 08:44:36 [http-nio-8091-exec-10] INFO  [36mc.P.d.service.NotificationService[0;39m - Notification créée et enregistrée pour l'utilisateur : 8
+2025-03-03 08:44:36 [http-nio-8091-exec-10] INFO  [36mc.P.d.service.NotificationService[0;39m - Notification envoyée à l'utilisateur avec l'ID : 8
+2025-03-03 08:44:36 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.StServicesImpl[0;39m - Sous-tâche enregistrée avec succès : Envoie de mail automatique
+2025-03-03 08:45:02 [http-nio-8091-exec-10] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : FUGAS
+2025-03-03 08:45:02 [http-nio-8091-exec-2] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 08:45:05 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 27
+2025-03-03 08:45:05 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:Envoie et reception des mail | charge: 2.0
+2025-03-03 08:45:10 [http-nio-8091-exec-3] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 08:45:10 [http-nio-8091-exec-1] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : FUGAS
+2025-03-03 08:45:12 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 26
+2025-03-03 08:45:12 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:Contrôle financier | charge: 5.0
+2025-03-03 08:45:20 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.StServicesImpl[0;39m - Mise à jour de la sous-tâche avec l'ID : 32
+2025-03-03 08:45:20 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Dates de la grande tâche mises à jour : Début = Tue Mar 04 00:00:00 UTC 2025, Fin = 2025-03-07 00:00:00.0
+2025-03-03 08:45:20 [http-nio-8091-exec-10] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : FUGAS
+2025-03-03 08:45:20 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.StServicesImpl[0;39m - Sous-tâche mise à jour avec succès : Status: En cours
+2025-03-03 08:46:45 [http-nio-8091-exec-8] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : FUGAS
+2025-03-03 08:46:45 [http-nio-8091-exec-6] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 08:51:27 [http-nio-8091-exec-3] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : FUGAS
+2025-03-03 08:51:27 [http-nio-8091-exec-1] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 08:51:29 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 26
+2025-03-03 08:51:29 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:Contrôle financier | charge: 5.0
+2025-03-03 08:51:51 [http-nio-8091-exec-3] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 08:51:51 [http-nio-8091-exec-10] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : FUGAS
+2025-03-03 09:04:48 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 0, completed tasks = 1]
+2025-03-03 09:34:48 [MessageBroker-2] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 0, completed tasks = 2]
+2025-03-03 10:04:48 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 3]
+2025-03-03 10:34:48 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 4]
+2025-03-03 10:53:07 [http-nio-8091-exec-4] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 10:53:08 [http-nio-8091-exec-5] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : FUGAS
+2025-03-03 10:53:12 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 27
+2025-03-03 10:53:12 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:Envoie et reception des mail | charge: 2.0
+2025-03-03 10:53:20 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.StServicesImpl[0;39m - Mise à jour de la sous-tâche avec l'ID : 34
+2025-03-03 10:53:21 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Dates de la grande tâche mises à jour : Début = Sun Mar 09 00:00:00 UTC 2025, Fin = Tue Mar 11 00:00:00 UTC 2025
+2025-03-03 10:53:21 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.StServicesImpl[0;39m - Sous-tâche mise à jour avec succès : Status: Termine
+2025-03-03 10:53:28 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 27
+2025-03-03 10:53:28 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:Envoie et reception des mail | charge: 2.0
+2025-03-03 10:53:35 [http-nio-8091-exec-1] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : FUGAS
+2025-03-03 10:53:35 [http-nio-8091-exec-7] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 10:53:56 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 27
+2025-03-03 10:53:56 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:Envoie et reception des mail | charge: 2.0
+2025-03-03 10:54:04 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.StServicesImpl[0;39m - Mise à jour de la sous-tâche avec l'ID : 34
+2025-03-03 10:54:05 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Dates de la grande tâche mises à jour : Début = Sun Mar 09 00:00:00 UTC 2025, Fin = Tue Mar 11 00:00:00 UTC 2025
+2025-03-03 10:54:05 [http-nio-8091-exec-4] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 10:54:05 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.StServicesImpl[0;39m - Sous-tâche mise à jour avec succès : Status: En teste
+2025-03-03 10:54:07 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.StServicesImpl[0;39m - Mise à jour de la sous-tâche avec l'ID : 34
+2025-03-03 10:54:07 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Dates de la grande tâche mises à jour : Début = Sun Mar 09 00:00:00 UTC 2025, Fin = Tue Mar 11 00:00:00 UTC 2025
+2025-03-03 10:54:07 [http-nio-8091-exec-2] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 10:54:07 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.StServicesImpl[0;39m - Sous-tâche mise à jour avec succès : Status: En cours
+2025-03-03 10:54:10 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 27
+2025-03-03 10:54:10 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:Envoie et reception des mail | charge: 2.0
+2025-03-03 10:54:34 [http-nio-8091-exec-4] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : FUGAS
+2025-03-03 10:54:34 [http-nio-8091-exec-1] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 11:04:48 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 5]
+2025-03-03 11:08:42 [http-nio-8091-exec-2] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : FUGAS
+2025-03-03 11:08:42 [http-nio-8091-exec-8] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 11:12:24 [http-nio-8091-exec-2] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 11:12:24 [http-nio-8091-exec-8] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : FUGAS
+2025-03-03 11:17:26 [http-nio-8091-exec-8] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 11:17:26 [http-nio-8091-exec-2] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : FUGAS
+2025-03-03 11:26:19 [http-nio-8091-exec-8] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : FUGAS
+2025-03-03 11:26:22 [http-nio-8091-exec-2] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 11:29:18 [http-nio-8091-exec-2] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 11:29:19 [http-nio-8091-exec-1] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : FUGAS
+2025-03-03 11:29:53 [http-nio-8091-exec-6] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : FUGAS
+2025-03-03 11:29:54 [http-nio-8091-exec-10] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 11:30:07 [http-nio-8091-exec-10] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : FUGAS
+2025-03-03 11:30:07 [http-nio-8091-exec-9] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : UAGCP
+2025-03-03 11:34:48 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 6]
+2025-03-03 12:04:48 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 7]
+2025-03-03 12:34:48 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 8]
+2025-03-03 13:04:48 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 9]
+2025-03-03 13:34:48 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 10]
+2025-03-03 14:04:48 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 11]
+2025-03-03 14:34:48 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 12]
+2025-03-03 14:39:34 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Stopping...
+2025-03-03 14:39:34 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@52b4da7c]]
+2025-03-03 14:39:34 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Stopped.
+2025-03-03 14:39:48 [SpringApplicationShutdownHook] INFO  [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-03 14:39:52 [SpringApplicationShutdownHook] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown initiated...
+2025-03-03 14:39:53 [SpringApplicationShutdownHook] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown completed.

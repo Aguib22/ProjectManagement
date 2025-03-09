@@ -23,7 +23,7 @@ public class GrandeTacheRequest {
     private String nomGt;
     private Float chargesGt;
 
-
+    private Long ponderation;
     private Date dateDeDebutGt;
 
 

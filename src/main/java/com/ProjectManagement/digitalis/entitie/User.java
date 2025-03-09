@@ -60,6 +60,10 @@ public class User implements UserDetails {
     @JsonIgnore
     private List<SousTache> listSt_testeur;
 
+    @OneToMany(mappedBy = "testeur")
+    @JsonIgnore
+    private List<Bug> bugs;
+
     @ManyToOne
     @JoinColumn(name = "reunion",nullable = true)
     private Reunion reunion;
@@ -68,6 +72,10 @@ public class User implements UserDetails {
     @JoinColumn(name = "idUserService", nullable = false)
     @JsonIgnore
     private UserService userService;
+
+    @ManyToMany(mappedBy = "users") // "users" est le nom de l'attribut dans Projet.java
+    @JsonIgnore
+    private List<Projet> projets;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

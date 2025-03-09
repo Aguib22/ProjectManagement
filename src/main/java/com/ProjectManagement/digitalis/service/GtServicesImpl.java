@@ -4,6 +4,7 @@ import com.ProjectManagement.digitalis.dto.GrandeTacheRequest;
 import com.ProjectManagement.digitalis.entitie.GrandeTache;
 import com.ProjectManagement.digitalis.entitie.Projet;
 import com.ProjectManagement.digitalis.entitie.SousTache;
+import com.ProjectManagement.digitalis.exception.ProjetError;
 import com.ProjectManagement.digitalis.repositorie.EvolutionRepository;
 import com.ProjectManagement.digitalis.repositorie.GtRepository;
 import com.ProjectManagement.digitalis.exception.GtError;
@@ -15,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class GtServicesImpl implements GtServices {
@@ -54,7 +56,7 @@ public class GtServicesImpl implements GtServices {
     }
 
     @Override
-    public GrandeTache editGt(Long idGt, GrandeTacheRequest gt) throws GtError {
+    public GrandeTache editGt(Long idGt, GrandeTacheRequest gt) throws GtError, ProjetError {
         logger.info("Tentative de modification de la grande tâche avec l'ID : {}", idGt);
         Optional<GrandeTache> optionalGt = gtRepository.findById(idGt);
         if (optionalGt.isEmpty()) {
@@ -68,6 +70,7 @@ public class GtServicesImpl implements GtServices {
         gt1.setChargesGt(gt.getChargesGt());
         gt1.setDateDeDebutGt(gt.getDateDeDebutGt());
         gt1.setDateDeFinGt(gt.getDateDeFinGt());
+        gt1.setPonderation(gt.getPonderation());
 
         if(gt.getEvolution() != null){
             gt1.setEvolution(gt.getEvolution());
@@ -118,8 +121,20 @@ public class GtServicesImpl implements GtServices {
             logger.error("La grande tâche avec l'ID {} n'existe pas", idGt);
             throw new GtError("La grande tâche à supprimer n'existe pas");
         }
+        GrandeTache gt = optionalGt.get();
+
+        List<SousTache> stByGt = getstByGt(idGt);
+        stByGt.forEach(sousTache -> stRepository.deleteById(sousTache.getIdSt()));
+
+        logger.info("Avant suppression : Liste des GrandeTaches du projet : {}", optionalGt.get().getProjet().getListGt());
+
+        Projet projet = gt.getProjet();
+        projet.getListGt().remove(gt);
+        projetRepository.save(projet);
         gtRepository.deleteById(idGt);
-        projetServices.updateProjetDates(optionalGt.get().getProjet());
+
+        logger.info("après suppression : Liste des GrandeTaches du projet : {}", optionalGt.get().getProjet().getListGt());
+        projetServices.updateProjetDates(gt.getProjet());
         logger.info("Grande tâche supprimée avec succès avec l'ID : {}", idGt);
     }
 
@@ -163,6 +178,25 @@ public class GtServicesImpl implements GtServices {
         gtRepository.save(grandeTache);
 
         logger.info("Dates de la grande tâche mises à jour : Début = {}, Fin = {}", dateDebutMin, dateFinMax);
+    }
+
+    @Override
+    public Map<String,Long> countGtByStatus(Date startDate, Date endDate){
+        List<GrandeTache> grandeTaches;
+
+        if(startDate != null && endDate != null) {
+
+            grandeTaches = gtRepository.findByDateDeDebutGtBetween(startDate, endDate);
+        } else {
+            // Récupérer toutes les sous-tâches si aucune date n'est spécifiée
+            grandeTaches = gtRepository.findAll();
+        }
+        return grandeTaches.stream().filter(
+                gt-> gt.getEvolution() != null)
+                .collect(Collectors.groupingBy(
+                        gt-> gt.getEvolution().getEvolution(),
+                        Collectors.counting()
+                ));
     }
 
 }

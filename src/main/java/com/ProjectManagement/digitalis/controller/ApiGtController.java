@@ -10,10 +10,14 @@ import com.ProjectManagement.digitalis.service.serviceIntreface.EvolutionService
 import com.ProjectManagement.digitalis.service.serviceIntreface.GtServices;
 import com.ProjectManagement.digitalis.service.serviceIntreface.ProjetServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -67,18 +71,23 @@ public class ApiGtController {
 
 
     @PutMapping("/edit/{idGt}")
-    public GrandeTache editGt(@RequestBody GrandeTacheRequest grandeTache, @PathVariable Long idGt) throws GtError{
+    public GrandeTache editGt(@RequestBody GrandeTacheRequest grandeTache, @PathVariable Long idGt) throws GtError, ProjetError {
 
         return gtServices.editGt(idGt, grandeTache);
     }
 
-    @GetMapping("get-projectId/{projectId}")
+    @GetMapping("/get-projectId/{projectId}")
    public ResponseEntity<List<GrandeTache>> getGtByProject(@PathVariable Long projectId){
         List<GrandeTache> grandeTaches = projetServices.getGtByProjectId(projectId);
         return  ResponseEntity.ok(grandeTaches);
    }
 
-
+   @GetMapping("/countGtBystatus")
+   public ResponseEntity<Map<String,Long>> countFilterGt(@RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date startDate,
+                                                         @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date endDate){
+        Map<String,Long> filteredGt = gtServices.countGtByStatus(startDate, endDate);
+        return new ResponseEntity<>(filteredGt, HttpStatus.OK);
+   }
 
 
 

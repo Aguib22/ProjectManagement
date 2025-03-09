@@ -22,7 +22,7 @@ public class StUpdateRequest {
     private Float chargesSt;
     private Date dateDeDebutSt;
     private Date dateDeFinSt;
-
+    private Long ponderation;
     private Date dateDeFinReelleSt;
 
     private String remarquesGt;

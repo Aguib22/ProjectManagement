@@ -1,0 +1,536 @@
+2025-02-07 08:19:29 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - Starting DigitalisApplication using Java 17.0.6 with PID 11384 (C:\Users\LIVE-TECH\Desktop\ProjectManagment\digitalis\target\classes started by LIVE-TECH in C:\Users\LIVE-TECH\Desktop\ProjectManagment\digitalis)
+2025-02-07 08:19:29 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - No active profile set, falling back to 1 default profile: "default"
+2025-02-07 08:19:36 [main] INFO  [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-07 08:19:37 [main] INFO  [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Finished Spring Data repository scanning in 761 ms. Found 12 JPA repository interfaces.
+2025-02-07 08:19:41 [main] INFO  [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat initialized with port 8091 (http)
+2025-02-07 08:19:41 [main] INFO  [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Initializing ProtocolHandler ["http-nio-8091"]
+2025-02-07 08:19:41 [main] INFO  [36mo.a.catalina.core.StandardService[0;39m - Starting service [Tomcat]
+2025-02-07 08:19:41 [main] INFO  [36mo.a.catalina.core.StandardEngine[0;39m - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-02-07 08:19:42 [main] INFO  [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring embedded WebApplicationContext
+2025-02-07 08:19:42 [main] INFO  [36mo.s.b.w.s.c.ServletWebServerApplicationContext[0;39m - Root WebApplicationContext: initialization completed in 11916 ms
+2025-02-07 08:19:42 [main] WARN  [36mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-07 08:19:43 [main] INFO  [36mo.h.jpa.internal.util.LogHelper[0;39m - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-07 08:19:43 [main] INFO  [36morg.hibernate.Version[0;39m - HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-02-07 08:19:43 [main] INFO  [36mo.h.c.i.RegionFactoryInitiator[0;39m - HHH000026: Second-level cache disabled
+2025-02-07 08:19:46 [main] INFO  [36mo.s.o.j.p.SpringPersistenceUnitInfo[0;39m - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-02-07 08:19:46 [main] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Starting...
+2025-02-07 08:19:47 [main] INFO  [36mcom.zaxxer.hikari.pool.HikariPool[0;39m - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6de610c6
+2025-02-07 08:19:47 [main] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Start completed.
+2025-02-07 08:19:47 [main] WARN  [36morg.hibernate.dialect.Dialect[0;39m - HHH000511: The 5.7.24 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-02-07 08:19:47 [main] WARN  [36morg.hibernate.orm.deprecation[0;39m - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-02-07 08:19:52 [main] INFO  [36mo.h.e.t.j.p.i.JtaPlatformInitiator[0;39m - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-02-07 08:19:53 [main] INFO  [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-07 08:19:57 [main] INFO  [36mo.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer[0;39m - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-02-07 08:19:57 [main] WARN  [36mo.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer[0;39m - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2025-02-07 08:20:01 [main] INFO  [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Starting ProtocolHandler ["http-nio-8091"]
+2025-02-07 08:20:01 [main] INFO  [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat started on port 8091 (http) with context path '/'
+2025-02-07 08:20:01 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Starting...
+2025-02-07 08:20:01 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@37e9d191]]
+2025-02-07 08:20:01 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Started.
+2025-02-07 08:20:01 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - Started DigitalisApplication in 34.849 seconds (process running for 40.702)
+2025-02-07 08:21:01 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2025-02-07 08:34:23 [http-nio-8091-exec-1] INFO  [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-07 08:34:23 [http-nio-8091-exec-1] INFO  [36mo.s.web.servlet.DispatcherServlet[0;39m - Initializing Servlet 'dispatcherServlet'
+2025-02-07 08:34:23 [http-nio-8091-exec-1] INFO  [36mo.s.web.servlet.DispatcherServlet[0;39m - Completed initialization in 5 ms
+2025-02-07 08:34:23 [http-nio-8091-exec-1] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 08:34:25 [http-nio-8091-exec-2] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 08:34:26 [http-nio-8091-exec-7] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : projet2
+2025-02-07 08:34:26 [http-nio-8091-exec-8] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : Projet1
+2025-02-07 08:34:48 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 08:34:48 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 08:34:48 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 08:34:48 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 08:42:47 [http-nio-8091-exec-9] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 08:42:47 [http-nio-8091-exec-1] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 08:42:47 [http-nio-8091-exec-6] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : projet2
+2025-02-07 08:42:47 [http-nio-8091-exec-8] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : Projet1
+2025-02-07 08:42:52 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 08:42:52 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 08:42:52 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 08:42:52 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 08:42:58 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de suppression de la grande tâche avec l'ID : 3
+2025-02-07 08:42:58 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Avant suppression : Liste des GrandeTaches du projet : [tache:tache | charge: 4.0, tache:tache 2 | charge: 3.0]
+2025-02-07 08:42:59 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - après suppression : Liste des GrandeTaches du projet : [tache:tache | charge: 4.0, tache:tache 2 | charge: 3.0]
+2025-02-07 08:51:01 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 0, completed tasks = 1]
+2025-02-07 09:08:50 [HikariPool-1 housekeeper] WARN  [36mcom.zaxxer.hikari.pool.HikariPool[0;39m - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m2s500ms203µs801ns).
+2025-02-07 09:09:14 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 09:09:14 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 09:09:14 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 09:09:14 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 09:10:40 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 09:10:41 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 09:10:41 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 09:10:41 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 09:23:33 [MessageBroker-2] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 0, completed tasks = 2]
+2025-02-07 09:53:33 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 3]
+2025-02-07 10:01:08 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Stopping...
+2025-02-07 10:01:08 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@37e9d191]]
+2025-02-07 10:01:08 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Stopped.
+2025-02-07 10:01:09 [SpringApplicationShutdownHook] INFO  [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-07 10:01:09 [SpringApplicationShutdownHook] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown initiated...
+2025-02-07 10:01:09 [SpringApplicationShutdownHook] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown completed.
+2025-02-07 10:01:44 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - Starting DigitalisApplication using Java 17.0.6 with PID 6808 (C:\Users\LIVE-TECH\Desktop\ProjectManagment\digitalis\target\classes started by LIVE-TECH in C:\Users\LIVE-TECH\Desktop\ProjectManagment\digitalis)
+2025-02-07 10:01:44 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - No active profile set, falling back to 1 default profile: "default"
+2025-02-07 10:01:52 [main] INFO  [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-07 10:01:52 [main] INFO  [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Finished Spring Data repository scanning in 393 ms. Found 12 JPA repository interfaces.
+2025-02-07 10:02:01 [main] INFO  [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat initialized with port 8091 (http)
+2025-02-07 10:02:02 [main] INFO  [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Initializing ProtocolHandler ["http-nio-8091"]
+2025-02-07 10:02:02 [main] INFO  [36mo.a.catalina.core.StandardService[0;39m - Starting service [Tomcat]
+2025-02-07 10:02:02 [main] INFO  [36mo.a.catalina.core.StandardEngine[0;39m - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-02-07 10:02:04 [main] INFO  [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring embedded WebApplicationContext
+2025-02-07 10:02:04 [main] INFO  [36mo.s.b.w.s.c.ServletWebServerApplicationContext[0;39m - Root WebApplicationContext: initialization completed in 20149 ms
+2025-02-07 10:02:05 [main] WARN  [36mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-07 10:02:06 [main] INFO  [36mo.h.jpa.internal.util.LogHelper[0;39m - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-07 10:02:06 [main] INFO  [36morg.hibernate.Version[0;39m - HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-02-07 10:02:07 [main] INFO  [36mo.h.c.i.RegionFactoryInitiator[0;39m - HHH000026: Second-level cache disabled
+2025-02-07 10:02:09 [main] INFO  [36mo.s.o.j.p.SpringPersistenceUnitInfo[0;39m - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-02-07 10:02:09 [main] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Starting...
+2025-02-07 10:02:10 [main] INFO  [36mcom.zaxxer.hikari.pool.HikariPool[0;39m - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@631944d4
+2025-02-07 10:02:10 [main] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Start completed.
+2025-02-07 10:02:11 [main] WARN  [36morg.hibernate.dialect.Dialect[0;39m - HHH000511: The 5.7.24 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-02-07 10:02:11 [main] WARN  [36morg.hibernate.orm.deprecation[0;39m - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-02-07 10:02:14 [main] INFO  [36mo.h.e.t.j.p.i.JtaPlatformInitiator[0;39m - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-02-07 10:02:15 [main] INFO  [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-07 10:02:19 [main] INFO  [36mo.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer[0;39m - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-02-07 10:02:19 [main] WARN  [36mo.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer[0;39m - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2025-02-07 10:02:22 [main] INFO  [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Starting ProtocolHandler ["http-nio-8091"]
+2025-02-07 10:02:22 [main] INFO  [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat started on port 8091 (http) with context path '/'
+2025-02-07 10:02:22 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Starting...
+2025-02-07 10:02:22 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@27ca8a5a]]
+2025-02-07 10:02:22 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Started.
+2025-02-07 10:02:22 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - Started DigitalisApplication in 41.107 seconds (process running for 48.751)
+2025-02-07 10:03:11 [http-nio-8091-exec-2] INFO  [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-07 10:03:11 [http-nio-8091-exec-2] INFO  [36mo.s.web.servlet.DispatcherServlet[0;39m - Initializing Servlet 'dispatcherServlet'
+2025-02-07 10:03:11 [http-nio-8091-exec-2] INFO  [36mo.s.web.servlet.DispatcherServlet[0;39m - Completed initialization in 2 ms
+2025-02-07 10:03:13 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 10:03:13 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 10:03:13 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 10:03:13 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 10:03:22 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2025-02-07 10:03:24 [http-nio-8091-exec-1] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 10:03:24 [http-nio-8091-exec-1] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 10:03:25 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 10:03:25 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 10:03:31 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de suppression de la grande tâche avec l'ID : 4
+2025-02-07 10:03:31 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Avant suppression : Liste des GrandeTaches du projet : [tache:tache | charge: 4.0, tache:tache 2 | charge: 3.0]
+2025-02-07 10:03:31 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - après suppression : Liste des GrandeTaches du projet : [tache:tache | charge: 4.0, tache:tache 2 | charge: 3.0]
+2025-02-07 10:04:10 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 10:04:10 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 10:04:10 [http-nio-8091-exec-1] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 10:04:10 [http-nio-8091-exec-1] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 10:12:43 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Stopping...
+2025-02-07 10:12:43 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@27ca8a5a]]
+2025-02-07 10:12:43 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Stopped.
+2025-02-07 10:12:44 [SpringApplicationShutdownHook] INFO  [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-07 10:12:44 [SpringApplicationShutdownHook] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown initiated...
+2025-02-07 10:12:44 [SpringApplicationShutdownHook] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown completed.
+2025-02-07 10:13:03 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - Starting DigitalisApplication using Java 17.0.6 with PID 8444 (C:\Users\LIVE-TECH\Desktop\ProjectManagment\digitalis\target\classes started by LIVE-TECH in C:\Users\LIVE-TECH\Desktop\ProjectManagment\digitalis)
+2025-02-07 10:13:03 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - No active profile set, falling back to 1 default profile: "default"
+2025-02-07 10:13:06 [main] INFO  [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-07 10:13:06 [main] INFO  [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Finished Spring Data repository scanning in 371 ms. Found 12 JPA repository interfaces.
+2025-02-07 10:13:09 [main] INFO  [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat initialized with port 8091 (http)
+2025-02-07 10:13:09 [main] INFO  [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Initializing ProtocolHandler ["http-nio-8091"]
+2025-02-07 10:13:09 [main] INFO  [36mo.a.catalina.core.StandardService[0;39m - Starting service [Tomcat]
+2025-02-07 10:13:09 [main] INFO  [36mo.a.catalina.core.StandardEngine[0;39m - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-02-07 10:13:09 [main] INFO  [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring embedded WebApplicationContext
+2025-02-07 10:13:09 [main] INFO  [36mo.s.b.w.s.c.ServletWebServerApplicationContext[0;39m - Root WebApplicationContext: initialization completed in 6022 ms
+2025-02-07 10:13:09 [main] WARN  [36mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-07 10:13:10 [main] INFO  [36mo.h.jpa.internal.util.LogHelper[0;39m - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-07 10:13:10 [main] INFO  [36morg.hibernate.Version[0;39m - HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-02-07 10:13:10 [main] INFO  [36mo.h.c.i.RegionFactoryInitiator[0;39m - HHH000026: Second-level cache disabled
+2025-02-07 10:13:11 [main] INFO  [36mo.s.o.j.p.SpringPersistenceUnitInfo[0;39m - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-02-07 10:13:11 [main] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Starting...
+2025-02-07 10:13:11 [main] INFO  [36mcom.zaxxer.hikari.pool.HikariPool[0;39m - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@83ebdc5
+2025-02-07 10:13:11 [main] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Start completed.
+2025-02-07 10:13:11 [main] WARN  [36morg.hibernate.dialect.Dialect[0;39m - HHH000511: The 5.7.24 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-02-07 10:13:11 [main] WARN  [36morg.hibernate.orm.deprecation[0;39m - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-02-07 10:13:15 [main] INFO  [36mo.h.e.t.j.p.i.JtaPlatformInitiator[0;39m - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-02-07 10:13:15 [main] INFO  [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-07 10:13:17 [main] INFO  [36mo.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer[0;39m - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-02-07 10:13:17 [main] WARN  [36mo.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer[0;39m - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2025-02-07 10:13:21 [main] INFO  [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Starting ProtocolHandler ["http-nio-8091"]
+2025-02-07 10:13:21 [main] INFO  [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat started on port 8091 (http) with context path '/'
+2025-02-07 10:13:21 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Starting...
+2025-02-07 10:13:21 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@86abdbd]]
+2025-02-07 10:13:21 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Started.
+2025-02-07 10:13:21 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - Started DigitalisApplication in 20.063 seconds (process running for 21.822)
+2025-02-07 10:14:10 [http-nio-8091-exec-1] INFO  [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-07 10:14:10 [http-nio-8091-exec-1] INFO  [36mo.s.web.servlet.DispatcherServlet[0;39m - Initializing Servlet 'dispatcherServlet'
+2025-02-07 10:14:10 [http-nio-8091-exec-1] INFO  [36mo.s.web.servlet.DispatcherServlet[0;39m - Completed initialization in 3 ms
+2025-02-07 10:14:21 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2025-02-07 10:14:23 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 10:14:23 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 10:14:24 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 10:14:24 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 10:44:21 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 0, completed tasks = 1]
+2025-02-07 10:54:43 [HikariPool-1 housekeeper] WARN  [36mcom.zaxxer.hikari.pool.HikariPool[0;39m - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m947ms230µs700ns).
+2025-02-07 10:56:39 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 10:56:39 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 10:56:39 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 10:56:39 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 10:56:59 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 10:56:59 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 10:56:59 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 10:56:59 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 10:57:46 [http-nio-8091-exec-1] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 10:57:47 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 10:57:47 [http-nio-8091-exec-1] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 10:57:47 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 10:57:56 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 10:57:56 [http-nio-8091-exec-1] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 10:57:56 [http-nio-8091-exec-1] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 10:57:56 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 10:58:01 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 10:58:01 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 10:58:01 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 10:58:01 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 11:01:50 [http-nio-8091-exec-9] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 11:01:50 [http-nio-8091-exec-9] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 11:01:50 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 11:01:50 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 11:02:55 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 11:02:55 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 11:02:55 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 11:02:55 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 11:03:15 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 11:03:15 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 11:03:15 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 11:03:15 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 11:03:27 [http-nio-8091-exec-1] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 11:03:27 [http-nio-8091-exec-1] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 11:03:27 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 11:03:27 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 11:03:40 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 11:03:40 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 11:03:40 [http-nio-8091-exec-1] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 11:03:40 [http-nio-8091-exec-1] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 11:05:14 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 11:05:14 [http-nio-8091-exec-9] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 11:05:14 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 11:05:14 [http-nio-8091-exec-9] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 11:15:52 [MessageBroker-2] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 0, completed tasks = 2]
+2025-02-07 11:17:29 [http-nio-8091-exec-6] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 11:17:29 [http-nio-8091-exec-9] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 11:17:30 [http-nio-8091-exec-10] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : Projet1
+2025-02-07 11:17:30 [http-nio-8091-exec-3] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : projet2
+2025-02-07 11:17:33 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 11:17:33 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 11:17:55 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 11:17:55 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 11:18:02 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 11:18:02 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 11:18:13 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 11:18:13 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 11:18:29 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 11:18:29 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 11:43:51 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Stopping...
+2025-02-07 11:43:51 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@86abdbd]]
+2025-02-07 11:43:51 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Stopped.
+2025-02-07 11:43:51 [SpringApplicationShutdownHook] INFO  [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-07 11:43:51 [SpringApplicationShutdownHook] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown initiated...
+2025-02-07 11:43:51 [SpringApplicationShutdownHook] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown completed.
+2025-02-07 11:44:20 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - Starting DigitalisApplication using Java 17.0.6 with PID 1300 (C:\Users\LIVE-TECH\Desktop\ProjectManagment\digitalis\target\classes started by LIVE-TECH in C:\Users\LIVE-TECH\Desktop\ProjectManagment\digitalis)
+2025-02-07 11:44:20 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - No active profile set, falling back to 1 default profile: "default"
+2025-02-07 11:44:29 [main] INFO  [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-07 11:44:29 [main] INFO  [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Finished Spring Data repository scanning in 452 ms. Found 12 JPA repository interfaces.
+2025-02-07 11:44:36 [main] INFO  [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat initialized with port 8091 (http)
+2025-02-07 11:44:37 [main] INFO  [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Initializing ProtocolHandler ["http-nio-8091"]
+2025-02-07 11:44:37 [main] INFO  [36mo.a.catalina.core.StandardService[0;39m - Starting service [Tomcat]
+2025-02-07 11:44:37 [main] INFO  [36mo.a.catalina.core.StandardEngine[0;39m - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-02-07 11:44:44 [main] INFO  [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring embedded WebApplicationContext
+2025-02-07 11:44:44 [main] INFO  [36mo.s.b.w.s.c.ServletWebServerApplicationContext[0;39m - Root WebApplicationContext: initialization completed in 22897 ms
+2025-02-07 11:44:44 [main] WARN  [36mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-07 11:44:45 [main] INFO  [36mo.h.jpa.internal.util.LogHelper[0;39m - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-07 11:44:46 [main] INFO  [36morg.hibernate.Version[0;39m - HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-02-07 11:44:47 [main] INFO  [36mo.h.c.i.RegionFactoryInitiator[0;39m - HHH000026: Second-level cache disabled
+2025-02-07 11:44:49 [main] INFO  [36mo.s.o.j.p.SpringPersistenceUnitInfo[0;39m - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-02-07 11:44:50 [main] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Starting...
+2025-02-07 11:44:51 [main] INFO  [36mcom.zaxxer.hikari.pool.HikariPool[0;39m - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@75a226ea
+2025-02-07 11:44:51 [main] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Start completed.
+2025-02-07 11:44:51 [main] WARN  [36morg.hibernate.dialect.Dialect[0;39m - HHH000511: The 5.7.24 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-02-07 11:44:51 [main] WARN  [36morg.hibernate.orm.deprecation[0;39m - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-02-07 11:45:00 [main] INFO  [36mo.h.e.t.j.p.i.JtaPlatformInitiator[0;39m - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-02-07 11:45:01 [main] INFO  [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-07 11:45:04 [main] INFO  [36mo.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer[0;39m - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-02-07 11:45:04 [main] WARN  [36mo.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer[0;39m - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2025-02-07 11:45:05 [main] INFO  [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Starting ProtocolHandler ["http-nio-8091"]
+2025-02-07 11:45:06 [main] INFO  [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat started on port 8091 (http) with context path '/'
+2025-02-07 11:45:06 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Starting...
+2025-02-07 11:45:06 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@521e34d4]]
+2025-02-07 11:45:06 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Started.
+2025-02-07 11:45:06 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - Started DigitalisApplication in 46.662 seconds (process running for 48.819)
+2025-02-07 11:45:26 [http-nio-8091-exec-1] INFO  [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-07 11:45:26 [http-nio-8091-exec-1] INFO  [36mo.s.web.servlet.DispatcherServlet[0;39m - Initializing Servlet 'dispatcherServlet'
+2025-02-07 11:45:26 [http-nio-8091-exec-1] INFO  [36mo.s.web.servlet.DispatcherServlet[0;39m - Completed initialization in 7 ms
+2025-02-07 11:46:05 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2025-02-07 11:46:17 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 11:46:17 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 11:47:33 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Stopping...
+2025-02-07 11:47:33 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@521e34d4]]
+2025-02-07 11:47:33 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Stopped.
+2025-02-07 11:47:33 [SpringApplicationShutdownHook] INFO  [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-07 11:47:33 [SpringApplicationShutdownHook] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown initiated...
+2025-02-07 11:47:33 [SpringApplicationShutdownHook] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown completed.
+2025-02-07 11:47:46 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - Starting DigitalisApplication using Java 17.0.6 with PID 3616 (C:\Users\LIVE-TECH\Desktop\ProjectManagment\digitalis\target\classes started by LIVE-TECH in C:\Users\LIVE-TECH\Desktop\ProjectManagment\digitalis)
+2025-02-07 11:47:46 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - No active profile set, falling back to 1 default profile: "default"
+2025-02-07 11:47:49 [main] INFO  [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-07 11:47:49 [main] INFO  [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Finished Spring Data repository scanning in 428 ms. Found 12 JPA repository interfaces.
+2025-02-07 11:47:52 [main] INFO  [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat initialized with port 8091 (http)
+2025-02-07 11:47:52 [main] INFO  [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Initializing ProtocolHandler ["http-nio-8091"]
+2025-02-07 11:47:52 [main] INFO  [36mo.a.catalina.core.StandardService[0;39m - Starting service [Tomcat]
+2025-02-07 11:47:52 [main] INFO  [36mo.a.catalina.core.StandardEngine[0;39m - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-02-07 11:47:52 [main] INFO  [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring embedded WebApplicationContext
+2025-02-07 11:47:52 [main] INFO  [36mo.s.b.w.s.c.ServletWebServerApplicationContext[0;39m - Root WebApplicationContext: initialization completed in 6163 ms
+2025-02-07 11:47:52 [main] WARN  [36mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-07 11:47:53 [main] INFO  [36mo.h.jpa.internal.util.LogHelper[0;39m - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-07 11:47:53 [main] INFO  [36morg.hibernate.Version[0;39m - HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-02-07 11:47:53 [main] INFO  [36mo.h.c.i.RegionFactoryInitiator[0;39m - HHH000026: Second-level cache disabled
+2025-02-07 11:47:54 [main] INFO  [36mo.s.o.j.p.SpringPersistenceUnitInfo[0;39m - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-02-07 11:47:54 [main] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Starting...
+2025-02-07 11:47:55 [main] INFO  [36mcom.zaxxer.hikari.pool.HikariPool[0;39m - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7c956dda
+2025-02-07 11:47:55 [main] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Start completed.
+2025-02-07 11:47:55 [main] WARN  [36morg.hibernate.dialect.Dialect[0;39m - HHH000511: The 5.7.24 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-02-07 11:47:55 [main] WARN  [36morg.hibernate.orm.deprecation[0;39m - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-02-07 11:47:58 [main] INFO  [36mo.h.e.t.j.p.i.JtaPlatformInitiator[0;39m - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-02-07 11:47:58 [main] INFO  [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-07 11:48:00 [main] INFO  [36mo.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer[0;39m - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-02-07 11:48:00 [main] WARN  [36mo.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer[0;39m - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2025-02-07 11:48:02 [main] INFO  [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Starting ProtocolHandler ["http-nio-8091"]
+2025-02-07 11:48:02 [main] INFO  [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat started on port 8091 (http) with context path '/'
+2025-02-07 11:48:02 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Starting...
+2025-02-07 11:48:02 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@20305c45]]
+2025-02-07 11:48:02 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Started.
+2025-02-07 11:48:02 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - Started DigitalisApplication in 17.343 seconds (process running for 18.918)
+2025-02-07 11:48:28 [http-nio-8091-exec-1] INFO  [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-07 11:48:28 [http-nio-8091-exec-1] INFO  [36mo.s.web.servlet.DispatcherServlet[0;39m - Initializing Servlet 'dispatcherServlet'
+2025-02-07 11:48:28 [http-nio-8091-exec-1] INFO  [36mo.s.web.servlet.DispatcherServlet[0;39m - Completed initialization in 4 ms
+2025-02-07 11:48:30 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 11:48:30 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 11:49:02 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2025-02-07 11:56:33 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 11:56:33 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 11:56:58 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.StServicesImpl[0;39m - Enregistrement d'une nouvelle sous-tâche : teste d'insertion
+2025-02-07 11:56:59 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Dates de la grande tâche mises à jour : Début = Fri Feb 07 00:00:00 UTC 2025, Fin = Mon Feb 10 00:00:00 UTC 2025
+2025-02-07 11:56:59 [http-nio-8091-exec-8] INFO  [36mc.P.d.service.NotificationService[0;39m - Création d'une notification pour l'utilisateur avec l'ID : 8
+2025-02-07 11:56:59 [http-nio-8091-exec-8] INFO  [36mc.P.d.service.NotificationService[0;39m - Notification créée et enregistrée pour l'utilisateur : 8
+2025-02-07 11:56:59 [http-nio-8091-exec-8] INFO  [36mc.P.d.service.NotificationService[0;39m - Notification envoyée à l'utilisateur avec l'ID : 8
+2025-02-07 11:56:59 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.StServicesImpl[0;39m - Sous-tâche enregistrée avec succès : teste d'insertion
+2025-02-07 11:57:06 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 11:57:06 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 11:57:32 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 11:57:33 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 12:16:42 [http-nio-8091-exec-3] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 12:16:42 [http-nio-8091-exec-9] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 12:16:43 [http-nio-8091-exec-3] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 12:16:43 [http-nio-8091-exec-9] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 4.0
+2025-02-07 12:17:29 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.StServicesImpl[0;39m - Enregistrement d'une nouvelle sous-tâche : sous tache 1 
+2025-02-07 12:17:29 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Dates de la grande tâche mises à jour : Début = 2025-02-07 00:00:00.0, Fin = 2025-02-11 00:00:00.0
+2025-02-07 12:17:29 [http-nio-8091-exec-8] INFO  [36mc.P.d.service.NotificationService[0;39m - Création d'une notification pour l'utilisateur avec l'ID : 9
+2025-02-07 12:17:29 [http-nio-8091-exec-8] INFO  [36mc.P.d.service.NotificationService[0;39m - Notification créée et enregistrée pour l'utilisateur : 9
+2025-02-07 12:17:30 [http-nio-8091-exec-8] INFO  [36mc.P.d.service.NotificationService[0;39m - Notification envoyée à l'utilisateur avec l'ID : 9
+2025-02-07 12:17:30 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.StServicesImpl[0;39m - Sous-tâche enregistrée avec succès : sous tache 1 
+2025-02-07 12:19:02 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 0, completed tasks = 1]
+2025-02-07 12:20:48 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 12:20:48 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 8.0
+2025-02-07 12:20:48 [http-nio-8091-exec-3] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 12:20:48 [http-nio-8091-exec-3] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 12:24:11 [http-nio-8091-exec-6] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 12:24:11 [http-nio-8091-exec-1] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 12:24:12 [http-nio-8091-exec-5] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : Projet1
+2025-02-07 12:24:12 [http-nio-8091-exec-10] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : projet2
+2025-02-07 12:24:15 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 12:24:15 [http-nio-8091-exec-3] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 12:24:15 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 12:24:15 [http-nio-8091-exec-3] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 8.0
+2025-02-07 12:35:17 [http-nio-8091-exec-7] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 12:35:17 [http-nio-8091-exec-3] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 12:35:17 [http-nio-8091-exec-4] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : Projet1
+2025-02-07 12:35:17 [http-nio-8091-exec-6] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : projet2
+2025-02-07 12:35:21 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 12:35:21 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 12:35:21 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 12:35:21 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 8.0
+2025-02-07 12:41:48 [http-nio-8091-exec-1] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 12:41:48 [http-nio-8091-exec-7] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 12:41:49 [http-nio-8091-exec-2] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : Projet1
+2025-02-07 12:41:49 [http-nio-8091-exec-5] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : projet2
+2025-02-07 12:41:51 [http-nio-8091-exec-3] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 12:41:51 [http-nio-8091-exec-3] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 8.0
+2025-02-07 12:41:51 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 12:41:51 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 12:43:06 [http-nio-8091-exec-8] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 12:43:06 [http-nio-8091-exec-6] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 12:43:06 [http-nio-8091-exec-10] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : projet2
+2025-02-07 12:43:06 [http-nio-8091-exec-9] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : Projet1
+2025-02-07 12:43:12 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 12:43:12 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 12:43:14 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 12:43:15 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 8.0
+2025-02-07 12:49:02 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 0, completed tasks = 2]
+2025-02-07 13:05:28 [http-nio-8091-exec-7] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 13:05:28 [http-nio-8091-exec-10] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 13:05:31 [http-nio-8091-exec-4] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : projet2
+2025-02-07 13:05:32 [http-nio-8091-exec-3] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : Projet1
+2025-02-07 13:05:36 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 13:05:36 [http-nio-8091-exec-9] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 13:05:37 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 8.0
+2025-02-07 13:05:37 [http-nio-8091-exec-9] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 13:06:59 [http-nio-8091-exec-1] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 13:06:59 [http-nio-8091-exec-7] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 13:07:00 [http-nio-8091-exec-2] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : projet2
+2025-02-07 13:07:00 [http-nio-8091-exec-8] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : Projet1
+2025-02-07 13:07:03 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 13:07:03 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 8.0
+2025-02-07 13:07:03 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 13:07:04 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 13:19:02 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 3]
+2025-02-07 14:10:56 [HikariPool-1 housekeeper] WARN  [36mcom.zaxxer.hikari.pool.HikariPool[0;39m - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=46m55s998ms111µs100ns).
+2025-02-07 14:22:50 [HikariPool-1 housekeeper] WARN  [36mcom.zaxxer.hikari.pool.HikariPool[0;39m - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m53s638ms126µs100ns).
+2025-02-07 14:43:53 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 4]
+2025-02-07 14:46:25 [http-nio-8091-exec-7] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 14:46:26 [http-nio-8091-exec-1] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 14:46:29 [http-nio-8091-exec-9] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : Projet1
+2025-02-07 14:46:29 [http-nio-8091-exec-8] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : projet2
+2025-02-07 14:46:31 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 14:46:31 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 14:46:31 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 8.0
+2025-02-07 14:46:31 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 15:10:32 [http-nio-8091-exec-1] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 15:10:32 [http-nio-8091-exec-10] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 15:10:33 [http-nio-8091-exec-9] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : Projet1
+2025-02-07 15:10:33 [http-nio-8091-exec-3] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Modification du projet : projet2
+2025-02-07 15:10:36 [http-nio-8091-exec-9] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 15:10:36 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 15:10:36 [http-nio-8091-exec-9] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 8.0
+2025-02-07 15:10:36 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 15:14:07 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 5]
+2025-02-07 15:15:04 [http-nio-8091-exec-1] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 15:15:05 [http-nio-8091-exec-9] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 15:15:05 [http-nio-8091-exec-9] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 15:15:05 [http-nio-8091-exec-3] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 15:15:05 [http-nio-8091-exec-3] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 8.0
+2025-02-07 15:22:05 [http-nio-8091-exec-2] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 15:22:07 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 15:22:07 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 8.0
+2025-02-07 15:22:07 [http-nio-8091-exec-1] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 15:22:07 [http-nio-8091-exec-1] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 15:26:30 [http-nio-8091-exec-5] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 15:26:32 [http-nio-8091-exec-1] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 15:26:32 [http-nio-8091-exec-1] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 15:26:32 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 15:26:32 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 8.0
+2025-02-07 15:44:07 [http-nio-8091-exec-10] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 15:44:10 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 6]
+2025-02-07 15:44:13 [http-nio-8091-exec-9] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 15:44:13 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 15:44:13 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 8.0
+2025-02-07 15:44:14 [http-nio-8091-exec-9] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 15:48:23 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Stopping...
+2025-02-07 15:48:23 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@20305c45]]
+2025-02-07 15:48:23 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Stopped.
+2025-02-07 15:48:25 [SpringApplicationShutdownHook] INFO  [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-07 15:48:25 [SpringApplicationShutdownHook] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown initiated...
+2025-02-07 15:48:26 [SpringApplicationShutdownHook] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown completed.
+2025-02-07 15:49:15 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - Starting DigitalisApplication using Java 17.0.6 with PID 12732 (C:\Users\LIVE-TECH\Desktop\ProjectManagment\digitalis\target\classes started by LIVE-TECH in C:\Users\LIVE-TECH\Desktop\ProjectManagment\digitalis)
+2025-02-07 15:49:15 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - No active profile set, falling back to 1 default profile: "default"
+2025-02-07 15:49:32 [main] INFO  [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-07 15:49:33 [main] INFO  [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Finished Spring Data repository scanning in 743 ms. Found 12 JPA repository interfaces.
+2025-02-07 15:49:46 [main] INFO  [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat initialized with port 8091 (http)
+2025-02-07 15:49:46 [main] INFO  [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Initializing ProtocolHandler ["http-nio-8091"]
+2025-02-07 15:49:47 [main] INFO  [36mo.a.catalina.core.StandardService[0;39m - Starting service [Tomcat]
+2025-02-07 15:49:47 [main] INFO  [36mo.a.catalina.core.StandardEngine[0;39m - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-02-07 15:49:54 [main] INFO  [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring embedded WebApplicationContext
+2025-02-07 15:49:54 [main] INFO  [36mo.s.b.w.s.c.ServletWebServerApplicationContext[0;39m - Root WebApplicationContext: initialization completed in 38296 ms
+2025-02-07 15:49:54 [main] WARN  [36mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-07 15:49:55 [main] INFO  [36mo.h.jpa.internal.util.LogHelper[0;39m - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-07 15:49:56 [main] INFO  [36morg.hibernate.Version[0;39m - HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-02-07 15:49:57 [main] INFO  [36mo.h.c.i.RegionFactoryInitiator[0;39m - HHH000026: Second-level cache disabled
+2025-02-07 15:50:00 [main] INFO  [36mo.s.o.j.p.SpringPersistenceUnitInfo[0;39m - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-02-07 15:50:01 [main] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Starting...
+2025-02-07 15:50:02 [main] INFO  [36mcom.zaxxer.hikari.pool.HikariPool[0;39m - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@e49437
+2025-02-07 15:50:02 [main] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Start completed.
+2025-02-07 15:50:03 [main] WARN  [36morg.hibernate.dialect.Dialect[0;39m - HHH000511: The 5.7.24 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-02-07 15:50:03 [main] WARN  [36morg.hibernate.orm.deprecation[0;39m - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-02-07 15:50:09 [main] INFO  [36mo.h.e.t.j.p.i.JtaPlatformInitiator[0;39m - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-02-07 15:50:10 [main] INFO  [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-07 15:50:13 [main] INFO  [36mo.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer[0;39m - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-02-07 15:50:13 [main] WARN  [36mo.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer[0;39m - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2025-02-07 15:50:16 [main] INFO  [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Starting ProtocolHandler ["http-nio-8091"]
+2025-02-07 15:50:16 [main] INFO  [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat started on port 8091 (http) with context path '/'
+2025-02-07 15:50:16 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Starting...
+2025-02-07 15:50:16 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@1e6be9f0]]
+2025-02-07 15:50:16 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Started.
+2025-02-07 15:50:16 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - Started DigitalisApplication in 63.005 seconds (process running for 65.199)
+2025-02-07 15:50:23 [http-nio-8091-exec-1] INFO  [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-07 15:50:23 [http-nio-8091-exec-1] INFO  [36mo.s.web.servlet.DispatcherServlet[0;39m - Initializing Servlet 'dispatcherServlet'
+2025-02-07 15:50:23 [http-nio-8091-exec-1] INFO  [36mo.s.web.servlet.DispatcherServlet[0;39m - Completed initialization in 3 ms
+2025-02-07 15:51:16 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2025-02-07 15:52:20 [http-nio-8091-exec-7] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 15:52:22 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 15:52:22 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 15:52:23 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 8.0
+2025-02-07 15:52:23 [http-nio-8091-exec-4] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 16:01:33 [http-nio-8091-exec-1] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 16:01:37 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 16:01:37 [http-nio-8091-exec-5] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 8.0
+2025-02-07 16:01:37 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 16:01:37 [http-nio-8091-exec-7] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 16:21:04 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Stopping...
+2025-02-07 16:21:04 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@1e6be9f0]]
+2025-02-07 16:21:04 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Stopped.
+2025-02-07 16:21:04 [SpringApplicationShutdownHook] INFO  [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-07 16:21:04 [SpringApplicationShutdownHook] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown initiated...
+2025-02-07 16:21:04 [SpringApplicationShutdownHook] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown completed.
+2025-02-07 16:21:44 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - Starting DigitalisApplication using Java 17.0.6 with PID 13652 (C:\Users\LIVE-TECH\Desktop\ProjectManagment\digitalis\target\classes started by LIVE-TECH in C:\Users\LIVE-TECH\Desktop\ProjectManagment\digitalis)
+2025-02-07 16:21:44 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - No active profile set, falling back to 1 default profile: "default"
+2025-02-07 16:21:49 [main] INFO  [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-07 16:21:50 [main] INFO  [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Finished Spring Data repository scanning in 309 ms. Found 12 JPA repository interfaces.
+2025-02-07 16:21:52 [main] INFO  [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat initialized with port 8091 (http)
+2025-02-07 16:21:52 [main] INFO  [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Initializing ProtocolHandler ["http-nio-8091"]
+2025-02-07 16:21:52 [main] INFO  [36mo.a.catalina.core.StandardService[0;39m - Starting service [Tomcat]
+2025-02-07 16:21:52 [main] INFO  [36mo.a.catalina.core.StandardEngine[0;39m - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-02-07 16:21:52 [main] INFO  [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring embedded WebApplicationContext
+2025-02-07 16:21:52 [main] INFO  [36mo.s.b.w.s.c.ServletWebServerApplicationContext[0;39m - Root WebApplicationContext: initialization completed in 8250 ms
+2025-02-07 16:21:52 [main] WARN  [36mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-07 16:21:53 [main] INFO  [36mo.h.jpa.internal.util.LogHelper[0;39m - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-07 16:21:53 [main] INFO  [36morg.hibernate.Version[0;39m - HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-02-07 16:21:53 [main] INFO  [36mo.h.c.i.RegionFactoryInitiator[0;39m - HHH000026: Second-level cache disabled
+2025-02-07 16:21:55 [main] INFO  [36mo.s.o.j.p.SpringPersistenceUnitInfo[0;39m - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-02-07 16:21:55 [main] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Starting...
+2025-02-07 16:21:55 [main] INFO  [36mcom.zaxxer.hikari.pool.HikariPool[0;39m - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@67f591c2
+2025-02-07 16:21:55 [main] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Start completed.
+2025-02-07 16:21:55 [main] WARN  [36morg.hibernate.dialect.Dialect[0;39m - HHH000511: The 5.7.24 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-02-07 16:21:55 [main] WARN  [36morg.hibernate.orm.deprecation[0;39m - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-02-07 16:21:59 [main] INFO  [36mo.h.e.t.j.p.i.JtaPlatformInitiator[0;39m - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-02-07 16:22:00 [main] INFO  [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-07 16:22:02 [main] INFO  [36mo.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer[0;39m - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-02-07 16:22:02 [main] WARN  [36mo.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer[0;39m - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2025-02-07 16:22:05 [main] INFO  [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Starting ProtocolHandler ["http-nio-8091"]
+2025-02-07 16:22:05 [main] INFO  [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat started on port 8091 (http) with context path '/'
+2025-02-07 16:22:05 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Starting...
+2025-02-07 16:22:05 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@39153b05]]
+2025-02-07 16:22:05 [main] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Started.
+2025-02-07 16:22:05 [main] INFO  [36mc.P.digitalis.DigitalisApplication[0;39m - Started DigitalisApplication in 22.742 seconds (process running for 29.315)
+2025-02-07 16:22:46 [http-nio-8091-exec-1] INFO  [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-07 16:22:46 [http-nio-8091-exec-1] INFO  [36mo.s.web.servlet.DispatcherServlet[0;39m - Initializing Servlet 'dispatcherServlet'
+2025-02-07 16:22:46 [http-nio-8091-exec-1] INFO  [36mo.s.web.servlet.DispatcherServlet[0;39m - Completed initialization in 2 ms
+2025-02-07 16:23:05 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2025-02-07 16:50:56 [http-nio-8091-exec-1] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 16:50:59 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 16:50:59 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 16:51:00 [http-nio-8091-exec-6] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 8.0
+2025-02-07 16:51:00 [http-nio-8091-exec-8] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 16:53:05 [MessageBroker-1] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 0, completed tasks = 1]
+2025-02-07 16:55:57 [http-nio-8091-exec-3] INFO  [36mc.P.d.service.ProjetServicesImpl[0;39m - Récupération de la liste de tous les projets
+2025-02-07 16:55:59 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 3
+2025-02-07 16:56:00 [http-nio-8091-exec-10] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache | charge: 8.0
+2025-02-07 16:56:00 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Tentative de modification de la grande tâche avec l'ID : 4
+2025-02-07 16:56:00 [http-nio-8091-exec-2] INFO  [36mc.P.digitalis.service.GtServicesImpl[0;39m - Grande tâche modifiée avec succès : tache:tache 2 | charge: 3.0
+2025-02-07 17:23:05 [MessageBroker-2] INFO  [36mo.s.w.s.c.WebSocketMessageBrokerStats[0;39m - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 0, completed tasks = 2]
+2025-02-07 21:08:41 [HikariPool-1 housekeeper] WARN  [36mcom.zaxxer.hikari.pool.HikariPool[0;39m - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h41m29s951ms114µs800ns).
+2025-02-07 21:12:03 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Stopping...
+2025-02-07 21:12:03 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@39153b05]]
+2025-02-07 21:12:03 [SpringApplicationShutdownHook] INFO  [36mo.s.m.s.b.SimpleBrokerMessageHandler[0;39m - Stopped.
+2025-02-07 21:12:03 [SpringApplicationShutdownHook] INFO  [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-07 21:12:04 [SpringApplicationShutdownHook] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown initiated...
+2025-02-07 21:12:04 [SpringApplicationShutdownHook] INFO  [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown completed.

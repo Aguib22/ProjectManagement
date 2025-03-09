@@ -19,6 +19,7 @@ public class SousTacheRequest {
     private int numeroSt;
     private String tacheSt;
     private Float chargesSt;
+    private Long ponderation;
     private Date dateDeDebutSt;
     private Date dateDeFinSt;
 

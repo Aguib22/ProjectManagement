@@ -1,7 +1,7 @@
 package com.ProjectManagement.digitalis.dto;
 
+import com.ProjectManagement.digitalis.entitie.Role;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -19,4 +19,6 @@ public class UserResponse {
     private String prenomUser;
     private String nomUser;
     private String mailUser;
+
+    private Role role;
 }

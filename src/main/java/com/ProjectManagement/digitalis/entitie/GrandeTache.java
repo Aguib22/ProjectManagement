@@ -19,6 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table
 public class GrandeTache {
 
     @Id
@@ -47,7 +48,8 @@ public class GrandeTache {
 
     /*@OneToMany(mappedBy = "SousTache")
     private List<SousTache> listSt;*/
-
+    @Column(columnDefinition = "bigint default 1")
+    private Long ponderation = 1L;
     @OneToMany(mappedBy = "gt" ,cascade = CascadeType.ALL, orphanRemoval = true) // "gt" est le nom de l'attribut dans la classe SousTache
     @JsonIgnore
     private List<SousTache> listSt;
@@ -69,14 +71,14 @@ public class GrandeTache {
         } else {
 
             this.chargesGt = listSt.stream()
-                    .map(SousTache::getChargesSt) // Assure-toi que ce getter existe et retourne la charge en heures
+                    .map(SousTache::getChargesSt)
                     .reduce(0f, Float::sum);
         }
     }
 
 
     public String toString(){
-        return "tache:"+nomGt +"charge: "+chargesGt;
+        return "tache:"+nomGt +" | charge: "+chargesGt;
     }
 
 }

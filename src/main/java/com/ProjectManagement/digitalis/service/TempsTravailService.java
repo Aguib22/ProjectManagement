@@ -6,6 +6,8 @@ import com.ProjectManagement.digitalis.repositorie.StRepository;
 import com.ProjectManagement.digitalis.repositorie.TempsTravailRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author Aguibou sow
  * @date 2025-02-02 01:02
@@ -39,6 +41,13 @@ public class TempsTravailService {
         TempsTravail savedTempsTravail = tempsTravailRepository.save(tempsTravail);
 
         return savedTempsTravail;
+    }
+
+    public List<TempsTravail> getTmpWordked(Long sousTacheId){
+        SousTache sousTache = stRepository.findById(sousTacheId)
+                .orElseThrow(()-> new RuntimeException("Erreur"));
+
+        return tempsTravailRepository.findBySousTache(sousTache);
     }
 
 

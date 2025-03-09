@@ -5,6 +5,7 @@ import com.ProjectManagement.digitalis.entitie.SousTache;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -12,4 +13,5 @@ import java.util.List;
 public interface StRepository extends JpaRepository<SousTache, Long> {
 
     List<SousTache> findByGt(GrandeTache grandeTache);
+    List<SousTache> findByDateDeDebutStBetween(Date startDate, Date endDate);
 }

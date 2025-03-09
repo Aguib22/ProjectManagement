@@ -1,6 +1,8 @@
 package com.ProjectManagement.digitalis.controller;
 
 
+import com.ProjectManagement.digitalis.dto.UpdateSurchargeAndObservation;
+import com.ProjectManagement.digitalis.exception.ProjetError;
 import com.ProjectManagement.digitalis.repositorie.EvolutionRepository;
 import com.ProjectManagement.digitalis.repositorie.GtRepository;
 import com.ProjectManagement.digitalis.repositorie.UserRepository;
@@ -12,11 +14,17 @@ import com.ProjectManagement.digitalis.service.serviceIntreface.EvolutionService
 import com.ProjectManagement.digitalis.service.serviceIntreface.GtServices;
 import com.ProjectManagement.digitalis.service.serviceIntreface.StServices;
 import com.ProjectManagement.digitalis.service.serviceIntreface.UserServices;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -49,10 +57,28 @@ public class  SousTacheCtrl {
     }
 
 
-    @PostMapping("/save")
-    public ResponseEntity<SousTache> saveSousTache(@RequestBody SousTacheRequest sousTacheRequest) {
-        SousTache sousTache = stServicesImpl.saveSousTache(sousTacheRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body(sousTache);
+    @PostMapping(value = "/save",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<SousTache> saveSousTache(@RequestParam("tacheSt") String tacheSt,
+                                                   @RequestParam("chargesSt") Float chargesSt,
+                                                   @RequestParam("idGt") Long idGt,
+                                                   @RequestParam("dateDeDebutSt") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dateDeDebutSt,
+                                                   @RequestParam("dateDeFinSt") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dateDeFinSt,
+                                                   @RequestParam("remarquesGt") String remarquesGt,
+                                                   @RequestParam("dev") Long devId,
+                                                   @RequestParam("testeur") Long testeurId,
+                                                   @RequestParam(value = "file", required = false) MultipartFile file) throws IOException {
+        SousTacheRequest sousTache = new SousTacheRequest();
+        sousTache.setTacheSt(tacheSt);
+        sousTache.setChargesSt(chargesSt);
+        sousTache.setIdGt(idGt);
+        sousTache.setDateDeDebutSt(dateDeDebutSt);
+        sousTache.setDateDeFinSt(dateDeFinSt);
+        sousTache.setRemarquesGt(remarquesGt);
+        sousTache.setDev(devId);
+        sousTache.setTesteur(testeurId);
+        String fileName = (file != null) ? file.getOriginalFilename() : null;
+        SousTache sousTacheSaved = stServicesImpl.saveSousTache(sousTache, file, fileName);
+        return ResponseEntity.ok(sousTacheSaved);
     }
 
 
@@ -94,7 +120,7 @@ public class  SousTacheCtrl {
 
     // Endpoint pour modifier une sous-tâche existante
     @PutMapping("/edit/{idSt}")
-    public ResponseEntity<SousTache> updateSousTache(@PathVariable Long idSt, @RequestBody StUpdateRequest stUpdateRequest) {
+    public ResponseEntity<SousTache> updateSousTache(@PathVariable Long idSt, @RequestBody StUpdateRequest stUpdateRequest) throws ProjetError {
 
         SousTache sousTache = stServicesImpl.editSt(idSt,stUpdateRequest);
         return ResponseEntity.ok(sousTache);
@@ -122,19 +148,51 @@ public class  SousTacheCtrl {
 
     @GetMapping("/get-stByGt/{idGt}")
     public ResponseEntity<List<SousTache>>getStByGrandeTache(@PathVariable Long idGt){
-        List<SousTache> sousTaches = gtServices.getstByGt(idGt);
+        try {
+            List<SousTache> sousTaches = gtServices.getstByGt(idGt);
+            return ResponseEntity.ok(sousTaches);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
 
-        return ResponseEntity.ok(sousTaches);
+
     }
 
     @PostMapping("/worktimes/{idSt}")
-    public ResponseEntity<TempsTravail> addTempsTravail(@PathVariable Long idSt,@RequestBody TempsTravail tempsTravail){
+    public ResponseEntity<List<TempsTravail>> addTempsTravail(@PathVariable Long idSt,@RequestBody TempsTravail tempsTravail){
         try {
             tempsTravailService.addTempsTravail(idSt,tempsTravail);
-            return new ResponseEntity<>(HttpStatus.OK);
+            List<TempsTravail> lstTmpWorkedBySt = tempsTravailService.getTmpWordked(idSt);
+            return ResponseEntity.ok(lstTmpWorkedBySt);
         }catch (RuntimeException e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
+    }
+
+    @GetMapping("worktimes/get/{idSt}")
+    public ResponseEntity<List<TempsTravail>> getTempsTravail(@PathVariable Long idSt){
+        try {
+            List<TempsTravail> lstTmpWorkedBySt = tempsTravailService.getTmpWordked(idSt);
+            return ResponseEntity.ok(lstTmpWorkedBySt);
+        }catch (Exception e){
+            return  new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping("/{id}/update")
+    public ResponseEntity<SousTache> updateSurchargeAndObservation(
+            @PathVariable Long id,
+            @RequestBody UpdateSurchargeAndObservation dto) {
+
+        SousTache updatedSousTache = stServicesImpl.updateSurchargeAndObservation(id, dto);
+        return ResponseEntity.ok(updatedSousTache);
+    }
+
+    @GetMapping("/countStByStatus")
+    public ResponseEntity<Map<String,Long>>countFilterSt(@RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date startDate,
+                                                         @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date endDate){
+        Map<String,Long> filterdSt = stServicesImpl.countStByStatus(startDate, endDate);
+        return new ResponseEntity<>(filterdSt,HttpStatus.OK);
     }
 }
