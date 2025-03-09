@@ -51,6 +51,14 @@ public class Projet {
     @JsonIgnore
     private List<GrandeTache> listGt ;
 
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinTable(
+            name = "projet_user",
+            joinColumns = @JoinColumn(name = "projet_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    @JsonIgnore
+    private List<User> users; // Liste des utilisateurs associés au projet
 
     @PrePersist
     public void prePersist() {

@@ -3,6 +3,7 @@ package com.ProjectManagement.digitalis.service.serviceIntreface;
 import com.ProjectManagement.digitalis.dto.ProjectDto;
 import com.ProjectManagement.digitalis.entitie.GrandeTache;
 import com.ProjectManagement.digitalis.entitie.Projet;
+import com.ProjectManagement.digitalis.entitie.User;
 import com.ProjectManagement.digitalis.exception.ProjetError;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,4 +26,6 @@ public interface ProjetServices {
     void updateProjetDates(Projet projet);
 
     List<GrandeTache> getGtByProjectId(Long projectId);
+
+    List<User> getUsersByProjetId(Long projetId);
 }

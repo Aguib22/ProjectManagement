@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.sql.ClientInfoStatus;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,17 +48,39 @@ public class BugService {
         savedBug.setStatus(BugStatus.EN_ATTENTE);
 
         Bug bugSaved = bugRepository.save(savedBug);
-        this.updateSousTacheStatusIfBugPending(sousTache.getIdSt());
+        Evolution evolution = new Evolution();
+        evolution.setEvolution("initiale");
+        evolution.setIdTraitement(3L);
+        sousTache.setEvolution(evolution);
+        /*sousTache.setDragable(false);*/
+        stRepository.save(sousTache);
         return bugSaved;
 
     }
     public List<Bug> getAllBugs() {
-        return bugRepository.findAll();
+        List<SousTache> sousTaches = stRepository.findAll(); // Récupérer toutes les sous-tâches
+        List<Bug> allBugs = new ArrayList<>();
+
+        for (SousTache sousTache : sousTaches) {
+            allBugs.addAll(getBugsBySt(sousTache.getIdSt()));
+        }
+
+        return allBugs;
     }
 
     public List<Bug> getBugsBySt(Long idSt){
         SousTache sousTache = stRepository.findById(idSt).orElseThrow();
-        this.updateSousTacheStatusIfBugPending(idSt);
+        //this.updateSousTacheStatusIfBugPending(idSt);
+        boolean allFixed = sousTache.getBugs().stream()
+                .allMatch(b -> b.getStatus() == BugStatus.EN_ATTENTE);
+        sousTache.setDragable(!allFixed);
+        System.out.println("dragable "+allFixed);
+        if(allFixed){
+            Evolution evolution = new Evolution();
+            evolution.setEvolution("initiale");
+            evolution.setIdTraitement(3L);
+            sousTache.setEvolution(evolution);
+        }
 
         return bugRepository.findBySousTache(sousTache);
 
@@ -68,7 +91,20 @@ public class BugService {
         bug.setStatus(status);
         SousTache sousTache = bug.getSousTache();
         Bug updatedBug = bugRepository.save(bug);
-        this.updateSousTacheStatusIfBugPending(sousTache.getIdSt());
+
+        boolean allFixed = sousTache.getBugs().stream()
+                .allMatch(b -> b.getStatus() == BugStatus.EN_ATTENTE);
+        sousTache.setDragable(!allFixed);
+        if(allFixed){
+            Evolution evolution = new Evolution();
+            evolution.setEvolution("initiale");
+            evolution.setIdTraitement(3L);
+            sousTache.setEvolution(evolution);
+        }else{
+            sousTache.setDragable(true);
+        }
+        stRepository.save(sousTache);
+        //this.updateSousTacheStatusIfBugPending(sousTache.getIdSt());
         return updatedBug;
 
     }
@@ -110,7 +146,8 @@ public class BugService {
             Evolution evolution = new Evolution();
             evolution.setEvolution("initiale");
             evolution.setIdTraitement(3L);
-            sousTache.setEvolution(evolution); // Bloquer la tâche si un bug est en attente
+            sousTache.setEvolution(evolution);
+            // Bloquer la tâche si un bug est en attente
         }
 
         stRepository.save(sousTache); // Sauvegarder la sous-tâche avec son nouveau statut
@@ -120,18 +157,7 @@ public class BugService {
         SousTache sousTache = stRepository.findById(sousTacheId)
                 .orElseThrow(() -> new RuntimeException("Sous-tâche non trouvée"));
 
-        // Récupérer tous les bugs liés à cette sous-tâche
-        List<Bug> bugs = bugRepository.findBySousTache(sousTache);
+        return sousTache.isDragable();
 
-        // 🔥 Si aucun bug n'est lié à la sous-tâche, elle peut être déplacée
-        if (bugs.isEmpty()) {
-            return true;
-        }
-
-        // 🔥 Vérifier s'il y a des bugs en attente
-        boolean hasPendingBug = bugs.stream().anyMatch(bug -> bug.getStatus() == BugStatus.EN_ATTENTE);
-
-        // Si un bug est encore en attente, la sous-tâche ne peut pas être déplacée
-        return !hasPendingBug;
     }
 }

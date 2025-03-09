@@ -70,6 +70,7 @@ public class GtServicesImpl implements GtServices {
         gt1.setChargesGt(gt.getChargesGt());
         gt1.setDateDeDebutGt(gt.getDateDeDebutGt());
         gt1.setDateDeFinGt(gt.getDateDeFinGt());
+        gt1.setPonderation(gt.getPonderation());
 
         if(gt.getEvolution() != null){
             gt1.setEvolution(gt.getEvolution());

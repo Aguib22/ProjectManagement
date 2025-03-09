@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
@@ -45,7 +47,8 @@ public class SousTache {
     @Column(length = 1000)
     private String remarquesGt;
 
-    @ManyToOne
+    @ManyToOne()
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "gt")
     private GrandeTache gt;
 
@@ -64,6 +67,8 @@ public class SousTache {
     @JoinColumn(name = "testeur")
     private User testeur;
 
+    @Column(columnDefinition = "bigint default 1")
+    private Long ponderation = 1L;
     @OneToMany(mappedBy = "sousTache", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<TempsTravail> tempsTravaux = new ArrayList<>();
@@ -71,6 +76,7 @@ public class SousTache {
     @OneToMany(mappedBy = "sousTache",cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Bug> bugs;
+    boolean dragable = true;
     @PrePersist
     public void prePersist() {
         if (this.evolution == null) {
@@ -90,6 +96,20 @@ public class SousTache {
 
     public boolean isTacheComplete() {
         return getTotalHeuresTravaillees() >= chargesStHeures;
+    }
+
+    public void updateDragable() {
+        if (bugs == null || bugs.isEmpty()) {
+            this.dragable = true; // Aucune bug, donc la sous-tâche est "dragable"
+        }  else if (bugs.stream().anyMatch(bug -> bug.getStatus() == BugStatus.EN_ATTENTE)) {
+            this.dragable = false; // Au moins un bug "EN_ATTENTE", on bloque le drag
+        } else {
+            this.dragable = true; // Sinon, c'est bon, on laisse draggable à true
+        }
+    }
+    @PreUpdate
+    public void preUpdate() {
+        updateDragable();
     }
 
 

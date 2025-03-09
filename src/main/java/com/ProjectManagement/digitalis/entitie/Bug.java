@@ -2,7 +2,9 @@ package com.ProjectManagement.digitalis.entitie;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
@@ -16,6 +18,8 @@ import java.util.Date;
 @Table
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Bug {
 
     @Id

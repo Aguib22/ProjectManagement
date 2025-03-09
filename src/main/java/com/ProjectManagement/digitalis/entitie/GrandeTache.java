@@ -48,7 +48,8 @@ public class GrandeTache {
 
     /*@OneToMany(mappedBy = "SousTache")
     private List<SousTache> listSt;*/
-
+    @Column(columnDefinition = "bigint default 1")
+    private Long ponderation = 1L;
     @OneToMany(mappedBy = "gt" ,cascade = CascadeType.ALL, orphanRemoval = true) // "gt" est le nom de l'attribut dans la classe SousTache
     @JsonIgnore
     private List<SousTache> listSt;

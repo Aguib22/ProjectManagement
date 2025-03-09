@@ -2,8 +2,13 @@ package com.ProjectManagement.digitalis.controller;
 
 import com.ProjectManagement.digitalis.dto.ProjectDto;
 import com.ProjectManagement.digitalis.entitie.Projet;
+import com.ProjectManagement.digitalis.entitie.User;
 import com.ProjectManagement.digitalis.exception.ProjetError;
 import com.ProjectManagement.digitalis.service.serviceIntreface.ProjetServices;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -36,7 +41,8 @@ public class ApiProjetController {
             @RequestParam("dateDebutProjet") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dateDebutProjet,
             @RequestParam("dateFinProject") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dateFinProject,
             @RequestParam("file") MultipartFile fichierSpec,
-            @RequestParam("fileName") String fileName) {
+            @RequestParam("fileName") String fileName,
+            @RequestParam("users") String usersJson) {
 
         try {
             // Création de l'objet Projet
@@ -45,6 +51,17 @@ public class ApiProjetController {
             projet.setDescProjet(descProjet);
             projet.setDateDebutProjet(dateDebutProjet);
             projet.setDateFinProject(dateFinProject);
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.registerModule(new JavaTimeModule());
+            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            List<User> users;
+            try {
+                users = objectMapper.readValue(usersJson, new TypeReference<List<User>>() {});
+            } catch (IOException e) {
+                return ResponseEntity.badRequest().body("Erreur lors de la désérialisation des utilisateurs");
+            }
+            projet.setUsers(users);
 
             // Enregistrer le projet et le fichier
             Projet savedProjet = projetServices.saveProjet(projet, fichierSpec,fileName);
@@ -76,5 +93,11 @@ public class ApiProjetController {
         return projetServices.editProjet(idProjet, projet);
     }
 
+    @GetMapping("/{idProjet}/user")
+    public ResponseEntity<List<User>> getUserByProjet(@PathVariable Long idProjet){
+        List<User>users = projetServices.getUsersByProjetId(idProjet);
+
+        return ResponseEntity.ok(users);
+    }
 
 }

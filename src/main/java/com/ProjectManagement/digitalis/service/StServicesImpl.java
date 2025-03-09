@@ -57,6 +57,7 @@ public class StServicesImpl implements StServices {
         sousTache.setDateDeDebutSt(sousTacheRequest.getDateDeDebutSt());
         sousTache.setDateDeFinSt(sousTacheRequest.getDateDeFinSt());
         sousTache.setRemarquesGt(sousTacheRequest.getRemarquesGt());
+        sousTache.setPonderation((sousTacheRequest.getPonderation()));
         // Récupérer et associer les entités liées
         GrandeTache grandeTache = gtRepository.findById(sousTacheRequest.getIdGt())
                 .orElseThrow(() -> new RuntimeException("Grande Tâche non trouvée"));
@@ -137,6 +138,7 @@ public class StServicesImpl implements StServices {
         sousTache.setDateDeDebutSt(st.getDateDeDebutSt());
         sousTache.setDateDeFinSt(st.getDateDeFinSt());
         sousTache.setDateDeFinReelleSt(st.getDateDeFinReelleSt());
+        sousTache.setPonderation(st.getPonderation());
 
         sousTache.setRemarquesGt(st.getRemarquesGt());
 

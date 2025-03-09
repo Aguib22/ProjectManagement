@@ -73,6 +73,10 @@ public class User implements UserDetails {
     @JsonIgnore
     private UserService userService;
 
+    @ManyToMany(mappedBy = "users") // "users" est le nom de l'attribut dans Projet.java
+    @JsonIgnore
+    private List<Projet> projets;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();

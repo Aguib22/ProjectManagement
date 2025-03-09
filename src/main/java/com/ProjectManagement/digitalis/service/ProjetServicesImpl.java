@@ -3,20 +3,16 @@ package com.ProjectManagement.digitalis.service;
 import com.ProjectManagement.digitalis.dto.FichierDto;
 import com.ProjectManagement.digitalis.dto.ProjectDto;
 import com.ProjectManagement.digitalis.dto.RepertoireDto;
-import com.ProjectManagement.digitalis.entitie.Fichier;
-import com.ProjectManagement.digitalis.entitie.GrandeTache;
-import com.ProjectManagement.digitalis.entitie.Projet;
-import com.ProjectManagement.digitalis.entitie.Repertoir;
+import com.ProjectManagement.digitalis.entitie.*;
 import com.ProjectManagement.digitalis.exception.ProjetError;
 import com.ProjectManagement.digitalis.repositorie.EvolutionRepository;
 import com.ProjectManagement.digitalis.repositorie.GtRepository;
 import com.ProjectManagement.digitalis.repositorie.ProjetRepository;
 import com.ProjectManagement.digitalis.service.serviceIntreface.ProjetServices;
+import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -29,13 +25,15 @@ public class ProjetServicesImpl implements ProjetServices {
     private final ProjetRepository projetRepository;
     private final GtRepository gtRepository;
     private final RepertoirService repertoirService;
+    private final EntityManager entityManager;
 
     private final FichierService fichierService;
     private final EvolutionRepository evolutionRepository;
-    public ProjetServicesImpl(ProjetRepository projetRepository, GtRepository gtRepository, RepertoirService repertoirService, FichierService fichierService, EvolutionRepository evolutionRepository) {
+    public ProjetServicesImpl(ProjetRepository projetRepository, GtRepository gtRepository, RepertoirService repertoirService, EntityManager entityManager, FichierService fichierService, EvolutionRepository evolutionRepository) {
         this.projetRepository = projetRepository;
         this.gtRepository = gtRepository;
         this.repertoirService = repertoirService;
+        this.entityManager = entityManager;
         this.fichierService = fichierService;
 
         this.evolutionRepository = evolutionRepository;
@@ -70,6 +68,7 @@ public class ProjetServicesImpl implements ProjetServices {
     }
 
     @Override
+    @Transactional
     public Projet editProjet(Long idProjet, ProjectDto projet) throws ProjetError {
         Optional<Projet> optionalProjet = projetRepository.findById(idProjet);
         if (optionalProjet.isEmpty()) {
@@ -89,7 +88,7 @@ public class ProjetServicesImpl implements ProjetServices {
 
 
         log.info("Modification du projet : {}", projet1.getNomProjet());
-        return projetRepository.save(projet1);
+        return entityManager.merge(projet1);
     }
 
     @Override
@@ -130,6 +129,7 @@ public class ProjetServicesImpl implements ProjetServices {
     }
 
     @Override
+    @Transactional
     public void updateProjetDates(Projet projet) {
         List<GrandeTache> listGt = this.getGtByProjectId(projet.getIdProjet());
         projet.setListGt(listGt);
@@ -154,7 +154,7 @@ public class ProjetServicesImpl implements ProjetServices {
         projet.setDateDebutProjet(dateDebutMin);
         projet.setDateFinProject(dateFinMax);
 
-        projetRepository.save(projet);  // Sauvegarde les nouvelles dates
+        entityManager.merge(projet);  // Sauvegarde les nouvelles dates
     }
 
     @Override
@@ -163,6 +163,17 @@ public class ProjetServicesImpl implements ProjetServices {
                 .orElseThrow(() -> new RuntimeException(""));
         return gtRepository.findByProjet(projet);
 
+    }
+
+    @Override
+    public List<User> getUsersByProjetId(Long projetId) {
+        Optional<Projet> projetOptional = projetRepository.findById(projetId);
+        if (projetOptional.isPresent()) {
+            Projet projet = projetOptional.get();
+            return projet.getUsers(); // Retourne la liste des utilisateurs associés au projet
+        } else {
+            throw new RuntimeException("Projet non trouvé avec l'ID : " + projetId);
+        }
     }
 
 }
