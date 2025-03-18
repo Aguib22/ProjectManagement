@@ -1,6 +1,9 @@
 package com.ProjectManagement.digitalis.controller;
 
+import com.ProjectManagement.digitalis.dto.NewProjetDto;
 import com.ProjectManagement.digitalis.dto.ProjectDto;
+import com.ProjectManagement.digitalis.entitie.Evolution;
+import com.ProjectManagement.digitalis.entitie.ProjectUser;
 import com.ProjectManagement.digitalis.entitie.Projet;
 import com.ProjectManagement.digitalis.entitie.User;
 import com.ProjectManagement.digitalis.exception.ProjetError;
@@ -18,8 +21,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/projet")
@@ -51,6 +57,10 @@ public class ApiProjetController {
             projet.setDescProjet(descProjet);
             projet.setDateDebutProjet(dateDebutProjet);
             projet.setDateFinProject(dateFinProject);
+            Evolution evolution = new Evolution();
+            evolution.setEvolution("initiale");
+            evolution.setIdTraitement(3L);
+            projet.setEvolution(evolution);
 
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.registerModule(new JavaTimeModule());
@@ -61,7 +71,15 @@ public class ApiProjetController {
             } catch (IOException e) {
                 return ResponseEntity.badRequest().body("Erreur lors de la désérialisation des utilisateurs");
             }
-            projet.setUsers(users);
+            List<ProjectUser> projectUsers = users.stream().map(user ->
+                    ProjectUser.builder()
+                            .user(user)
+                            .projet(projet)
+                            .enabled(true)
+                            .createdAt(LocalDateTime.now())
+                            .build()
+            ).collect(Collectors.toList());
+           projet.setProjectUsers(projectUsers);
 
             // Enregistrer le projet et le fichier
             Projet savedProjet = projetServices.saveProjet(projet, fichierSpec,fileName);
@@ -89,8 +107,8 @@ public class ApiProjetController {
     }
 
     @PutMapping("/edit/{idProjet}")
-    public Projet editProjet(@PathVariable Long idProjet, @RequestBody ProjectDto projet) throws ProjetError{
-        return projetServices.editProjet(idProjet, projet);
+    public void editProjet(@PathVariable Long idProjet, @RequestBody ProjectDto projet) throws ProjetError{
+        projetServices.editProjet(idProjet, projet);
     }
 
     @GetMapping("/{idProjet}/user")
@@ -98,6 +116,11 @@ public class ApiProjetController {
         List<User>users = projetServices.getUsersByProjetId(idProjet);
 
         return ResponseEntity.ok(users);
+    }
+
+    @GetMapping("/projets/{userId}")
+    public List<Projet> getProjetsByUserId(@PathVariable Long userId) {
+        return projetServices.getProjetsByUserId(userId);
     }
 
 }

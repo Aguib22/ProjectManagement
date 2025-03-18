@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -18,13 +19,16 @@ import java.util.List;
 
 @Entity
 @Table
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Projet {
 
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_projet")
     private Long idProjet;
 
     private String nomProjet;
@@ -41,7 +45,7 @@ public class Projet {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    private String cheminRepertoire;
+
     @ManyToOne
     @JoinColumn(name = "evolution")
 
@@ -51,15 +55,9 @@ public class Projet {
     @JsonIgnore
     private List<GrandeTache> listGt ;
 
-    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinTable(
-            name = "projet_user",
-            joinColumns = @JoinColumn(name = "projet_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
+    @OneToMany(mappedBy = "projet", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<User> users; // Liste des utilisateurs associés au projet
-
+    private List<ProjectUser> projectUsers;
     @PrePersist
     public void prePersist() {
         if (this.evolution == null) {

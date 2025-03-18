@@ -1,12 +1,14 @@
 package com.ProjectManagement.digitalis.dto;
 
 import com.ProjectManagement.digitalis.entitie.Evolution;
+import com.ProjectManagement.digitalis.entitie.ProjectUser;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Aguibou sow
@@ -26,6 +28,7 @@ public class ProjectDto {
     private Date dateFinProject;
 
     private Evolution evolution;
+    private List<ProjectUser> projectUsers;
 
 
 }

@@ -5,20 +5,20 @@ import com.ProjectManagement.digitalis.entitie.GrandeTache;
 import com.ProjectManagement.digitalis.entitie.Projet;
 import com.ProjectManagement.digitalis.entitie.SousTache;
 import com.ProjectManagement.digitalis.exception.ProjetError;
-import com.ProjectManagement.digitalis.repositorie.EvolutionRepository;
-import com.ProjectManagement.digitalis.repositorie.GtRepository;
+import com.ProjectManagement.digitalis.repositorie.*;
 import com.ProjectManagement.digitalis.exception.GtError;
-import com.ProjectManagement.digitalis.repositorie.ProjetRepository;
-import com.ProjectManagement.digitalis.repositorie.StRepository;
 import com.ProjectManagement.digitalis.service.serviceIntreface.GtServices;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class GtServicesImpl implements GtServices {
 
     private static final Logger logger = LoggerFactory.getLogger(GtServicesImpl.class);
@@ -28,8 +28,10 @@ public class GtServicesImpl implements GtServices {
     private final EvolutionRepository evolutionRepository;
     private final ProjetServicesImpl projetServices;
     private final StRepository stRepository;
+    private final TempsTravailRepository ttRepository;
+    private final BugRepository bugRepository;
 
-    public GtServicesImpl(GtRepository gtRepository, ProjetRepository projetRepository, EvolutionRepository evolutionRepository, ProjetServicesImpl projetServices, StRepository stRepository) {
+   /* public GtServicesImpl(GtRepository gtRepository, ProjetRepository projetRepository, EvolutionRepository evolutionRepository, ProjetServicesImpl projetServices, StRepository stRepository) {
         this.gtRepository = gtRepository;
         this.projetRepository = projetRepository;
         this.evolutionRepository = evolutionRepository;
@@ -38,7 +40,7 @@ public class GtServicesImpl implements GtServices {
         this.projetServices = projetServices;
         this.stRepository = stRepository;
     }
-
+*/
     @Override
     public GrandeTache saveGt(GrandeTache gt) throws GtError {
         if (gt == null) {
@@ -114,8 +116,16 @@ public class GtServicesImpl implements GtServices {
     }
 
     @Override
+    @Transactional
     public void deleteGt(Long idGt) throws GtError {
-        logger.info("Tentative de suppression de la grande tâche avec l'ID : {}", idGt);
+        var grandeTache = gtRepository.findById(idGt).orElseThrow(() -> new GtError("La grande tâche à supprimer n'existe pas"));
+        grandeTache.getListSt().forEach(sousTache -> {
+            ttRepository.deleteAll(sousTache.getTempsTravaux());
+            bugRepository.deleteAll(sousTache.getBugs());
+            stRepository.delete(sousTache);
+        });
+        gtRepository.delete(grandeTache);
+        /*logger.info("Tentative de suppression de la grande tâche avec l'ID : {}", idGt);
         Optional<GrandeTache> optionalGt = gtRepository.findById(idGt);
         if (optionalGt.isEmpty()) {
             logger.error("La grande tâche avec l'ID {} n'existe pas", idGt);
@@ -135,7 +145,7 @@ public class GtServicesImpl implements GtServices {
 
         logger.info("après suppression : Liste des GrandeTaches du projet : {}", optionalGt.get().getProjet().getListGt());
         projetServices.updateProjetDates(gt.getProjet());
-        logger.info("Grande tâche supprimée avec succès avec l'ID : {}", idGt);
+        logger.info("Grande tâche supprimée avec succès avec l'ID : {}", idGt);*/
     }
 
     @Override

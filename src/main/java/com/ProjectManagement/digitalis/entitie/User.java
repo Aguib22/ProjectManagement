@@ -12,6 +12,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_user")
     private Long idUser;
 
     @Column(unique = true, length = 32, nullable = false)
@@ -73,9 +75,12 @@ public class User implements UserDetails {
     @JsonIgnore
     private UserService userService;
 
-    @ManyToMany(mappedBy = "users") // "users" est le nom de l'attribut dans Projet.java
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL) // Ajout de mappedBy
     @JsonIgnore
-    private List<Projet> projets;
+    private List<ProjectUser> projectUsers;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Notes> notes = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

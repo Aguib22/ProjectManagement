@@ -32,4 +32,6 @@ public interface StServices {
 
 
     SousTache updateSurchargeAndObservation(Long id, UpdateSurchargeAndObservation dto);
+
+    List<SousTache> getSousTachesByUserId(Long userId,Long idGt);
 }

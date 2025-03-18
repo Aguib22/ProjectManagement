@@ -243,4 +243,9 @@ public class StServicesImpl implements StServices {
         ));
     }
 
+    @Override
+    public List<SousTache> getSousTachesByUserId(Long userId,Long idGt) {
+        return stRepository.findSousTachesByUserIdAndGrandeTache(userId,idGt);
+    }
+
 }
