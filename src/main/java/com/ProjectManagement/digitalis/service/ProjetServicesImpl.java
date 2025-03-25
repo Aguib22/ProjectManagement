@@ -8,6 +8,7 @@ import com.ProjectManagement.digitalis.exception.GtError;
 import com.ProjectManagement.digitalis.exception.ProjetError;
 import com.ProjectManagement.digitalis.repositorie.EvolutionRepository;
 import com.ProjectManagement.digitalis.repositorie.GtRepository;
+import com.ProjectManagement.digitalis.repositorie.ProjectUserRepository;
 import com.ProjectManagement.digitalis.repositorie.ProjetRepository;
 import com.ProjectManagement.digitalis.service.serviceIntreface.ProjetServices;
 import jakarta.persistence.EntityManager;
@@ -30,7 +31,8 @@ public class ProjetServicesImpl implements ProjetServices {
 
     private final FichierService fichierService;
     private final EvolutionRepository evolutionRepository;
-    public ProjetServicesImpl(ProjetRepository projetRepository, GtRepository gtRepository, RepertoirService repertoirService, EntityManager entityManager, FichierService fichierService, EvolutionRepository evolutionRepository) {
+    private final ProjectUserRepository projectUserRepository;
+    public ProjetServicesImpl(ProjetRepository projetRepository, GtRepository gtRepository, RepertoirService repertoirService, EntityManager entityManager, FichierService fichierService, EvolutionRepository evolutionRepository, ProjectUserRepository projectUserRepository) {
         this.projetRepository = projetRepository;
         this.gtRepository = gtRepository;
         this.repertoirService = repertoirService;
@@ -38,17 +40,36 @@ public class ProjetServicesImpl implements ProjetServices {
         this.fichierService = fichierService;
 
         this.evolutionRepository = evolutionRepository;
+        this.projectUserRepository = projectUserRepository;
     }
 
     @Override
-    @Transactional
-    public Projet saveProjet(Projet projet, MultipartFile fichierSpec,String fileName) throws ProjetError, IOException {
+    public Projet saveProjet(Projet projet, MultipartFile fichierSpec, String fileName) throws ProjetError, IOException {
         if (projet == null || fichierSpec == null || fichierSpec.isEmpty()) {
             log.error("Projet ou fichier de spécification invalide");
             throw new ProjetError("Le projet ou le fichier de spécification est manquant !");
         }
-        log.info("Enregistrement du projet : {}", projet.getNomProjet());
+
         Projet projetSaved = projetRepository.save(projet);
+        log.info("Projet enregistré : {}", projetSaved.getNomProjet());
+
+        // Associer les utilisateurs au projet EN LES ENREGISTRANT DANS `ProjectUser`
+     /*   Projet finalProjetSaved = projetSaved;
+        List<ProjectUser> projectUsers = projet.getProjectUsers().stream().map(user ->
+                ProjectUser.builder()
+                        .user(user.getUser())
+                        .projet(finalProjetSaved)
+                        .enabled(true)
+                        .createdAt(LocalDateTime.now())
+                        .build()
+        ).toList();*/
+
+        // Enregistrer les ProjectUser dans leur propre repository
+        projectUserRepository.saveAll(projet.getProjectUsers());
+
+        // Associer les utilisateurs au projet et sauvegarder encore
+
+        projetSaved = projetRepository.save(projetSaved);
 
         RepertoireDto repertoireDto = new RepertoireDto();
         repertoireDto.setNom(projet.getNomProjet());
@@ -59,13 +80,13 @@ public class ProjetServicesImpl implements ProjetServices {
         fichierDto.setNom(fileName);
         fichierDto.setDescription("Spécification fonctionnelles générale du projet "+projet.getNomProjet());
         fichierDto.setRepertoireId(repertoir.getId());
-        System.out.println(fichierDto.getNom());
+
         fichierDto.setFicher(fichierSpec);
 
         Fichier fichier = fichierService.ajouterFichier(fichierDto);
-        projetSaved.setCheminRepertoire(repertoir.getCheminStockage());
+
         System.out.println(repertoir.getCheminStockage());
-        return projetRepository.save(projetSaved);
+        return projetSaved;
     }
 
     @Override
@@ -104,17 +125,18 @@ public class ProjetServicesImpl implements ProjetServices {
     }
 
     @Override
+    @Transactional
     public List<Projet> listProjet(Date startDate, Date endDate) {
         List<Projet> projets;
+
         if (startDate != null && endDate != null) {
-            // Filtrer les sous-tâches par intervalle de temps
+
             projets = projetRepository.findByDateDebutProjetBetween(startDate, endDate);
 
         } else {
-            // Récupérer toutes les sous-tâches si aucune date n'est spécifiée
+
             projets = projetRepository.findAll();
         }
-        System.out.println("nbr :"+projets.size());
         return projets;
     }
 
@@ -132,13 +154,14 @@ public class ProjetServicesImpl implements ProjetServices {
     @Override
     @Transactional
     public void updateProjetDates(Projet projet) throws GtError {
-        Date min = projet.getListGt()
+        List<GrandeTache> listGt = this.getGtByProjectId(projet.getIdProjet());
+        Date min = listGt
                 .stream()
                 .min(Comparator.comparing(GrandeTache::getDateDeDebutGt))
                 .map(GrandeTache::getDateDeDebutGt)
                 .orElseThrow(() -> new GtError("Min date doesn't exist"));
 
-        Date max = projet.getListGt()
+        Date max = listGt
                 .stream()
                 .max(Comparator.comparing(GrandeTache::getDateDeFinGt))
                 .map(GrandeTache::getDateDeFinGt)
@@ -183,10 +206,15 @@ public class ProjetServicesImpl implements ProjetServices {
         Optional<Projet> projetOptional = projetRepository.findById(projetId);
         if (projetOptional.isPresent()) {
             Projet projet = projetOptional.get();
-            return projet.getUsers(); // Retourne la liste des utilisateurs associés au projet
+            return projet.getProjectUsers().stream().map(ProjectUser::getUser).toList(); // Retourne la liste des utilisateurs associés au projet
         } else {
             throw new RuntimeException("Projet non trouvé avec l'ID : " + projetId);
         }
+    }
+
+    @Override
+    public List<Projet> getProjetsByUserId(Long userId) {
+        return projetRepository.findByUserId(userId);
     }
 
 }

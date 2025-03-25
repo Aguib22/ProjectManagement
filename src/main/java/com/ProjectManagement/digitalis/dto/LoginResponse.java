@@ -11,6 +11,6 @@ public class LoginResponse {
 
     private long expiresIn;
     private UserResponse user;
-
+    private boolean temporaryPassword;
 
 }

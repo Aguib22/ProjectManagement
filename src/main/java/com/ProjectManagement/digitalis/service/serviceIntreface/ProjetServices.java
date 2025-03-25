@@ -1,5 +1,6 @@
 package com.ProjectManagement.digitalis.service.serviceIntreface;
 
+import com.ProjectManagement.digitalis.dto.NewProjetDto;
 import com.ProjectManagement.digitalis.dto.ProjectDto;
 import com.ProjectManagement.digitalis.entitie.GrandeTache;
 import com.ProjectManagement.digitalis.entitie.Projet;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public interface ProjetServices {
 
-    Projet saveProjet(Projet projet, MultipartFile file,String fileName) throws ProjetError, IOException;
+    Projet saveProjet(Projet projet, MultipartFile file, String fileName) throws ProjetError, IOException;
 
     void editProjet(Long idProjet, ProjectDto projet) throws ProjetError;
 
@@ -29,4 +30,6 @@ public interface ProjetServices {
     List<GrandeTache> getGtByProjectId(Long projectId);
 
     List<User> getUsersByProjetId(Long projetId);
+
+    List<Projet> getProjetsByUserId(Long userId);
 }

@@ -170,7 +170,7 @@ public class  SousTacheCtrl {
 
     }
 
-    @GetMapping("worktimes/get/{idSt}")
+    @GetMapping("/worktimes/get/{idSt}")
     public ResponseEntity<List<TempsTravail>> getTempsTravail(@PathVariable Long idSt){
         try {
             List<TempsTravail> lstTmpWorkedBySt = tempsTravailService.getTmpWordked(idSt);
@@ -194,5 +194,10 @@ public class  SousTacheCtrl {
                                                          @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date endDate){
         Map<String,Long> filterdSt = stServicesImpl.countStByStatus(startDate, endDate);
         return new ResponseEntity<>(filterdSt,HttpStatus.OK);
+    }
+
+    @GetMapping("/user/{userId}/gt/{idGt}")
+    public List<SousTache> getSousTachesByUserId(@PathVariable Long userId,@PathVariable Long idGt) {
+        return stServices.getSousTachesByUserId(userId,idGt);
     }
 }

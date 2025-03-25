@@ -1,20 +1,20 @@
 package com.ProjectManagement.digitalis.controller;
 
 
-import com.ProjectManagement.digitalis.dto.UserResponse;
+import com.ProjectManagement.digitalis.dto.*;
+import com.ProjectManagement.digitalis.entitie.Notification;
 import com.ProjectManagement.digitalis.entitie.Role;
 import com.ProjectManagement.digitalis.entitie.User;
 import com.ProjectManagement.digitalis.exception.UserError;
+import com.ProjectManagement.digitalis.repositorie.UserRepository;
 import com.ProjectManagement.digitalis.service.EmailService;
+import com.ProjectManagement.digitalis.service.NotificationService;
+import com.ProjectManagement.digitalis.service.UserTokenFmsService;
 import com.ProjectManagement.digitalis.service.serviceIntreface.ReunionServices;
 import com.ProjectManagement.digitalis.service.serviceIntreface.UserServices;
 import com.ProjectManagement.digitalis.service.UserServicesImpl;
-import com.ProjectManagement.digitalis.dto.LoginRequest;
-import com.ProjectManagement.digitalis.dto.LoginResponse;
-import com.ProjectManagement.digitalis.dto.RegisterRequest;
 import com.ProjectManagement.digitalis.utils.JwtUtilService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,19 +28,24 @@ public class ApiUserController {
 
 
     private final UserServices userServices;
-
+    private final UserRepository userRepository;
     private final EmailService emailService;
     private final JwtUtilService jwtUtilService;
     private final UserServicesImpl userServiceImpl;
-
+    private final UserTokenFmsService userTokenFmsService;
     private final ReunionServices reunionServices;
 
-    public ApiUserController(UserServices userServices, EmailService emailService, JwtUtilService jwtUtilService, UserServicesImpl userServiceImpl, ReunionServices reunionServices) {
+    private final NotificationService notificationService;
+
+    public ApiUserController(UserServices userServices, UserRepository userRepository, EmailService emailService, JwtUtilService jwtUtilService, UserServicesImpl userServiceImpl, UserTokenFmsService userTokenFmsService, ReunionServices reunionServices, NotificationService notificationService) {
         this.userServices = userServices;
+        this.userRepository = userRepository;
         this.emailService = emailService;
         this.jwtUtilService = jwtUtilService;
         this.userServiceImpl = userServiceImpl;
+        this.userTokenFmsService = userTokenFmsService;
         this.reunionServices = reunionServices;
+        this.notificationService = notificationService;
     }
 
     @PostMapping("/sign-up")
@@ -61,18 +66,21 @@ public class ApiUserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> userLogin(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<?> userLogin(@RequestBody LoginRequest loginRequest) {
 
         User authentifedUser = userServiceImpl.login(loginRequest);
 
         String token = jwtUtilService.generateToken(authentifedUser);
-
+        /*if (authentifedUser.getTemporaryPassword()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(authentifedUser);
+        }*/
         UserResponse userResponse = new UserResponse(
                 authentifedUser.getIdUser(),
                 authentifedUser.getPrenomUser(),
                 authentifedUser.getNomUser(),
                 authentifedUser.getMailUser(),
-                authentifedUser.getRole()
+                authentifedUser.getRole(),
+                authentifedUser.isTemporaryPassword()
         );
 
         LoginResponse loginResponse = LoginResponse.builder().
@@ -111,5 +119,22 @@ public class ApiUserController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(users);
+    }
+
+    @PostMapping("/save-token")
+    public ResponseEntity<String> saveTokenFmc(@RequestBody UserTokenFmcDto userTokenFmcDto){
+        userTokenFmsService.saveUserToken(userTokenFmcDto);
+        return ResponseEntity.ok().body("token enregistré avec succès! "+ userTokenFmcDto.getToken());
+    }
+
+    @GetMapping("/notif/{userId}")
+    public List<Notification> getUserNotifications(@PathVariable Long userId) {
+        return notificationService.getUserNotifications(userId);
+    }
+
+    @PutMapping("notif/mark-as-read/{id}")
+    public void markNotifAsRead(@PathVariable Long id){
+
+            notificationService.makAsRead(id);
     }
 }

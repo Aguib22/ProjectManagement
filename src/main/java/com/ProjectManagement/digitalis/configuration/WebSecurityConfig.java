@@ -19,6 +19,8 @@ import org.springframework.web.filter.CorsFilter;
 
 import java.util.List;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -29,7 +31,9 @@ public class WebSecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception {
-        return security.csrf(csrf->csrf.disable())
+        return security
+                .cors(withDefaults())
+                .csrf(csrf->csrf.disable())
                 .authorizeHttpRequests(
                         auth->auth.requestMatchers("/api/**","/ws/**")
 

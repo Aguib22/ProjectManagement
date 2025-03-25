@@ -22,7 +22,7 @@ public class Direction {
 
     @ManyToOne
     @JoinColumn(name = "organisation", nullable = false)
-    @JsonBackReference
+    @JsonBackReference(value = "organisation-direction")
     private Organisation organisation;
 
     @OneToMany(mappedBy = "direction", cascade = CascadeType.ALL, orphanRemoval = true)

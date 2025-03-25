@@ -1,5 +1,6 @@
 package com.ProjectManagement.digitalis.entitie;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,6 +21,7 @@ public class Organisation {
     private String nomOrganisation;
 
     @OneToMany(mappedBy = "organisation", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference(value = "organisation-direction")
     private List<Direction> directions;
 
 }
