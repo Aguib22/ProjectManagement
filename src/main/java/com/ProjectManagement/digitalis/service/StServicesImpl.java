@@ -29,9 +29,10 @@ public class StServicesImpl implements StServices {
     private final GtServices gtServices;
     private final RepertoirRepository repertoirRepository;
     private final RepertoirService repertoirService;
+    private final UserTokenFmsService userTokenFmsService;
     private final FichierService fichierService;
     public StServicesImpl(StRepository stRepository, GtRepository gtRepository, EvolutionRepository evolutionRepository,
-                          UserRepository userRepository, NotificationService notificationService, ProjetServicesImpl projetServices, BugService bugService, GtServices gtServices, ProjetRepository projetRepository, RepertoirRepository repertoirRepository, RepertoirService repertoirService, FichierService fichierService) {
+                          UserRepository userRepository, NotificationService notificationService, ProjetServicesImpl projetServices, BugService bugService, GtServices gtServices, ProjetRepository projetRepository, RepertoirRepository repertoirRepository, RepertoirService repertoirService, UserTokenFmsService userTokenFmsService, FichierService fichierService) {
         this.stRepository = stRepository;
         this.gtRepository = gtRepository;
         this.evolutionRepository = evolutionRepository;
@@ -43,6 +44,7 @@ public class StServicesImpl implements StServices {
         this.repertoirRepository = repertoirRepository;
 
         this.repertoirService = repertoirService;
+        this.userTokenFmsService = userTokenFmsService;
         this.fichierService = fichierService;
     }
 
@@ -69,14 +71,14 @@ public class StServicesImpl implements StServices {
                 .orElseThrow(() -> new RuntimeException("Évolution non trouvée"));*/
         User dev = userRepository.findById(sousTacheRequest.getDev())
                 .orElseThrow(() -> new RuntimeException("dev non trouvé"));
+        String devTokenFmc = userTokenFmsService.getUserToken(dev.getIdUser());
 
         User testeur = userRepository.findById(sousTacheRequest.getTesteur())
                 .orElseThrow(() -> new RuntimeException("testeur non trouvé"));
+        String testeurTokenFmc = userTokenFmsService.getUserToken(testeur.getIdUser());
 
         sousTache.setGt(grandeTache);
-
         sousTache.setDev(dev);
-
         sousTache.setTesteur(testeur);
         sousTache.chargesStHeures(sousTacheRequest.getChargesSt());
         System.out.println(sousTache.getChargesStHeures());
@@ -90,8 +92,9 @@ public class StServicesImpl implements StServices {
         grandeTache.calculerChargesTotales();
         gtRepository.save(grandeTache);
         gtServices.updateGrandeTacheDates(grandeTache);
-        String notificationMsg = "Une nouvelle tâche vous a été assignée : " + sousTache.getTacheSt();
-        notificationService.createNotifcation(notificationMsg, dev.getIdUser());
+        //String notificationMsg = "Une nouvelle tâche vous a été assignée : " + sousTache.getTacheSt();
+        notificationService.notifyTaskAssigned(sousTacheSaved.getTacheSt(), dev.getIdUser(),devTokenFmc);
+        notificationService.notifyTaskAssigned(sousTacheSaved.getTacheSt(),testeur.getIdUser(),testeurTokenFmc);
 
 
 
@@ -165,6 +168,7 @@ public class StServicesImpl implements StServices {
         if (st.getIdUser() != null) {
             User dev = userRepository.findById(st.getIdUser())
                     .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
+
             sousTache.setDev(dev);
         }
 
@@ -182,6 +186,14 @@ public class StServicesImpl implements StServices {
             projetServices.editProjet(grandeTache.getProjet().getIdProjet(),projectDto);
         }
         log.info("Sous-tâche mise à jour avec succès : {}", sousTacheUpdated.getEvolution());
+        if(sousTacheUpdated.getEvolution().getIdTraitement()==4){
+            String testeurTokenFmc = userTokenFmsService.getUserToken(sousTacheUpdated.getTesteur().getIdUser());
+            notificationService.notifyTaskSentForTesting(sousTacheUpdated.getTacheSt(),sousTacheUpdated.getTesteur().getIdUser(),testeurTokenFmc);
+        }
+        if (sousTacheUpdated.getEvolution().getIdTraitement() == 2){
+            String devTokenFmc = userTokenFmsService.getUserToken(sousTacheUpdated.getDev().getIdUser());
+            notificationService.notifyTaskCompleted(sousTacheUpdated.getTacheSt(),sousTacheUpdated.getDev().getIdUser(),devTokenFmc);
+        }
         return sousTacheUpdated;
     }
 

@@ -3,6 +3,7 @@ package com.ProjectManagement.digitalis.dto;
 import com.ProjectManagement.digitalis.entitie.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 /**
  * @author Aguibou sow
@@ -21,4 +22,5 @@ public class UserResponse {
     private String mailUser;
 
     private Role role;
+    private boolean temporaryPassword;
 }

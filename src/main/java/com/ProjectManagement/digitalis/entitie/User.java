@@ -82,6 +82,8 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Notes> notes = new ArrayList<>();
 
+    @Column(nullable = false)
+    private boolean temporaryPassword=true;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
@@ -110,5 +112,10 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+
+    public boolean isTemporaryPassword(){
+        return temporaryPassword;
     }
 }

@@ -5,10 +5,8 @@ import com.ProjectManagement.digitalis.entitie.*;
 import com.ProjectManagement.digitalis.repositorie.BugRepository;
 import com.ProjectManagement.digitalis.repositorie.StRepository;
 import com.ProjectManagement.digitalis.repositorie.UserRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.sql.ClientInfoStatus;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,15 +20,18 @@ import java.util.List;
 public class BugService {
 
     private final BugRepository bugRepository;
-
+    private final UserTokenFmsService userTokenFmsService;
     private final StRepository stRepository;
 
     private final UserRepository userRepository;
+    private final NotificationService notificationService;
 
-    public BugService(BugRepository bugRepository, StRepository stRepository, UserRepository userRepository) {
+    public BugService(BugRepository bugRepository, UserTokenFmsService userTokenFmsService, StRepository stRepository, UserRepository userRepository, NotificationService notificationService) {
         this.bugRepository = bugRepository;
+        this.userTokenFmsService = userTokenFmsService;
         this.stRepository = stRepository;
         this.userRepository = userRepository;
+        this.notificationService = notificationService;
     }
 
     public Bug bugReport(BugDto bug){
@@ -54,6 +55,8 @@ public class BugService {
         sousTache.setEvolution(evolution);
         /*sousTache.setDragable(false);*/
         stRepository.save(sousTache);
+        String devTokenFmc = userTokenFmsService.getUserToken(sousTache.getDev().getIdUser());
+        notificationService.notifyBugReported(sousTache.getTacheSt(),sousTache.getDev().getIdUser(),devTokenFmc);
         return bugSaved;
 
     }
@@ -101,6 +104,8 @@ public class BugService {
             evolution.setIdTraitement(3L);
             sousTache.setEvolution(evolution);
         }else{
+            String tokenTesterFmc = userTokenFmsService.getUserToken(sousTache.getTesteur().getIdUser());
+            notificationService.notifyBugFixed(sousTache.getTacheSt(),sousTache.getTesteur().getIdUser(),tokenTesterFmc);
             sousTache.setDragable(true);
         }
         stRepository.save(sousTache);

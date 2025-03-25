@@ -1,5 +1,6 @@
 package com.ProjectManagement.digitalis.service;
 
+import com.ProjectManagement.digitalis.dto.ChangePwdDefaultRequest;
 import com.ProjectManagement.digitalis.entitie.User;
 import com.ProjectManagement.digitalis.repositorie.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -79,5 +80,15 @@ public class PasswordRestService {
         user.setExpirePasswordResetToken(null);
         userRepository.save(user);
         log.info("Mot de passe réinitialisé pour l'utilisateur : {}", user.getMailUser());
+    }
+
+    public void changePasswdDefault(ChangePwdDefaultRequest changePwdDefaultRequest){
+
+        Optional<User> user = userRepository.findByMailUser(changePwdDefaultRequest.getMailUser());
+        User newUser = user.get();
+        newUser.setPassword(passwordEncoder.encode(changePwdDefaultRequest.getPassword()));
+        newUser.setTemporaryPassword(false);
+        userRepository.save(newUser);
+        log.info("Mot de passe réinitialisé pour l'utilisateur : {}", newUser.getMailUser());
     }
 }
